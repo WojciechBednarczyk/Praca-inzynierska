@@ -1,0 +1,7 @@
+.container {
+  overflow-y: hidden;
+  display: flex;
+  flex-flow: column;
+  height: 90%;
+  background-color: silver;
+}
