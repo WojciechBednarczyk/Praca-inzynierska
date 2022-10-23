@@ -1,0 +1,22 @@
+.register-container{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 2em;
+}
+
+.rows{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.inputs{
+  margin: 1em;
+}
+
+.input-email{
+  margin: 1em;
+  margin-left: 0em;
+}
