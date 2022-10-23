@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="login-container">
+  <mat-card>
+    <mat-card-title style="text-align: center; margin: 20px">Logowanie</mat-card-title>
+<mat-card-content>
+  <p style="text-align: center; margin: 20px">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Login" formControlName="login">
+    </mat-form-field>
+  </p>
+
+  <p style="text-align: center; margin: 20px">
+    <mat-form-field>
+      <input type="password" matInput placeholder="Hasło" formControlName="password">
+    </mat-form-field>
+  </p>
+
+  <div style="text-align: center;">
+    <a [routerLink]="'/register'">Nie masz konta?</a>
+  </div>
+
+  <div style="text-align: center; margin: 20px">
+    <button mat-stroked-button type="submit" mat-button>Zaloguj</button>
+  </div>
+
+</mat-card-content>
+</mat-card>
+</div>
+
