@@ -24,7 +24,7 @@ public class SignUpRequest {
     private ERole role;
 
     @NotBlank
-    @Size(min = 6, max = 40)
+    @Size(min = 6)
     private String password;
 
     @NotBlank

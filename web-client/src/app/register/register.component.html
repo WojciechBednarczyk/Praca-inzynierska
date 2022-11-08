@@ -2,73 +2,195 @@
   <mat-card>
     <mat-card-title style="text-align: center; margin: 20px">Rejestracja</mat-card-title>
 <mat-card-content>
-  <div class="rows">
-    <p class="inputs">
-      <mat-form-field>
-        <input type="text" matInput placeholder="Imię" formControlName="login">
-      </mat-form-field>
-    </p>
+  <form
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="rows">
+      <div>
+        <p class="inputs">
+          <mat-form-field>
+            <input
+              type="text"
+              name="firstName"
+              [(ngModel)]="form.firstName"
+              required
+              minlength="3"
+              #firstName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && firstName.errors }"
+              matInput placeholder="Imię">
+          </mat-form-field>
+        </p>
 
-    <p class="inputs">
-      <mat-form-field>
-        <input type="text" matInput placeholder="Nazwisko" formControlName="password">
-      </mat-form-field>
-    </p>
+        <div class="invalid-feedback" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">Imię jest wymagane</div>
+          <div *ngIf="firstName.errors['minlength']">
+            Imię musi posiadać co najmniej 3 znaki
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="inputs">
+          <mat-form-field>
+            <input type="text"
+                   name="secondName"
+                   [(ngModel)]="form.secondName"
+                   required
+                   minlength="3"
+                   #secondName="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && secondName.errors }"
+                   matInput placeholder="Nazwisko">
+          </mat-form-field>
+        </p>
+
+        <div class="invalid-feedback" *ngIf="secondName.errors && f.submitted">
+          <div *ngIf="secondName.errors['required']">Nazwisko jest wymagane</div>
+          <div *ngIf="secondName.errors['minlength']">
+            Nazwisko musi posiadać co najmniej 3 znaki
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div>
+        <p class="inputs">
+          <mat-form-field>
+            <input type="text"
+                   class="form-control"
+                   name="login"
+                   [(ngModel)]="form.login"
+                   required
+                   minlength="3"
+                   maxlength="20"
+                   #login="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && login.errors }"
+                   matInput placeholder="Login">
+          </mat-form-field>
+        </p>
+
+        <div class="invalid-feedback" *ngIf="login.errors && f.submitted">
+          <div *ngIf="login.errors['required']">Login jest wymagany</div>
+          <div *ngIf="login.errors['minlength']">
+            Login musi posiadać co najmniej 3 znaki
+          </div>
+          <div *ngIf="login.errors['maxlength']">
+            Login musi posiadać co najwyżej 20 znaków
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="inputs">
+          <mat-form-field>
+            <input type="password"
+                   class="form-control"
+                   name="password"
+                   [(ngModel)]="form.password"
+                   required
+                   minlength="6"
+                   #password="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+                   matInput placeholder="Hasło">
+          </mat-form-field>
+        </p>
+
+
+        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors['required']">Hasło jest wymagane</div>
+          <div *ngIf="password.errors['minlength']">
+            Hasło musi posiadać co najmniej 6 znaków
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Rola</mat-label>
+            <mat-select [(ngModel)]="form.role"
+                        name="role"
+                        required
+                        #role="ngModel">
+              <mat-option value="ROLE_PERSONAL_TRAINER">Trener</mat-option>
+              <mat-option value="ROLE_MENTEE">Podopieczny</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <div class="invalid-feedback" *ngIf="role.errors && f.submitted">
+          <div *ngIf="role.errors['required']">Rola jest wymagana</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="inputs">
+          <mat-form-field>
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   [(ngModel)]="form.email"
+                   required
+                   email
+                   #email="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                   matInput placeholder="E-mail">
+          </mat-form-field>
+        </p>
+
+
+        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Email jest wymagany</div>
+          <div *ngIf="email.errors['email']">
+            Email musi być poprawnym adresem
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <div>
+        <p class="inputs">
+          <mat-form-field appearance="fill">
+            <mat-label>Data urodzenia</mat-label>
+            <input
+              class="form-control"
+              name="dateOfBirth"
+              [(ngModel)]="form.dateOfBirth"
+              required
+              #dateOfBirth="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted}"
+              matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Data urodzenia jest wymagana</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <a [routerLink]="'/login'">Masz już konto?</a>
+    </div>
+
+    <div style="text-align: center; margin: 20px" class="form-group">
+      <button mat-stroked-button type="submit" mat-button>Zarejestruj</button>
+    </div>
+
+    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+      Rejestracja się nie powiodła!<br/>{{ errorMessage }}
+    </div>
+  </form>
+
+  <div class="alert alert-success" style="text-align: center; margin: 20px" *ngIf="isSuccessful">
+    Rejestracja się powiodła!
   </div>
-
-  <div class="rows">
-    <p class="inputs">
-      <mat-form-field>
-        <input type="text" matInput placeholder="Login" formControlName="login">
-      </mat-form-field>
-    </p>
-
-    <p class="inputs">
-      <mat-form-field>
-        <input type="password" matInput placeholder="Hasło" formControlName="password">
-      </mat-form-field>
-    </p>
-  </div>
-
-  <div class="rows">
-
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Rola</mat-label>
-        <mat-select>
-          <mat-option value="one">Trener</mat-option>
-          <mat-option value="two">Podopieczny</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </p>
-
-    <p class="inputs">
-      <mat-form-field>
-        <input type="email" matInput placeholder="E-mail" formControlName="password">
-      </mat-form-field>
-    </p>
-  </div>
-
-  <div style="text-align: center;">
-    <p class="inputs">
-      <mat-form-field appearance="fill">
-        <mat-label>Data urodzenia</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </p>
-  </div>
-
-
-  <div style="text-align: center;">
-    <a [routerLink]="'/login'">Masz już konto?</a>
-  </div>
-
-  <div style="text-align: center; margin: 20px">
-    <button mat-stroked-button type="submit" mat-button>Zarejestruj</button>
-  </div>
-
 </mat-card-content>
 </mat-card>
 </div>
