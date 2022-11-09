@@ -2,26 +2,73 @@
   <mat-card>
     <mat-card-title style="text-align: center; margin: 20px">Logowanie</mat-card-title>
 <mat-card-content>
-  <p style="text-align: center; margin: 20px">
-    <mat-form-field>
-      <input type="text" matInput placeholder="Login" formControlName="login">
-    </mat-form-field>
-  </p>
+  <form
+    *ngIf="!isLoggedIn"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div>
+      <p style="text-align: center; margin: 20px">
+        <mat-form-field>
+          <input type="text"
+                 class="form-control"
+                 name="username"
+                 [(ngModel)]="form.username"
+                 required
+                 #username="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+                 matInput placeholder="Login">
+        </mat-form-field>
+      </p>
 
-  <p style="text-align: center; margin: 20px">
-    <mat-form-field>
-      <input type="password" matInput placeholder="Hasło" formControlName="password">
-    </mat-form-field>
-  </p>
+      <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+        Login jest wymagany!
+      </div>
+    </div>
 
-  <div style="text-align: center;">
-    <a [routerLink]="'/register'">Nie masz konta?</a>
+    <div>
+      <p style="text-align: center; margin: 20px">
+        <mat-form-field>
+          <input type="password"
+                 class="form-control"
+                 name="password"
+                 [(ngModel)]="form.password"
+                 required
+                 minlength="6"
+                 #password="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+                 matInput placeholder="Hasło">
+        </mat-form-field>
+      </p>
+
+      <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+        <div *ngIf="password.errors['required']">Hasło jest wymagane!</div>
+        <div *ngIf="password.errors['minlength']">
+          Hasło musi mieć co najmniej 6 znaków!
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <a [routerLink]="'/register'">Nie masz konta?</a>
+      <span> | </span>
+      <a [routerLink]="'/password-reset'">Nie pamiętasz hasła?</a>
+    </div>
+
+    <div style="text-align: center; margin: 20px">
+      <button mat-stroked-button type="submit" mat-button>Zaloguj</button>
+    </div>
+
+    <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+      Login nie powiodło się: {{ errorMessage }}
+    </div>
+  </form>
+
+  <div class="alert alert-success" style="text-align: center; margin: 20px" *ngIf="isLoggedIn">
+    Pomyślnie zalogowano!
   </div>
-
-  <div style="text-align: center; margin: 20px">
-    <button mat-stroked-button type="submit" mat-button>Zaloguj</button>
-  </div>
-
 </mat-card-content>
 </mat-card>
 </div>
