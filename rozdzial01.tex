@@ -5,9 +5,39 @@ Bran¿a fitness pomimo ostatniego kryzysu spowodowanego pandemi¹ COVID-19 i ogran
 Na si³owniê zapisuje siê coraz wiêcej osób, którzy chc¹ poprawiæ swoj¹ sprawnoœæ fizyczn¹. Niestety dla wielu z nich jest to coœ zupe³nie obcego. Nie wiedz¹ od czego zacz¹æ przychodz¹c na pierwszy trening, a tak¿e w jaki sposób powinni æwiczyæ, przez co spowalniaj¹ swoje postêpy.
 
 Jednym z rozwi¹zañ jest skorzystanie z us³ug trenera personalnego, który pomo¿e poprowadziæ nas w tej przygodzie. Pomoc mo¿e obejmowaæ zarówno rozpisanie planu treningowego, jak i przeprowadzenie razem z nami treningu na si³owni w celu nauki poprawnej techniki æwiczeñ. Niemniej jednak, czêsto znalezienie odpowiedniego trenera dla siebie, a tak¿e kontakt z nim bywa nie lada wyzwaniem.
-\section{Cel pracy}
-Celem pracy jest zaprojektowanie oraz zaimplementowanie systemu informatycznego z poziomu okna przegl¹darki internetowej. System ten ma wspieraæ lokaln¹ spo³ecznoœæ w znalezieniu w swojej okolicy trenera personalnego do wspó³pracy, a tak¿e w organizowaniu i przeprowadzaniu treningów fitness. Ponadto serwis ma oferowaæ atlas æwiczeñ dziêki któremu u¿ytkownicy bêd¹ mogli zarówno poszerzyæ swoj¹ wiedzê na temat danego æwiczenia, jak i techniki.
-\section{Zakres pracy}
-Zakres pracy obejmuje opracowanie architektury budowanej aplikacji, z wyró¿nieniem warstwy prezentacji (frontend) oraz warstwy dostêpu do danych (backend), a tak¿e ich implementacja. Nale¿y tak¿e zaplanowaæ oraz przeprowadziæ testy aplikacji
 
-W osi¹gniêciu celu pomo¿e wykorzystanie nowoczesnych technologii programistycznych, takich jak Java, Spring Boot, Angular czy MySQL. 
+Obecnie istnieje wiele aplikacji internetowych lub mobilnych które s¹ chêtnie wykorzystywane w bran¿y fitness. Przyk³adem takiej aplikacji jest Fabryka Si³y. Posiada ona w ofercie plany treningowe oraz dietetyczne które mo¿na zamówiæ odp³atnie. Ponadto, oferuje ona atlas æwiczeñ z wyró¿nieniem partii miêœniowych, dziêki któremu mo¿na dowiedzieæ jakie miêœnie anga¿uje dane æwiczenie oraz w jaki sposób je poprawnie wykonaæ, a dziêki artyku³om pisanym przez doœwiadczonych trenerów mo¿emy dowiedzieæ siê czegoœ wiêcej o samym treningu.
+
+\begin{figure}[htb]
+  \centering
+	\begin{tabular}{@{}ll@{}}
+  \vtop{\vskip-2ex\hbox{\includegraphics[width=0.475\textwidth]{rys01/zrzut1}}} & 
+	\end{tabular}
+  \caption{Aplikacja Fabryka si³y}
+  \label{fig:zrzuty}
+\end{figure}
+
+Jednak fitness to nie tylko trening. Kolejnym wa¿nym czynnikiem jest dieta. Wbrew temu co myœli wiele osób, dieta nie oznacza tylko jedzenia mniejszej iloœci po¿ywienia w celu schudniêcia. Jest to sposób w jaki od¿ywia siê ka¿dy cz³owiek, wiêc nie ogranicza siê ona tylko do osób æwicz¹cych.
+
+W celu monitorowania swojej diety, wiele osób æwicz¹cych korzysta z aplikacji MyFitnessPal, która jest dostêpna zarówno w wersji internetowej, jak i mobilnej. G³ówn¹ jej zalet¹ jest mo¿liwoœæ skanowania kodów kreskowych dziêki czemu mo¿emy ³atwo obliczyæ iloœæ dziennie spo¿ywanych kalorii. Dla bardziej dok³adnych osób, oferuje ona tak¿e licznik makrosk³adników takich jak bia³ka, t³uszcze czy wêglowodany.
+
+
+\begin{figure}[htb]
+  \centering
+	\begin{tabular}{@{}ll@{}}
+	\vtop{\vskip-2ex\hbox{\includegraphics[width=0.475\textwidth, height=0.275\textheight]{rys01/zrzut2}}}
+	\end{tabular}
+  \caption{Aplikacja MyFitnessPal}
+  \label{fig:zrzuty}
+\end{figure}
+
+
+\section{Cel pracy}
+Tak jak zosta³o to wspomniane wczeœniej, aplikacje internetowe s¹ niezwykle przydatne, oraz chêtnie wykorzystywane przez bran¿ê fitness. Celem pracy jest zaprojektowanie oraz zaimplementowanie systemu informatycznego z poziomu okna przegl¹darki internetowej. System ten ma wspieraæ lokaln¹ spo³ecznoœæ w znalezieniu w swojej okolicy trenera personalnego do wspó³pracy, a tak¿e w organizowaniu i przeprowadzaniu treningów fitness. Ponadto serwis ma oferowaæ atlas æwiczeñ dziêki któremu u¿ytkownicy bêd¹ mogli zarówno poszerzyæ swoj¹ wiedzê na temat danego æwiczenia, jak i techniki. System nie bêdzie wspiera³ ¿adnych p³atnoœci i bêdzie darmowy dla ka¿dego u¿ytkownika.
+\section{Zakres pracy}
+Zakres pracy obejmuje opracowanie architektury budowanej aplikacji, z wyró¿nieniem warstwy prezentacji (frontend) oraz warstwy dostêpu do danych (backend), a tak¿e ich implementacja. Nale¿y tak¿e zaplanowaæ oraz przeprowadziæ testy aplikacji.
+
+W osi¹gniêciu celu pomo¿e wykorzystanie nowoczesnych technologii programistycznych. Aplikacja serwerowa zostanie napisana z wykorzystaniem jêzyka Java razem z frameworkiem Spring Boot. Frontend natomiast zostanie napisany w jêzyku TypeScript, frameworku Angular oraz z wykorzystaniem HTML oraz CSS. Do zarz¹dzania baz¹ danych zosta³ wybrany MySQL.
+
+\section{Podzia³ pracy}
+Praca zosta³a podzielona na piêæ rozdzia³ów. W rozdziale drugim zosta³y opisane wymagania funkcjonalne oraz niefunkcjonalne systemu. Ponadto zawiera on opracowanie systemu za pomoc¹ diagramów UML (np. diagram przypadków u¿ycia). W trzecim rozdziale znajduje siê szczegó³owy opis wykorzystywanych technologii i narzêdzi. Rozdzia³ czwarty zawiera interfejs u¿ytkownika. W pi¹tym rozdziale zosta³ opisane wybrane elementy z implementacji systemu. Szósty rozdzia³ zawiera informacje o przeprowadzonych testach aplikacji. Ostatni, siódmy rozdzia³, zawiera podsumowanie ca³ej pracy.
