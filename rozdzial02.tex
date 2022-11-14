@@ -1,1 +1,79 @@
 \chapter{Analiza wymagañ}
+
+Przed przyst¹pieniem do pracy nad aplikacj¹, nale¿a³o dok³adnie przemyœleæ jak implementowany system bêdzie funkcjonowa³. Czego dok³adnie oczekujemy od naszego systemu oraz jak bêdzie wygl¹da³a interakcja z u¿ytkownikiem. Niniejszy rozdzia³ prezentuje analizê wymagañ projektowanej aplikacji. Znajduj¹ siê w nim miêdzy innymi opisane wymagania funkcjonalne u¿ytkowników wraz z podzia³em na role oraz wymaganie niefunkcjonalne systemu. Ponadto zawiera on diagramy zamodelowane w jêzyku UML
+
+\section{Wymagania funkcjonalne u¿ytkownika}
+
+\subsection{Niezalogowany u¿ytkownik}
+\begin{itemize}
+\item U¿ytkownik ma mo¿liwoœæ za³o¿enia konta w systemie
+\item U¿ytkownik ma mo¿liwoœæ zalogowania siê do systemu
+\item U¿ytkownik ma mo¿liwoœæ przegl¹dania atlasu æwiczeñ
+\item U¿ytkownik ma mo¿liwoœæ sprawdzenia szczegó³ów danego æwiczenia
+\end{itemize}
+
+\subsection{Podopieczny}
+\begin{itemize}
+\item Podopieczny ma mo¿liwoœæ wystawienia opinii trenerowi
+\item Podopieczny ma mo¿liwoœæ wys³ania proœby do trenera o przyjêcie w grono podopiecznych
+\end{itemize}
+
+\subsection{Trener}
+\begin{itemize}
+\item Trener ma mo¿liwoœæ stworzenia planu treningowego dla swojego podopiecznego
+\item Trener ma mo¿liwoœæ odrzucenia proœby o przyjêcie do grona podopiecznych
+\item Trener ma mo¿liwoœæ zaakceptowania proœby o przyjêcia do grona podopiecznych
+\end{itemize}
+
+\subsection{Wspólne dla trenera oraz podopiecznego}
+\begin{itemize}
+\item Mo¿liwoœæ zmiany danych w profilu
+\item Mo¿liwoœæ wys³ania wiadomoœci do innego u¿ytkownika
+\item Mo¿liwoœæ napisania posta na blogu
+\item Mo¿liwoœæ wyszukania profilu innego u¿ytkownika
+\end{itemize}
+
+\section{Wymaganie niefunkcjonalne systemu}
+
+\begin{itemize}
+\item Aplikacja musi byæ dostêpna 24/7
+\item Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta
+\item Aplikacja ma byæ wdro¿ona na darmowym hostingu np. Heroku
+\item Baza danych bêdzie wdro¿ona na darmowym serwerze
+\item Do korzystania z aplikacji wymagany jest dostêp do internetu
+\item Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych
+\item Autoryzacja przebiega przy pomocy JWT zapisywanym w cookies
+\end{itemize}
+
+\section{Diagram ERD}
+\begin{figure}[htb]
+  \centering
+	\begin{tabular}{@{}ll@{}}
+	\vtop{\vskip-2ex\hbox{\includegraphics[width=1\textwidth]{rys02/diagram_erd}}}
+	\end{tabular}
+  \caption{Diagram ERD}
+  \label{fig:diagramy}
+\end{figure}
+
+Diagram ulegnie modyfikacji
+\newpage
+\section{Diagram przypadków u¿ycia}
+
+\begin{figure}[htb]
+  \centering
+	\begin{tabular}{@{}ll@{}}
+	\vtop{\vskip-2ex\hbox{\includegraphics[width=1\textwidth]{rys02/diagram_przypadkow_uzycia}}}
+	\end{tabular}
+  \caption{Diagram przypadkow uzycia}
+  \label{fig:diagramy}
+\end{figure}
+
+\subsection{Scenariusze przypadków u¿ycia}
+TODO
+
+\section{Diagram pakietów}
+TODO
+
+\section{Architektura aplikacji}
+TODO
+
