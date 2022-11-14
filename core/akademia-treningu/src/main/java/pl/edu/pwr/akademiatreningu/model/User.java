@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -36,6 +37,24 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private ERole role;
+
+    @OneToMany(mappedBy = "userSender")
+    private Set<Message> sendMessages;
+
+    @OneToMany(mappedBy = "userReceiver")
+    private Set<Message> receivedMessages;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Training> trainings;
+
+    @OneToOne(mappedBy = "user")
+    private Mentee mentee;
+
+    @OneToOne(mappedBy = "user")
+    private PersonalTrainer personalTrainer;
 
     public User(String firstName, String secondName, String login, String password, String email, Date dateOfBirth, String location, ERole role) {
         this.firstName = firstName;

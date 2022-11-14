@@ -1,0 +1,14 @@
+.atlas-container {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 2em;
+}
+
+table {
+  width: 100%;
+}
+
+.table-row:hover {
+  cursor: pointer;
+}

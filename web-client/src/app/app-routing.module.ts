@@ -4,12 +4,14 @@ import {LoginComponent} from './login/login.component';
 import {MainPageComponent} from './main-page/main-page.component';
 import {RegisterComponent} from './register/register.component';
 import {PasswordResetComponent} from "./password-reset/password-reset.component";
+import {AtlasComponent} from './atlas/atlas.component';
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
   {path: "login", component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'password-reset', component: PasswordResetComponent},
+  {path: 'atlas', component: AtlasComponent},
   {path: "**", pathMatch: 'full', redirectTo: "", component: MainPageComponent},
 ];
 

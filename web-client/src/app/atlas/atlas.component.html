@@ -1,0 +1,30 @@
+<div class="atlas-container">
+  <mat-card>
+
+    <table mat-table [dataSource]="exercises" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No.</th>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nazwa</th>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="muscle group">
+        <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.muscleGroup}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef> Ocena</th>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.rating}}   </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-card>
+</div>
