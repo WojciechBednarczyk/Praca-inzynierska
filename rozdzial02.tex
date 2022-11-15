@@ -68,7 +68,225 @@ Diagram ulegnie modyfikacji
 \end{figure}
 
 \subsection{Scenariusze przypadków u¿ycia}
-TODO
+
+\textbf{Przypadek u¿ycia: } Za³o¿enie konta w systemie\\
+\textbf{Aktor: } Niezalogowany u¿ytkownik\\
+\textbf{Opis: } Rejestracja nowego konta u¿ytkownika\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest niezalogowany, nie posiada konta oraz znajduje siê na ekranie startowym. \\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Niezalogowany u¿ytkownik klika w przycisk "`Rejestracja"'
+  \item Otwiera siê widok rejestracji na którym znajduje siê formularz
+	\item Niezalogowany u¿ytkownik wype³nia wymagane pola w formularzu
+	\item Niezalogowany u¿ytkownik klika w przycisk "`Zarejestruj"'
+	\begin{enumerate}
+	\item[--] Wprowadzone dane s¹ poprawne
+	\begin{enumerate}
+	\item[--] Konto u¿ytkownika zostaje utworzone
+	\end{enumerate}
+	\item[--] Wprowadzone dane s¹ niepoprawne
+	\begin{enumerate}
+	\item[--] System informuje u¿ytkownika o b³êdnie wprowadzonych danych
+	\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+\newpage
+\noindent
+\textbf{Przypadek u¿ycia: } Logowanie do systemu\\
+\textbf{Aktor: } Niezalogowany u¿ytkownik\\
+\textbf{Opis: } Logowanie siê u¿ytkownika do aplikacji\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest niezalogowany oraz znajduje siê na ekranie startowym. \\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Niezalogowany u¿ytkownik klika w przycisk "`Logowanie"'
+  \item Otwiera siê widok logowanie na którym znajduje siê formularz
+	\item Niezalogowany u¿ytkownik w formularzu login oraz has³o
+	\item Niezalogowany u¿ytkownik klika w przycisk "`Zaloguj"'
+	\begin{enumerate}
+	\item[--] Wprowadzone dane s¹ poprawne
+	\begin{enumerate}
+	\item[--] U¿ytkownik jest zalogowany w systemie
+	\end{enumerate}
+	\item[--] Wprowadzone dane s¹ niepoprawne
+	\begin{enumerate}
+	\item[--] System informuje u¿ytkownika o b³êdnie wprowadzonych danych
+	\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Przegl¹danie atlasu æwiczeñ\\
+\textbf{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
+\textbf{Opis: } Przegl¹danie tabeli z æwiczeniami na której znajduje siê numer, nazwa, grupa miêœniowa oraz ocena æwiczenia  \\
+\textbf{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie startowym. \\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item U¿ytkownik klika w przycisk "`Atlas æwiczeñ"'
+  \item Otwiera siê widok atlasu æwiczeñ na którym znajduje siê tabela z æwiczeniami
+	\item U¿ytkownik mo¿e przechodziæ do kolejnych stron tabeli klikaj¹c w przyciski strza³ek pod tabel¹
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Przegl¹danie szczegó³ów æwiczenia\\
+\textbf{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
+\textbf{Opis: } Przegl¹danie szczegó³ów danego æwiczeniae\\
+\textbf{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie atlasu æwiczeñ. \\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item U¿ytkownik klika w wybrane æwiczenie w tabeli
+  \item Otwiera siê widok szczegó³ów æwiczenia na którym znajduje siê nazwa, opis, ocena oraz film instrukta¿owy æwiczenia
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Wystawienie opinii trenerowi\\
+\textbf{Aktor: } Podopieczny\\
+\textbf{Opis: } Wystawienie opinii przez podopiecznego dla swojego trenera\\
+\textbf{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny znajduje siê w gronie podopiecznych tego trenera\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Podopieczny klika przycisk wystawiania opinii
+  \item Pokazuje siê pole tekstowe w którym podopieczny mo¿e wpisaæ swoj¹ opinie i wystawiæ ocenê.
+	\item Po wpisaniu opinii, podopieczny klika w przycisk zapisz
+	\item Opinia zostaje zapisana na koncie trenera
+\end{enumerate}
+\newpage
+\noindent
+\textbf{Przypadek u¿ycia: } Wys³anie proœby do trenera o przyjêcie w grono podopiecznych\\
+\textbf{Aktor: } Podopieczny\\
+\textbf{Opis: } Wys³anie proœby do danego trenera o przyjêcie w grono podopiecznych co umo¿liwi wspó³pracê\\
+\textbf{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny nie jest w gronie podopiecznych tego trenera\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Podopieczny klika przycisk wys³ania proœby o przyjêcia w grono podopiecznych
+	\item Pokazuje siê informacja z potwierdzeniem wys³ania proœby
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Stworzenie planu treningowego\\
+\textbf{Aktor: } Trener\\
+\textbf{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w systemie\\
+\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych \\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Trener klika w ikonê opcji obok wybranego podopiecznego w tabeli
+	\item Pokazuje siê ma³e menu z dostêpnymi opcjami
+	\item Trener klika w opcjê "`Stwórz plan"'
+	\item Pokazuje siê ekran tworzenia planu
+	\item Trener wybiera æwiczenia do planu z listy æwiczeñ
+	\item Trener klika w przycisk zapisz
+	\item Plan treningowy zostaje zapisany dla podopiecznego
+\end{enumerate}
+\noindent	
+\textbf{Przypadek u¿ycia: } Odrzucenie proœby o przyjêcie do grona podopiecznych\\
+\textbf{Aktor: } Trener\\
+\textbf{Opis: } Trener mo¿e odrzuciæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
+\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Na ekranie próœb o przyjêcie wyœwietla siê lista z proœbami
+	\item Trener obok wybranej proœby klika w ikonê odrzucenia
+	\item Pokazuje siê informacja o odrzuceniu proœby
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Zaakceptowanie proœby o przyjêcie do grona podopiecznych\\
+\textbf{Aktor: } Trener\\
+\textbf{Opis: } Trener mo¿e zaakceptowaæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
+\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Na ekranie próœb o przyjêcie wyœwietla siê lista z proœbami
+	\item Trener obok wybranej proœby klika w ikonê akceptacji
+	\item Podopieczny zostaje zapisany do grona podopiecznych tego trenera
+	\item Pokazuje siê informacja o zaakceptowaniu proœby
+\end{enumerate}
+\newpage
+\noindent
+\textbf{Przypadek u¿ycia: } Usuniêcie podopiecznego z grona podopiecznych\\
+\textbf{Aktor: } Trener\\
+\textbf{Opis: } Trener mo¿e usun¹æ swojego podopiecznego z grona podopiecznych\\
+\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Trener klika w ikonê opcji obok wybranego podopiecznego w tabeli
+	\item Pokazuje siê ma³e menu z dostêpnymi opcjami
+	\item Trener klika w opcjê "`Usun¹æ podopiecznego"'
+	\item Pokazuje siê komunikat czy na pewno usun¹æ podopiecznego
+	\item Trener wybiera przycisk akceptacji
+	\item Podopieczny zostaje usuniêty z grona podopiecznych tego trenera
+	\item Pokazuje siê informacja z potwierdzeniem usuniêcia podopiecznego z grona podopiecznych
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Zmiana danych w profilu\\
+\textbf{Aktor: } Trener, Podopieczny\\
+\textbf{Opis: } Zalogowany u¿ytkownik mo¿e zmieniæ swoje dane w profilu takie jak email, has³o czy lokalizacja\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie swojego profilu\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Zalogowany u¿ytkownik na ekranie swojego profilu klika w przycisk "`Zmieñ dane"'
+	\item Pokazuje siê formularz z danymi do zmiany
+	\item Zalogowany u¿ytkownik wype³nia wybrane pola formularza danymi
+	\item Zalogowany u¿ytkownik klika w przycisk "`Zapisz zmiany"'
+	\begin{enumerate}
+	\item[--] Wprowadzone dane s¹ poprawne
+	\begin{enumerate}
+	\item[--] Dane u¿ytkownika zosta³y zmienione
+	\end{enumerate}
+	\item[--] Wprowadzone dane s¹ niepoprawne
+	\begin{enumerate}
+	\item[--] System informuje u¿ytkownika o b³êdnie wprowadzonych danych
+	\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Wys³anie wiadomoœci do innego u¿ytkownika\\
+\textbf{Aktor: } Trener, Podopieczny\\
+\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wys³aæ wiadomoœæ do innego u¿ytkownika\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie profilu innego u¿ytkownika\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Zalogowany u¿ytkownik na ekranie profilu innego u¿ytkownika klika w przycisk "`Wyœlij wiadomoœæ"'
+	\item Pokazuje siê pola tekstowe w które mo¿na wpisaæ wiadomoœæ
+	\item Zalogowany u¿ytkownik wpisuje wiadomoœæ w polu tekstowym
+	\item Zalogowany u¿ytkownik klika w przycisk "`Wyœlij"'
+	\item Wiadomoœæ zostaje wys³ana do innego u¿ytkownika
+\end{enumerate}
+\newpage
+\noindent
+\textbf{Przypadek u¿ycia: } Wylogowanie z systemu\\
+\textbf{Aktor: } Trener, Podopieczny\\
+\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wylogowaæ siê z systemu tym samym koñcz¹c sesje\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Zalogowany u¿ytkownik na dowolnym ekranie klika w ikonê profilu na pasku nawigacji
+	\item Pokazuj¹ siê ma³e menu z dostêpnymi opcjami
+	\item Zalogowany u¿ytkownik klika w przycisk "`Wyloguj"'
+	\item Zalogowany u¿ytkownik zostaje wylogowany z systemu
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Napisanie posta na blogu\\
+\textbf{Aktor: } Trener, Podopieczny\\
+\textbf{Opis: } Zalogowany u¿ytkownik mo¿e napisaæ posta na swoim profilu\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Zalogowany u¿ytkownik na dowolnym ekranie klika w przycisk "`Dziennik"' w pasku nawigacji
+	\item Pokazuj¹ siê ekran bloga z napisanymi postami
+	\item Zalogowany u¿ytkownik klika w przycisk "`Nowy post"'
+	\item Pokazuje siê pole tekstowe w którym mo¿na wpisaæ treœæ posta
+	\item Zalogowany u¿ytkownik klika w przycisk "`Zapisz"'
+	\item Post zostaje zapisany na profilu u¿ytkownika
+\end{enumerate}
+\noindent
+\textbf{Przypadek u¿ycia: } Wyszukanie profilu u¿ytkownika\\
+\textbf{Aktor: } Trener, Podopieczny\\
+\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wyszukaæ profil innego u¿ytkownika\\
+\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\textbf{Przebieg: }
+\begin{enumerate}
+  \item Zalogowany u¿ytkownik na dowolnym ekranie klika w ikonê szukania na pasku nawigacji
+	\item Pokazuj¹ siê pole tekstowe w którym mo¿na wpisaæ imiê lub nazwisko szukanego u¿ytkownika
+	\item Zalogowany u¿ytkownik wpisuje imiê lub nazwisko szukanego u¿ytkownika
+	\item Zalogowany u¿ytkownik klika w ikonê szukania
+	\item Pokazuje siê ekran z list¹ znalezionych u¿ytkowników
+	\item Po klikniêciu w wybranego u¿ytkownika pokazuje siê ekran jego profilu
+\end{enumerate}
 
 \section{Diagram pakietów}
 TODO
