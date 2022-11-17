@@ -19,6 +19,7 @@ import {PasswordResetComponent} from './password-reset/password-reset.component'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
@@ -50,7 +51,8 @@ import {AtlasComponent} from './atlas/atlas.component';
     HttpClientModule,
     MatMenuModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

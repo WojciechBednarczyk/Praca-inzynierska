@@ -14,11 +14,17 @@ const httpOptions = {
 })
 export class ExerciseProviderService {
 
+  exercise!: Exercise[] | any
+
   constructor(private http: HttpClient) {
   }
 
-  getExercises() {
-    return this.http.get<Exercise[]>('http://localhost:8080/api/auth/get', httpOptions
-    )
+  loadExercises() {
+    this.http.get<Exercise[]>('http://localhost:8080/api/auth/get', httpOptions)
+      .toPromise().then(data => this.exercise = data)
+  }
+
+  getExercises(): Exercise[] {
+    return this.exercise;
   }
 }

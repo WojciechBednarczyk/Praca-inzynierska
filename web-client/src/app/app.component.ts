@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ExerciseProviderService} from './atlas/exercise/exercise-provider.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'akademia-treningu';
+
+  constructor(private exerciseProviderService: ExerciseProviderService) {
+    exerciseProviderService.loadExercises();
+  }
 }
