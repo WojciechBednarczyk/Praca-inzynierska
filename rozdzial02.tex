@@ -2,7 +2,10 @@
 Przed przystπpieniem do pracy nad aplikacjπ, naleøa≥o dok≥adnie przemyúleÊ jak implementowany system bÍdzie funkcjonowa≥. Czego dok≥adnie oczekujemy od naszego systemu oraz jak bÍdzie wyglπda≥a interakcja z uøytkownikiem. Niniejszy rozdzia≥ prezentuje analizÍ wymagaÒ projektowanej aplikacji. Znajdujπ siÍ w nim miÍdzy innymi opisane wymagania funkcjonalne uøytkownikÛw wraz z podzia≥em na role oraz wymaganie niefunkcjonalne systemu. Ponadto zawiera on diagramy zamodelowane w jÍzyku UML
 
 
-\section{Wymagania funkcjonalne uøytkownika}    
+\section{Wymagania funkcjonalne uøytkownika}
+% TO DO: przypominam - wymagania nie mogπ byÊ jedynie listπ wyliczeniowπ. To siÍ üle czyta. Konieczy jest jakiú tekst z bogatszym opisem. 
+%       Na poczπtek moøna by≥oby wymieniÊ typu uøytkownikÛw, potem opowiedzieÊ o zakresie dostÍpnych dla nich funkcji.
+%       NastÍpnie moøna odwo≥aÊ siÍ do szczegÛ≥Ûw pokazaych na diagramie przypadkÛw uøycia.
 \subsection{Niezalogowany uøytkownik}
 \begin{itemize}
 \item Uøytkownik ma moøliwoúÊ za≥oøenia konta w systemie
@@ -37,7 +40,7 @@ Przed przystπpieniem do pracy nad aplikacjπ, naleøa≥o dok≥adnie przemyúleÊ jak i
 \begin{itemize}
 \item Aplikacja musi byÊ dostÍpna 24/7
 \item Aplikacja musi byÊ niezaleøna od systemu operacyjnego klienta
-\item Aplikacja ma byÊ wdroøona na darmowym hostingu np. Heroku
+\item Aplikacja ma byÊ wdroøona na darmowym hostingu np.\ Heroku
 \item Baza danych bÍdzie wdroøona na darmowym serwerze
 \item Do korzystania z aplikacji wymagany jest dostÍp do internetu
 \item Has≥o do konta uøytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych
@@ -45,11 +48,11 @@ Przed przystπpieniem do pracy nad aplikacjπ, naleøa≥o dok≥adnie przemyúleÊ jak i
 \end{itemize}
 
 \section{Diagram ERD}
+% TO DO: diagram do przeredagowania. W obecnej postaci na wydrukach bÍdzie on nieczytelny !!!!!
+%        proszÍ "zacieúniÊ", poza tym proszÍ przypilnowaÊ, by w úrodku tabel nie by≥o zbÍdne wolnej przestrzeni (od do≥u i z boku) 
 \begin{figure}[htb]
   \centering
-	\begin{tabular}{@{}ll@{}}
-	\vtop{\vskip-2ex\hbox{\includegraphics[width=1\textwidth]{rys02/diagram_erd}}}
-	\end{tabular}
+\includegraphics[width=.9\textwidth]{rys02/diagram_erd}
   \caption{Diagram ERD}
   \label{fig:diagramy}
 \end{figure}
@@ -57,62 +60,65 @@ Przed przystπpieniem do pracy nad aplikacjπ, naleøa≥o dok≥adnie przemyúleÊ jak i
 Diagram ulegnie modyfikacji
 \newpage
 \section{Diagram przypadkÛw uøycia}
-
+% TO DO: przerysowa≥em dla Pana diagram przypadkÛw uøycia.
+%        èrÛd≥o znajdzie Pan w repozytorium.
+%        Moøna by≥oby siÍ zastanowiÊ, czy jest on merytorycznie najlepszy.
+%        Technicznie zaú biorπc proszÍ, przy ewentualnych zmianach, by jakoúÊ rysunku by≥a podobna do tego, co Panu dostarczy≥em.
 \begin{figure}[htb]
   \centering
-	\begin{tabular}{@{}ll@{}}
-	\vtop{\vskip-2ex\hbox{\includegraphics[width=1\textwidth]{rys02/diagram_przypadkow_uzycia}}}
-	\end{tabular}
-  \caption{Diagram przypadkow uzycia}
+	\includegraphics[width=1\textwidth]{rys02/useCaseDiagram}
+	\caption{Diagram przypadkÛw uøycia}
   \label{fig:diagramy}
 \end{figure}
 
 \subsection{Scenariusze przypadkÛw uøycia}
-
-\textbf{Przypadek uøycia: } Za≥oøenie konta w systemie\\
-\textbf{Aktor: } Niezalogowany uøytkownik\\
-\textbf{Opis: } Rejestracja nowego konta uøytkownika\\
-\textbf{Warunki wstÍpne: } Uøytkownik jest niezalogowany, nie posiada konta oraz znajduje siÍ na ekranie startowym. \\
-\textbf{Przebieg: }
+\noindent
+\textbf{PU01: Za≥oøenie konta w systemie}\\
+\emph{Aktor}: Niezalogowany uøytkownik\\
+\emph{Opis}: Rejestracja nowego konta uøytkownika\\
+\emph{Warunki wstÍpne}: Uøytkownik jest niezalogowany, nie posiada konta oraz znajduje siÍ na ekranie startowym. \\
+\emph{Przebieg}: 
 \begin{enumerate}
-  \item Niezalogowany uøytkownik klika w przycisk "`Rejestracja"'
+  \item Niezalogowany uøytkownik klika w przycisk ''Rejestracja''
   \item Otwiera siÍ widok rejestracji na ktÛrym znajduje siÍ formularz
 	\item Niezalogowany uøytkownik wype≥nia wymagane pola w formularzu
-	\item Niezalogowany uøytkownik klika w przycisk "`Zarejestruj"'
-	\begin{enumerate}
-	\item[--] Wprowadzone dane sπ poprawne
-	\begin{enumerate}
-	\item[--] Konto uøytkownika zostaje utworzone
-	\end{enumerate}
-	\item[--] Wprowadzone dane sπ niepoprawne
-	\begin{enumerate}
-	\item[--] System informuje uøytkownika o b≥Ídnie wprowadzonych danych
-	\end{enumerate}
-	\end{enumerate}
-\end{enumerate}
-\newpage
+	\item Niezalogowany uøytkownik klika w przycisk ''Zarejestruj''
+	\begin{itemize}%[noitemsep,topsep=4pt,parsep=0pt,partopsep=4pt,leftmargin=*]
+	\item Wprowadzone dane sπ poprawne
+	\begin{itemize}
+	\item Konto uøytkownika zostaje utworzone
+	\end{itemize}
+	\item Wprowadzone dane sπ niepoprawne
+	\begin{itemize}
+	\item System informuje uøytkownika o b≥Ídnie wprowadzonych danych
+	\end{itemize}
+	\end{itemize}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek uøycia: } Logowanie do systemu\\
-\textbf{Aktor: } Niezalogowany uøytkownik\\
-\textbf{Opis: } Logowanie siÍ uøytkownika do aplikacji\\
-\textbf{Warunki wstÍpne: } Uøytkownik jest niezalogowany oraz znajduje siÍ na ekranie startowym. \\
-\textbf{Przebieg: }
+\textbf{PU02: Logowanie do systemu}\\
+\emph{Aktor: } Niezalogowany uøytkownik\\
+\emph{Opis: } Logowanie siÍ uøytkownika do aplikacji\\
+\emph{Warunki wstÍpne: } Uøytkownik jest niezalogowany oraz znajduje siÍ na ekranie startowym. \\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Niezalogowany uøytkownik klika w przycisk "`Logowanie"'
   \item Otwiera siÍ widok logowanie na ktÛrym znajduje siÍ formularz
 	\item Niezalogowany uøytkownik w formularzu login oraz has≥o
 	\item Niezalogowany uøytkownik klika w przycisk "`Zaloguj"'
-	\begin{enumerate}
-	\item[--] Wprowadzone dane sπ poprawne
-	\begin{enumerate}
-	\item[--] Uøytkownik jest zalogowany w systemie
-	\end{enumerate}
-	\item[--] Wprowadzone dane sπ niepoprawne
-	\begin{enumerate}
-	\item[--] System informuje uøytkownika o b≥Ídnie wprowadzonych danych
-	\end{enumerate}
-	\end{enumerate}
-\end{enumerate}
+	\begin{itemize}
+	\item Wprowadzone dane sπ poprawne
+	\begin{itemize}
+	\item Uøytkownik jest zalogowany w systemie
+	\end{itemize}
+	\item Wprowadzone dane sπ niepoprawne
+	\begin{itemize}
+	\item System informuje uøytkownika o b≥Ídnie wprowadzonych danych
+	\end{itemize}
+	\end{itemize}
+\end{enumerate}\ \\
+
+% TO DO: proszÍ poprawiÊ formatowanie pozosta≥ych opisÛw przypadkÛw uøycia, by by≥o zgodne z tym, co powyøej
 \noindent
 \textbf{Przypadek uøycia: } Przeglπdanie atlasu ÊwiczeÒ\\
 \textbf{Aktor: } Niezalogowany uøytkownik, Podopieczny, Trener\\
