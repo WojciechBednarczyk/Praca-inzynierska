@@ -1,15 +1,19 @@
 package pl.edu.pwr.akademiatreningu.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "personal_trainers")
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class PersonalTrainer {
 
     @Id
@@ -30,4 +34,5 @@ public class PersonalTrainer {
 
     @OneToMany(mappedBy = "personalTrainer")
     private Set<Opinion> opinions;
+
 }
