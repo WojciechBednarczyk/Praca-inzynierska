@@ -3,8 +3,7 @@ package pl.edu.pwr.akademiatreningu.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.akademiatreningu.dto.ExerciseDTO;
-import pl.edu.pwr.akademiatreningu.model.Exercise;
-import pl.edu.pwr.akademiatreningu.repository.ExerciseRepository;
+import pl.edu.pwr.akademiatreningu.service.ExerciseService;
 
 import java.util.List;
 
@@ -14,25 +13,13 @@ import java.util.List;
 @RequestMapping(value = "/api/auth")
 public class ExerciseController {
 
-    private final ExerciseRepository exerciseRepository;
+    private final ExerciseService exerciseService;
 
     @GetMapping("/get")
     @ResponseBody
     public List<ExerciseDTO> getExercises() {
-        List<Exercise> exercises = exerciseRepository.findAll();
-        return exercises.stream()
-                .map(this::convertToDto)
-                .toList();
+        return exerciseService.findAll();
     }
 
-    private ExerciseDTO convertToDto(Exercise exercise) {
-        return ExerciseDTO.builder()
-                .id(exercise.getId())
-                .name(exercise.getName())
-                .description(exercise.getDescription())
-                .muscleGroup(exercise.getMuscleGroup())
-                .url(exercise.getUrl())
-                .rating(exercise.getRating())
-                .build();
-    }
+
 }
