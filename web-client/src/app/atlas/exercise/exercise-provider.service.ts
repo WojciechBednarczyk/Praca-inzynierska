@@ -14,17 +14,28 @@ const httpOptions = {
 })
 export class ExerciseProviderService {
 
-  exercise!: Exercise[] | any
+  exercises!: Exercise[] | any
 
   constructor(private http: HttpClient) {
   }
 
   loadExercises() {
     this.http.get<Exercise[]>('http://localhost:8080/api/auth/get', httpOptions)
-      .toPromise().then(data => this.exercise = data)
+      .toPromise().then(data => this.exercises = data)
   }
 
   getExercises(): Exercise[] {
-    return this.exercise;
+    return this.exercises;
+  }
+
+  getExerciseById(id: String): Exercise {
+
+    let result!: Exercise
+    this.exercises.forEach((element: Exercise) => {
+      if (element.id.toString() === id) {
+        result = element;
+      }
+    });
+    return result;
   }
 }

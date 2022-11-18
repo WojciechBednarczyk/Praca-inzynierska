@@ -5,6 +5,7 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {RegisterComponent} from './register/register.component';
 import {PasswordResetComponent} from "./password-reset/password-reset.component";
 import {AtlasComponent} from './atlas/atlas.component';
+import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'password-reset', component: PasswordResetComponent},
   {path: 'atlas', component: AtlasComponent},
+  {path: 'atlas/:id', component: ExerciseDetailsComponent},
   {path: "**", pathMatch: 'full', redirectTo: "", component: MainPageComponent},
 ];
 

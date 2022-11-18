@@ -4,22 +4,26 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No.</th>
-        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.id}} </td>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"
+            [routerLink]="['/atlas', exercise.id]"> {{exercise.id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Nazwa</th>
-        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.name}} </td>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"
+            [routerLink]="['/atlas', exercise.id]"> {{exercise.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="muscle group">
         <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
-        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.muscleGroup}} </td>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"
+            [routerLink]="['/atlas', exercise.id]"> {{exercise.muscleGroup}} </td>
       </ng-container>
 
       <ng-container matColumnDef="rating">
         <th mat-header-cell *matHeaderCellDef> Ocena</th>
-        <td class="table-cell" mat-cell *matCellDef="let exercise"> {{exercise.rating}}   </td>
+        <td class="table-cell" mat-cell *matCellDef="let exercise"
+            [routerLink]="['/atlas', exercise.id]"> {{exercise.rating}}   </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

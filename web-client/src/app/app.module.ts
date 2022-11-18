@@ -20,11 +20,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
 import {DateService} from './services/date.service';
 import {AtlasComponent} from './atlas/atlas.component';
+import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {AtlasComponent} from './atlas/atlas.component';
     PasswordResetComponent,
     RegisterComponent,
     AtlasComponent,
+    ExerciseDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import {AtlasComponent} from './atlas/atlas.component';
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
+    YouTubePlayerModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
