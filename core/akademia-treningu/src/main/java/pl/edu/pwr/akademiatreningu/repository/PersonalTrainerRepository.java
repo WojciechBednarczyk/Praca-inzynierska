@@ -5,5 +5,5 @@ import pl.edu.pwr.akademiatreningu.model.PersonalTrainer;
 
 public interface PersonalTrainerRepository extends JpaRepository<PersonalTrainer, Integer> {
 
-
+    PersonalTrainer findByUserId(Integer id);
 }

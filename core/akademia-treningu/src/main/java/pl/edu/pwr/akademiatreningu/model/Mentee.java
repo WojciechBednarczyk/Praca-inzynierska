@@ -28,6 +28,18 @@ public class Mentee {
     @Column(name = "waist_circumference")
     private Integer waistCircumference;
 
+    @Column(name = "body_fat")
+    private Float bodyFat;
+
+    @Column(name = "biceps_circumference")
+    private Integer bicepsCircumference;
+
+    @Column(name = "thigh_circumference")
+    private Integer thighCircumference;
+
+    @Column(name = "chest_circumference")
+    private Integer chestCircumference;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
