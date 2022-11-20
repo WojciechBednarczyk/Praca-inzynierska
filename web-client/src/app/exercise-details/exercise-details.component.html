@@ -1,0 +1,18 @@
+<div class="exercise-details-container">
+  <mat-card>
+
+    <h1 style="text-align: center;">{{exercise.name}}</h1>
+
+    <youtube-player class="youtube-player"
+                    videoId={{exercise.url}}
+                    suggestedQuality="highres"
+                    [height]="300"
+                    [width]="540">
+    </youtube-player>
+
+    <pre>
+  {{exercise.description}}
+</pre>
+  </mat-card>
+</div>
+

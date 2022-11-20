@@ -18,10 +18,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {PasswordResetComponent} from './password-reset/password-reset.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
 import {DateService} from './services/date.service';
+import {AtlasComponent} from './atlas/atlas.component';
+import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,9 @@ import {DateService} from './services/date.service';
     LoginComponent,
     PasswordResetComponent,
     RegisterComponent,
+    AtlasComponent,
+    ExerciseDetailsComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,9 @@ import {DateService} from './services/date.service';
     HttpClientModule,
     MatMenuModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    YouTubePlayerModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

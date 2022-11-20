@@ -1,6 +1,6 @@
 package pl.edu.pwr.akademiatreningu.security.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pwr.akademiatreningu.model.ERole;
+import pl.edu.pwr.akademiatreningu.model.Mentee;
+import pl.edu.pwr.akademiatreningu.model.PersonalTrainer;
 import pl.edu.pwr.akademiatreningu.model.User;
+import pl.edu.pwr.akademiatreningu.repository.MenteeRepository;
+import pl.edu.pwr.akademiatreningu.repository.PersonalTrainerRepository;
 import pl.edu.pwr.akademiatreningu.repository.UserRepository;
 import pl.edu.pwr.akademiatreningu.security.jwt.JwtUtils;
 import pl.edu.pwr.akademiatreningu.security.payload.request.LoginRequest;
@@ -27,19 +32,21 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired
-    AuthenticationManager authenticationManager;
 
-    @Autowired
-    UserRepository userRepository;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    PasswordEncoder encoder;
+    private final UserRepository userRepository;
 
-    @Autowired
-    JwtUtils jwtUtils;
+    private final MenteeRepository menteeRepository;
+
+    private final PersonalTrainerRepository personalTrainerRepository;
+
+    private final PasswordEncoder encoder;
+
+    private final JwtUtils jwtUtils;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -74,7 +81,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
         User user = new User(signUpRequest.getFirstName(),
                 signUpRequest.getSecondName(),
@@ -88,6 +95,18 @@ public class AuthController {
         // Create new user's account
 
         userRepository.save(user);
+
+        if (user.getRole() == ERole.ROLE_MENTEE) {
+            Mentee mentee = Mentee.builder()
+                    .user(user)
+                    .build();
+            menteeRepository.save(mentee);
+        } else if (user.getRole() == ERole.ROLE_PERSONAL_TRAINER) {
+            PersonalTrainer personalTrainer = PersonalTrainer.builder()
+                    .user(user)
+                    .build();
+            personalTrainerRepository.save(personalTrainer);
+        }
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
