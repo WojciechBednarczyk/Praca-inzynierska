@@ -27,6 +27,7 @@ import {RegisterComponent} from './register/register.component';
 import {DateService} from './services/date.service';
 import {AtlasComponent} from './atlas/atlas.component';
 import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ExerciseDetailsComponent} from './exercise-details/exercise-details.comp
     RegisterComponent,
     AtlasComponent,
     ExerciseDetailsComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

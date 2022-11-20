@@ -1,0 +1,25 @@
+<div class="my-profile-container">
+  <mat-card>
+    <h1>{{data.data.firstName}} {{data.data.secondName}}</h1>
+
+    <p *ngIf="isPersonalTrainer">Opis: {{data.data.description}}</p>
+
+    <div>
+      <p *ngIf="isMentee"> Waga: {{data.data.weight}} </p>
+      <p *ngIf="isMentee"> Wzrost: {{data.data.height}} </p>
+      <p> Data urodzenia: {{data.data.dateOfBirth}}</p>
+      <p> Lokalizacja: {{data.data.location}}</p>
+      <p *ngIf="isMentee"> Procent tkanki tłuszczowej: {{data.data.bodyFat}} </p>
+      <p *ngIf="isMentee"> Obwód talii: {{data.data.waistCircumferenece}}</p>
+      <p *ngIf="isMentee"> Obwód klatki piersiowej: {{data.data.chestCircumferenece}}</p>
+      <p *ngIf="isMentee"> Obwód uda: {{data.data.thighCircumferenece}}</p>
+      <p *ngIf="isMentee"> Obwód bicepsa: {{data.data.bicepsCircumferenece}}</p>
+      <p *ngIf="isPersonalTrainer"> Ocena trenera: {{data.data.rating}}</p>
+    </div>
+
+    <div>
+      <button mat-stroked-button mat-button class="buttons">Edytuj dane</button>
+      <button mat-stroked-button mat-button *ngIf="isPersonalTrainer" class="buttons">Dodaj opis</button>
+    </div>
+  </mat-card>
+</div>

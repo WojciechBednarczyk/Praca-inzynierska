@@ -36,10 +36,14 @@
   border-color: white;
 }
 
-.account-buttons:hover{
+.account-buttons:hover {
   background-color: silver;
 }
 
-.account-buttons-div{
+.account-buttons-div {
   padding: 16px;
+}
+
+.profile:hover {
+  cursor: pointer;
 }
