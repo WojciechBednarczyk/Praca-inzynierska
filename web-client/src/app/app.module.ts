@@ -28,6 +28,8 @@ import {DateService} from './services/date.service';
 import {AtlasComponent} from './atlas/atlas.component';
 import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {SearchUsersComponent} from './search-users/search-users.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
     AtlasComponent,
     ExerciseDetailsComponent,
     MyProfileComponent,
+    UserProfileComponent,
+    SearchUsersComponent,
   ],
   imports: [
     BrowserModule,

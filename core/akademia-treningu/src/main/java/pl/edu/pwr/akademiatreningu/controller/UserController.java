@@ -5,9 +5,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
+import pl.edu.pwr.akademiatreningu.dto.UserDto;
 import pl.edu.pwr.akademiatreningu.service.UserService;
 
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
@@ -30,5 +32,12 @@ public class UserController {
     @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
     public PersonalTrainerDto getPersonalTrainer(@RequestParam Integer id) throws ParseException {
         return userService.getPersonalTrainer(id);
+    }
+
+    @GetMapping("/get/search")
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
+    public List<UserDto> getPersonalTrainer(@RequestParam String firstName, @RequestParam String secondName, @RequestParam String location) throws ParseException {
+        return userService.getSearchedUsers(firstName, secondName, location);
     }
 }

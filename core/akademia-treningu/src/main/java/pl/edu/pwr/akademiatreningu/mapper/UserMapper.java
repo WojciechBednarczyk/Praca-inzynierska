@@ -3,8 +3,11 @@ package pl.edu.pwr.akademiatreningu.mapper;
 import org.springframework.stereotype.Component;
 import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
+import pl.edu.pwr.akademiatreningu.dto.UserDto;
+import pl.edu.pwr.akademiatreningu.model.ERole;
 import pl.edu.pwr.akademiatreningu.model.Mentee;
 import pl.edu.pwr.akademiatreningu.model.PersonalTrainer;
+import pl.edu.pwr.akademiatreningu.model.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -40,6 +43,22 @@ public class UserMapper {
                 .location(personalTrainer.getUser().getLocation())
                 .rating(personalTrainer.getRating())
                 .description(personalTrainer.getDescription())
+                .build();
+    }
+
+    public UserDto getUserDto(User user) {
+        String role = "";
+        if (user.getRole().equals(ERole.ROLE_MENTEE)) {
+            role = "Podopieczny";
+        } else if (user.getRole().equals(ERole.ROLE_PERSONAL_TRAINER)) {
+            role = "Trener";
+        }
+        return UserDto.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .secondName(user.getSecondName())
+                .location(user.getLocation())
+                .role(role)
                 .build();
     }
 }
