@@ -1,6 +1,5 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {User} from '../my-profile/user';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +16,21 @@ export class UserService {
     let httpParams = new HttpParams();
     httpParams = httpParams.append("id", id);
     if (role === "ROLE_MENTEE") {
-      return this.http.get<User>(urlMentee, {params: httpParams});
+      return this.http.get(urlMentee, {params: httpParams});
     } else if (role === "ROLE_PERSONAL_TRAINER") {
-      return this.http.get<User>(urlPersonalTrainer, {params: httpParams});
+      return this.http.get(urlPersonalTrainer, {params: httpParams});
     } else {
       return
     }
+  }
+
+  searchUsers(firstName: string, secondName: string, location: string) {
+    const searchUrl = 'http://localhost:8080/api/auth/get/search';
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append("firstName", firstName);
+    httpParams = httpParams.append("secondName", secondName);
+    httpParams = httpParams.append("location", location);
+
+    return this.http.get(searchUrl, {params: httpParams});
   }
 }

@@ -8,6 +8,9 @@ import {AtlasComponent} from './atlas/atlas.component';
 import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {ProfileRouteResolver} from './resolvers/profile-route-resolver';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {UserProfileRouteResolver} from './resolvers/user-profile-route-resolver';
+import {SearchUsersComponent} from './search-users/search-users.component';
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -16,6 +19,12 @@ const routes: Routes = [
   {path: 'password-reset', component: PasswordResetComponent},
   {path: 'atlas', component: AtlasComponent},
   {path: 'atlas/:id', component: ExerciseDetailsComponent},
+  {path: 'search', component: SearchUsersComponent},
+  {
+    path: 'profile/:id/:role', component: UserProfileComponent, resolve: {
+      data: UserProfileRouteResolver
+    }
+  },
   {
     path: 'my-profile', component: MyProfileComponent, resolve: {
       data: ProfileRouteResolver
@@ -27,6 +36,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [ProfileRouteResolver]
+  providers: [ProfileRouteResolver,
+    UserProfileRouteResolver]
 })
 export class AppRoutingModule { }

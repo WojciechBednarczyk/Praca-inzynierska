@@ -5,7 +5,7 @@
   </div>
 
   <div>
-    <button mat-stroked-button class="buttons" *ngIf="isLoggedIn">Społeczność</button>
+    <button mat-stroked-button class="buttons" [routerLink]="'/search'" *ngIf="isLoggedIn">Społeczność</button>
     <button mat-stroked-button class="buttons" [routerLink]="'/atlas'">Atlas ćwiczeń</button>
     <button mat-stroked-button class="buttons" *ngIf="isLoggedIn">Dziennik</button>
   </div>
