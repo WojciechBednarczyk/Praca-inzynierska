@@ -32,6 +32,7 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {SearchUsersComponent} from './search-users/search-users.component';
 import {MessageDialogComponent} from './message-dialog/message-dialog.component';
+import {MessagesComponent} from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {MessageDialogComponent} from './message-dialog/message-dialog.component'
     UserProfileComponent,
     SearchUsersComponent,
     MessageDialogComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

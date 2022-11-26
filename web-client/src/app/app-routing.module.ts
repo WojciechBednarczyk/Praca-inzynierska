@@ -11,6 +11,8 @@ import {ProfileRouteResolver} from './resolvers/profile-route-resolver';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {UserProfileRouteResolver} from './resolvers/user-profile-route-resolver';
 import {SearchUsersComponent} from './search-users/search-users.component';
+import {MessagesComponent} from "./messages/messages.component";
+import {MessageResolver} from "./resolvers/message-resolver";
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -20,6 +22,11 @@ const routes: Routes = [
   {path: 'atlas', component: AtlasComponent},
   {path: 'atlas/:id', component: ExerciseDetailsComponent},
   {path: 'search', component: SearchUsersComponent},
+  {
+    path: 'messages', component: MessagesComponent, resolve: {
+      data: MessageResolver
+    }
+  },
   {
     path: 'profile/:id/:role', component: UserProfileComponent, resolve: {
       data: UserProfileRouteResolver
@@ -37,6 +44,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [ProfileRouteResolver,
-    UserProfileRouteResolver]
+    UserProfileRouteResolver,
+    MessageResolver]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

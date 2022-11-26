@@ -1,0 +1,21 @@
+.messages-container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2em;
+}
+
+.messages-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.table-cell:hover {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
