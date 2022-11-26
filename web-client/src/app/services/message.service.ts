@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Message} from "../message";
 import {Observable} from "rxjs";
 
@@ -20,5 +20,12 @@ export class MessageService {
   postMessage(message: Message): Observable<Message> {
     const url = 'http://localhost:8080/api/auth/message';
     return this.http.post<Message>(url, message, httpOptions);
+  }
+
+  getMessages(userId: number) {
+    const url = 'http://localhost:8080/api/auth/messages';
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append("userId", userId);
+    return this.http.get(url, {params: httpParams});
   }
 }
