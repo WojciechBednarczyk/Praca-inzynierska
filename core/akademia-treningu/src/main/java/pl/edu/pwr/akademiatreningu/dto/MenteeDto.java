@@ -33,4 +33,6 @@ public class MenteeDto {
 
     private Integer chestCircumference;
 
+    private Integer userId;
+
 }

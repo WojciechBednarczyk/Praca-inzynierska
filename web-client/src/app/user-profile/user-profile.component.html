@@ -1,6 +1,10 @@
 <div class="profile">
   <mat-card>
-    <h1>{{data.data.firstName}} {{data.data.secondName}}</h1>
+    <div class="name-with-buttons">
+      <h1 class="name">{{data.data.firstName.toUpperCase()}} {{data.data.secondName.toUpperCase()}}</h1>
+      <mat-icon class="icons" (click)="openDialog()"> message</mat-icon>
+      <mat-icon class="icons" *ngIf="isPersonalTrainer"> face</mat-icon>
+    </div>
 
     <p *ngIf="isPersonalTrainer">Opis: {{data.data.description}}</p>
 

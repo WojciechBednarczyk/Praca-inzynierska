@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
@@ -30,6 +31,7 @@ import {ExerciseDetailsComponent} from './exercise-details/exercise-details.comp
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {SearchUsersComponent} from './search-users/search-users.component';
+import {MessageDialogComponent} from './message-dialog/message-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import {SearchUsersComponent} from './search-users/search-users.component';
     MyProfileComponent,
     UserProfileComponent,
     SearchUsersComponent,
+    MessageDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import {SearchUsersComponent} from './search-users/search-users.component';
     MatTableModule,
     MatPaginatorModule,
     YouTubePlayerModule,
+    MatDialogModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

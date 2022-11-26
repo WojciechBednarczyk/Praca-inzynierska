@@ -1,0 +1,23 @@
+<mat-dialog-content class="mat-typography">
+  <form *ngIf="!isMessageSent"
+        name="form">
+    <p>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Treść wiadomości</mat-label>
+        <textarea style="height: 230px" matInput
+                  name="message"
+                  [(ngModel)]="form.message"
+                  #message="ngModel"></textarea>
+      </mat-form-field>
+    </p>
+  </form>
+
+  <p style="height: 270px; text-align: center" *ngIf="isMessageSent">
+    Wiadomość została wysłana!
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="!isMessageSent">Anuluj</button>
+  <button mat-button (click)="sendMessage()" *ngIf="!isMessageSent"> Wyślij wiadomość</button>
+  <button mat-button mat-dialog-close *ngIf="isMessageSent">Zamknij okno</button>
+</mat-dialog-actions>

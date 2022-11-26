@@ -32,6 +32,7 @@ public class UserMapper {
                 .bicepsCircumference(mentee.getBicepsCircumference())
                 .thighCircumference(mentee.getThighCircumference())
                 .chestCircumference(mentee.getChestCircumference())
+                .userId(mentee.getUser().getId())
                 .build();
     }
 
@@ -43,6 +44,7 @@ public class UserMapper {
                 .location(personalTrainer.getUser().getLocation())
                 .rating(personalTrainer.getRating())
                 .description(personalTrainer.getDescription())
+                .userId(personalTrainer.getUser().getId())
                 .build();
     }
 
