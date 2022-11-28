@@ -27,6 +27,10 @@
         <mat-icon>message</mat-icon>
         <span>Wiadomości</span>
       </button>
+      <button mat-menu-item [routerLink]="'/mentee-request'" *ngIf="isPersonalTrainer">
+        <mat-icon>face</mat-icon>
+        <span>Prośby</span>
+      </button>
       <button mat-menu-item (click)="logout()" [routerLink]="'/'">
         <mat-icon>keyboard_tab</mat-icon>
         <span>Wyloguj</span>

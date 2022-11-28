@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
+import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerRequestDto;
 import pl.edu.pwr.akademiatreningu.dto.UserDto;
+import pl.edu.pwr.akademiatreningu.mapper.PersonalTrainerRequestMapper;
 import pl.edu.pwr.akademiatreningu.mapper.UserMapper;
 import pl.edu.pwr.akademiatreningu.model.Mentee;
 import pl.edu.pwr.akademiatreningu.model.PersonalTrainer;
@@ -32,6 +34,8 @@ public class UserService {
     private final RequestRepository requestRepository;
 
     private final UserMapper userMapper;
+
+    private final PersonalTrainerRequestMapper personalTrainerRequestMapper;
 
 
     public MenteeDto getMentee(Integer id) throws ParseException {
@@ -67,6 +71,12 @@ public class UserService {
         }
     }
 
+    public List<PersonalTrainerRequestDto> getMenteesRequests(Integer personalTrainerId) {
+        User user = userRepository.findById(personalTrainerId).get();
+        List<PersonalTrainerRequest> personalTrainerRequests = requestRepository.findByPersonalTrainerId(user.getPersonalTrainer().getId());
+        return personalTrainerRequestMapper.getPersonalTrainerRequestsDto(personalTrainerRequests);
+    }
+
     private boolean checkIfMenteeAlreadyHasPersonalTrainer(Mentee mentee) {
         if (mentee.getPersonalTrainer() == null) {
             return false;
@@ -84,4 +94,5 @@ public class UserService {
             return false;
         }
     }
+
 }

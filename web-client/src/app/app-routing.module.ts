@@ -13,6 +13,8 @@ import {UserProfileRouteResolver} from './resolvers/user-profile-route-resolver'
 import {SearchUsersComponent} from './search-users/search-users.component';
 import {MessagesComponent} from "./messages/messages.component";
 import {MessageResolver} from "./resolvers/message-resolver";
+import {MenteeRequestComponent} from "./mentee-request/mentee-request.component";
+import {MenteeRequestResolver} from "./resolvers/mentee-request-resolver";
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -22,6 +24,11 @@ const routes: Routes = [
   {path: 'atlas', component: AtlasComponent},
   {path: 'atlas/:id', component: ExerciseDetailsComponent},
   {path: 'search', component: SearchUsersComponent},
+  {
+    path: 'mentee-request', component: MenteeRequestComponent, resolve: {
+      data: MenteeRequestResolver
+    }
+  },
   {
     path: 'messages', component: MessagesComponent, resolve: {
       data: MessageResolver
@@ -45,7 +52,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [ProfileRouteResolver,
     UserProfileRouteResolver,
-    MessageResolver]
+    MessageResolver,
+    MenteeRequestResolver,]
 })
 export class AppRoutingModule {
 }
