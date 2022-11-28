@@ -11,7 +11,7 @@
         <th mat-header-cell *matHeaderCellDef>Akceptacja</th>
         <td class="table-cell" mat-cell
             *matCellDef="let mentee">
-          <button mat-raised-button color="primary">Akceptuj</button>
+          <button mat-raised-button color="primary" (click)="acceptMentee(mentee.requestId)">Akceptuj</button>
         </td>
       </ng-container>
 
@@ -19,7 +19,7 @@
         <th mat-header-cell *matHeaderCellDef>Odrzucenie</th>
         <td class="table-cell" mat-cell
             *matCellDef="let mentee">
-          <button mat-raised-button color="warn">Odrzuć</button>
+          <button mat-raised-button color="warn" (click)="rejectMentee(mentee.requestId)">Odrzuć</button>
         </td>
       </ng-container>
 

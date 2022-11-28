@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {MenteesRequest} from "./mentees-request";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {RequestService} from "../services/request.service";
 
 @Component({
   selector: 'app-mentee-request',
@@ -18,7 +19,8 @@ export class MenteeRequestComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private requestService: RequestService) {
   }
 
   ngOnInit(): void {
@@ -36,4 +38,13 @@ export class MenteeRequestComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  acceptMentee(requestId: number) {
+    this.requestService.acceptRequest(requestId).subscribe();
+    window.location.reload();
+  }
+
+  rejectMentee(requestId: number) {
+    this.requestService.rejectRequest(requestId).subscribe();
+    window.location.reload();
+  }
 }

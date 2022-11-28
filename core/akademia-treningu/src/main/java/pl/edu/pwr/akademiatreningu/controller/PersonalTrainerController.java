@@ -29,4 +29,16 @@ public class PersonalTrainerController {
     public List<PersonalTrainerRequestDto> getMenteesRequests(@RequestParam Integer personalTrainerId) {
         return userService.getMenteesRequests(personalTrainerId);
     }
+
+    @PostMapping("/personal-trainer/request/accept")
+    @PreAuthorize("hasRole('ROLE_PERSONAL_TRAINER')")
+    public void acceptMentee(@RequestParam Integer requestId) {
+        userService.acceptMentee(requestId);
+    }
+
+    @PostMapping("/personal-trainer/request/reject")
+    @PreAuthorize("hasRole('ROLE_PERSONAL_TRAINER')")
+    public void rejectMentee(@RequestParam Integer requestId) {
+        userService.rejectMentee(requestId);
+    }
 }
