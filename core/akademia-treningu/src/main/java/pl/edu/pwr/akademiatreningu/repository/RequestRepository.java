@@ -11,4 +11,8 @@ public interface RequestRepository extends JpaRepository<PersonalTrainerRequest,
     Optional<PersonalTrainerRequest> findByPersonalTrainerIdAndMenteeId(Integer personalTrainerId, Integer menteeId);
 
     List<PersonalTrainerRequest> findByPersonalTrainerId(Integer personalTrainerId);
+
+    void deleteAllByMenteeId(Integer menteeId);
+
+    void deleteByMenteeIdAndPersonalTrainerId(Integer menteeId, Integer personalTrainerId);
 }

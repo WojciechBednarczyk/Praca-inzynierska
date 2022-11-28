@@ -2,6 +2,7 @@ package pl.edu.pwr.akademiatreningu.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerRequestDto;
@@ -69,6 +70,22 @@ public class UserService {
         } else {
             return "Masz juz trenera";
         }
+    }
+
+    @Transactional
+    public void acceptMentee(Integer requestId) {
+        PersonalTrainerRequest request = requestRepository.findById(requestId).get();
+        PersonalTrainer personalTrainer = personalTrainerRepository.findById(request.getPersonalTrainer().getId()).get();
+        Mentee mentee = menteeRepository.findById(request.getMentee().getId()).get();
+        mentee.setPersonalTrainer(personalTrainer);
+        menteeRepository.save(mentee);
+        requestRepository.deleteAllByMenteeId(mentee.getId());
+    }
+
+    @Transactional
+    public void rejectMentee(Integer requestId) {
+        PersonalTrainerRequest request = requestRepository.findById(requestId).get();
+        requestRepository.deleteByMenteeIdAndPersonalTrainerId(request.getMentee().getId(), request.getPersonalTrainer().getId());
     }
 
     public List<PersonalTrainerRequestDto> getMenteesRequests(Integer personalTrainerId) {
