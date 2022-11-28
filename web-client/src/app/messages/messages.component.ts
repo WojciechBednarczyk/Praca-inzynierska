@@ -41,6 +41,5 @@ export class MessagesComponent implements OnInit, AfterViewInit {
 
   onClick(messageWithSender: Message) {
     this.messageText = messageWithSender.message;
-    // console.log(messageWithSender.message);
   }
 }
