@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
@@ -69,6 +70,7 @@ import {MessagesComponent} from './messages/messages.component';
     MatPaginatorModule,
     YouTubePlayerModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

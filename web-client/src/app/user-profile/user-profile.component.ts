@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {UserProfileRouteResolver} from "../resolvers/user-profile-route-resolver";
 import {MatDialog} from "@angular/material/dialog";
 import {MessageDialogComponent} from "../message-dialog/message-dialog.component";
+import {RequestService} from "../services/request.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-user-profile',
@@ -14,11 +16,14 @@ export class UserProfileComponent implements OnInit {
   data: any
   isMentee: boolean = false
   isPersonalTrainer: boolean = false
+  response: string | null = ''
 
   constructor(private activatedRoute: ActivatedRoute,
               private userProfileRouteResolver: UserProfileRouteResolver,
               public dialog: MatDialog,
-              route: ActivatedRoute) {
+              private requestService: RequestService,
+              route: ActivatedRoute,
+              private _snackBar: MatSnackBar) {
 
   }
 
@@ -46,5 +51,22 @@ export class UserProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  sendRequest() {
+    this.requestService.sendRequest(this.getUserId(), this.data.data.userId)
+      .subscribe(response => {
+        this.response = response.body
+        if (this.response != null) {
+          this._snackBar.open(this.response, "", {duration: 5000})
+        }
+      });
+
+  }
+
+  getUserId() {
+    const token = window.sessionStorage.getItem('auth-user');
+
+    return token ? JSON.parse(token).id : [];
   }
 }
