@@ -40,7 +40,7 @@ public class UserService {
 
 
     public MenteeDto getMentee(Integer id) throws ParseException {
-        return userMapper.getMenteeDto(menteeRepository.findByUserId(id));
+        return userMapper.convertToDto(menteeRepository.findByUserId(id));
     }
 
     public PersonalTrainerDto getPersonalTrainer(Integer id) throws ParseException {
@@ -70,6 +70,12 @@ public class UserService {
         } else {
             return "Masz juz trenera";
         }
+    }
+
+    public List<MenteeDto> getPersonalTrainerMentees(Integer userId) throws ParseException {
+        Integer personalTrainerId = personalTrainerRepository.findByUserId(userId).getId();
+        List<Mentee> mentees = menteeRepository.findByPersonalTrainerId(personalTrainerId);
+        return userMapper.mapMenteesToDto(mentees);
     }
 
     @Transactional
