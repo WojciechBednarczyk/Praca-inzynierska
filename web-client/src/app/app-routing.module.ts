@@ -15,6 +15,8 @@ import {MessagesComponent} from "./messages/messages.component";
 import {MessageResolver} from "./resolvers/message-resolver";
 import {MenteeRequestComponent} from "./mentee-request/mentee-request.component";
 import {MenteeRequestResolver} from "./resolvers/mentee-request-resolver";
+import {PersonalTrainerMenteesComponent} from "./personal-trainer-mentees/personal-trainer-mentees.component";
+import {MenteesResolver} from "./resolvers/mentees-resolver";
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -24,6 +26,11 @@ const routes: Routes = [
   {path: 'atlas', component: AtlasComponent},
   {path: 'atlas/:id', component: ExerciseDetailsComponent},
   {path: 'search', component: SearchUsersComponent},
+  {
+    path: 'mentees', component: PersonalTrainerMenteesComponent, resolve: {
+      data: MenteesResolver
+    }
+  },
   {
     path: 'mentee-request', component: MenteeRequestComponent, resolve: {
       data: MenteeRequestResolver
@@ -53,7 +60,9 @@ const routes: Routes = [
   providers: [ProfileRouteResolver,
     UserProfileRouteResolver,
     MessageResolver,
-    MenteeRequestResolver,]
+    MenteeRequestResolver,
+    MenteesResolver,
+  ]
 })
 export class AppRoutingModule {
 }

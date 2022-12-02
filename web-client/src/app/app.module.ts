@@ -35,6 +35,7 @@ import {SearchUsersComponent} from './search-users/search-users.component';
 import {MessageDialogComponent} from './message-dialog/message-dialog.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MenteeRequestComponent} from './mentee-request/mentee-request.component';
+import {PersonalTrainerMenteesComponent} from './personal-trainer-mentees/personal-trainer-mentees.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {MenteeRequestComponent} from './mentee-request/mentee-request.component'
     MessageDialogComponent,
     MessagesComponent,
     MenteeRequestComponent,
+    PersonalTrainerMenteesComponent,
   ],
   imports: [
     BrowserModule,
