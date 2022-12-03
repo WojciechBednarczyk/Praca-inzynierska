@@ -1,0 +1,90 @@
+<div class="creator-container">
+  <mat-card>
+    <h1>Plan treningowy dla: {{mentee.firstName}} {{mentee.secondName}}</h1>
+    <div class="main-card">
+      <mat-card class="left-container">
+        <h1> Lista ćwiczeń</h1>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nazwa</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="muscle group">
+            <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.muscleGroup}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef> Ocena ćwiczenia</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.rating}}   </td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef> Dodaj</th>
+            <td class="table-cell" mat-cell *matCellDef="let exercise">
+              <mat-icon class="add" (click)="addExercise(exercise)">add_box</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator #paginatorLeft="matPaginator"
+                       [pageSize]="10"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </mat-card>
+
+      <mat-card class="left-container">
+        <h1> Wybrane ćwiczenia</h1>
+        <table mat-table [dataSource]="choosenExercisesData" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nazwa</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="muscle group">
+            <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.muscleGroup}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sets">
+            <th mat-header-cell *matHeaderCellDef> Serie</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.sets}}   </td>
+          </ng-container>
+
+          <ng-container matColumnDef="reps">
+            <th mat-header-cell *matHeaderCellDef> Powtórzenia</th>
+            <td mat-cell *matCellDef="let exercise"> {{exercise.reps}}   </td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef> Usuń</th>
+            <td class="table-cell" mat-cell *matCellDef="let exercise">
+              <mat-icon class="add" (click)="remove(exercise)">remove_circle</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsRight"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsRight;"></tr>
+        </table>
+
+        <mat-paginator #paginatorRight="matPaginator"
+                       [pageSize]="10"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </mat-card>
+    </div>
+    <div class="save-button">
+      <button mat-raised-button color="primary" (click)="saveTrainingPlan()">Stwórz plan</button>
+    </div>
+  </mat-card>
+</div>

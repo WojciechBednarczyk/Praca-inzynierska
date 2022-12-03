@@ -3,7 +3,7 @@
     <div class="name-with-buttons">
       <h1 class="name">{{data.data.firstName.toUpperCase()}} {{data.data.secondName.toUpperCase()}}</h1>
       <mat-icon class="icons" (click)="openDialog()"> message</mat-icon>
-      <mat-icon class="icons" *ngIf="isPersonalTrainer" (click)="sendRequest()"> face</mat-icon>
+      <mat-icon class="icons" *ngIf="isPersonalTrainer" (click)="sendRequest()">person_add</mat-icon>
     </div>
 
     <p *ngIf="isPersonalTrainer">Opis: {{data.data.description}}</p>
