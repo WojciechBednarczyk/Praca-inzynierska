@@ -1,0 +1,100 @@
+<mat-dialog-content class="mat-typography">
+  <h1>Podaj dane do edycji</h1>
+  <form name="form">
+    <div class="row" *ngIf="isMentee">
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Waga (kg)</mat-label>
+          <input matInput
+                 type="number"
+                 name="weight"
+                 [(ngModel)]="form.weight"
+                 #weight="ngModel">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Wzrost (cm)</mat-label>
+          <input matInput
+                 type="number"
+                 name="height"
+                 [(ngModel)]="form.height"
+                 #height="ngModel">
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="row" *ngIf="isMentee">
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Tkanka tłuszczowa (%)</mat-label>
+          <input matInput
+                 type="number"
+                 step="0.1"
+                 min="1"
+                 max="100"
+                 name="bodyFat"
+                 [(ngModel)]="form.bodyFat"
+                 #bodyFat="ngModel">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Obwód talii (cm)</mat-label>
+          <input matInput
+                 type="number"
+                 name="waistCircumference"
+                 [(ngModel)]="form.waistCircumference"
+                 #waistCircumference="ngModel">
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="row" *ngIf="isMentee">
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Obwód bicepsa (cm)</mat-label>
+          <input matInput
+                 type="number"
+                 name="bicepsCircumference"
+                 [(ngModel)]="form.bicepsCircumference"
+                 #bicepsCircumference="ngModel">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Obwód uda (cm)</mat-label>
+          <input matInput
+                 type="number"
+                 name="thighCircumference"
+                 [(ngModel)]="form.thighCircumference"
+                 #thighCircumference="ngModel">
+        </mat-form-field>
+      </p>
+
+    </div>
+    <div class="row">
+      <p *ngIf="isMentee">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Obwód klatki (cm)</mat-label>
+          <input matInput
+                 type="number"
+                 name="chestCircumference"
+                 [(ngModel)]="form.chestCircumference"
+                 #chestCircumference="ngModel">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+          <mat-label>Lokalizacja</mat-label>
+          <input matInput
+                 name="location"
+                 [(ngModel)]="form.location"
+                 #location="ngModel">
+        </mat-form-field>
+      </p>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="primary" (click)="editProfile()">Zapisz zmiany</button>
+</mat-dialog-actions>

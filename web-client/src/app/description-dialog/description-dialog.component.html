@@ -1,0 +1,23 @@
+<mat-dialog-content class="mat-typography">
+  <form *ngIf="!isDescriptionSet"
+        name="form">
+    <p>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Opis</mat-label>
+        <textarea style="height: 230px" matInput
+                  name="description"
+                  [(ngModel)]="form.description"
+                  #description="ngModel"></textarea>
+      </mat-form-field>
+    </p>
+  </form>
+
+  <p style="height: 270px; text-align: center" *ngIf="isDescriptionSet">
+    Opis został ustawiony!
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="!isDescriptionSet">Anuluj</button>
+  <button mat-button (click)="setDescription()" *ngIf="!isDescriptionSet"> Ustaw opis</button>
+  <button mat-button mat-dialog-close *ngIf="isDescriptionSet">Zamknij okno</button>
+</mat-dialog-actions>

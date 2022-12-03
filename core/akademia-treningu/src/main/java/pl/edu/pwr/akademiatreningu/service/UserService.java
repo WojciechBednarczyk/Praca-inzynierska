@@ -3,10 +3,7 @@ package pl.edu.pwr.akademiatreningu.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
-import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
-import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerRequestDto;
-import pl.edu.pwr.akademiatreningu.dto.UserDto;
+import pl.edu.pwr.akademiatreningu.dto.*;
 import pl.edu.pwr.akademiatreningu.mapper.PersonalTrainerRequestMapper;
 import pl.edu.pwr.akademiatreningu.mapper.UserMapper;
 import pl.edu.pwr.akademiatreningu.model.Mentee;
@@ -118,4 +115,44 @@ public class UserService {
         }
     }
 
+    public void setPersonalTrainerDescription(DescriptionDto descriptionDto) {
+        PersonalTrainer personalTrainer = userRepository.findById(descriptionDto.getUserId())
+                .get()
+                .getPersonalTrainer();
+        personalTrainer.setDescription(descriptionDto.getDescription());
+        personalTrainerRepository.save(personalTrainer);
+    }
+
+    public void updateProfile(ProfileDto profileDto) {
+        User user = userRepository.findById(profileDto.getUserId()).get();
+        if (user.getMentee() != null) {
+            Mentee mentee = user.getMentee();
+            if (profileDto.getWeight() != null) {
+                mentee.setWeight(profileDto.getWeight());
+            }
+            if (profileDto.getHeight() != null) {
+                mentee.setHeight(profileDto.getHeight());
+            }
+            if (profileDto.getBodyFat() != null) {
+                mentee.setBodyFat(profileDto.getBodyFat());
+            }
+            if (profileDto.getWaistCircumference() != null) {
+                mentee.setWaistCircumference(profileDto.getWaistCircumference());
+            }
+            if (profileDto.getBicepsCircumference() != null) {
+                mentee.setBicepsCircumference(profileDto.getBicepsCircumference());
+            }
+            if (profileDto.getThighCircumference() != null) {
+                mentee.setThighCircumference(profileDto.getThighCircumference());
+            }
+            if (profileDto.getChestCircumference() != null) {
+                mentee.setChestCircumference(profileDto.getChestCircumference());
+            }
+            menteeRepository.save(mentee);
+        }
+        if (profileDto.getLocation() != null) {
+            user.setLocation(profileDto.getLocation());
+            userRepository.save(user);
+        }
+    }
 }
