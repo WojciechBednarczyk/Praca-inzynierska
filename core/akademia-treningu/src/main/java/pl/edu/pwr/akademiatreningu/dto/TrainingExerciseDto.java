@@ -11,6 +11,10 @@ public class TrainingExerciseDto {
 
     private Integer exerciseId;
 
+    private String nameOfExercise;
+
+    private String muscleGroup;
+
     private Integer sets;
 
     private Integer reps;

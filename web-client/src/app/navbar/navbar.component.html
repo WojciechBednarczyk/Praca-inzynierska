@@ -7,7 +7,8 @@
   <div>
     <button mat-stroked-button class="buttons" [routerLink]="'/search'" *ngIf="isLoggedIn">Społeczność</button>
     <button mat-stroked-button class="buttons" [routerLink]="'/atlas'">Atlas ćwiczeń</button>
-    <button mat-stroked-button class="buttons" *ngIf="isMentee">Plany treningowe</button>
+    <button mat-stroked-button class="buttons" [routerLink]="'/training-plans'" *ngIf="isMentee">Plany treningowe
+    </button>
     <button mat-stroked-button class="buttons" [routerLink]="'/mentees'" *ngIf="isPersonalTrainer">Podopieczni</button>
   </div>
 

@@ -1,0 +1,66 @@
+<div class="training-plans-container">
+  <mat-card>
+    <h1>Plany treningowe stworzone przez twojego trenera personalnego</h1>
+    <div class="training-plans-card">
+      <div style="width: 30%">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="date of create">
+            <th mat-header-cell *matHeaderCellDef> Data utworzenia planu</th>
+            <td class="table-cell" mat-cell
+                *matCellDef="let trainingPlan"
+                (click)="showTrainingPlan(trainingPlan)"> {{trainingPlan.dateOfCreate}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #paginatorLeft="matPaginator"
+                       showFirstLastButtons
+                       hidePageSize="true"
+
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+      <mat-card style="width: 65%">
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nazwa ćwiczenia</th>
+            <td class="table-cell" mat-cell
+                *matCellDef="let trainingPlan"
+                (click)="goToExerciseDetails(trainingPlan)"> {{trainingPlan.nameOfExercise}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="muscle group">
+            <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
+            <td class="table-cell" mat-cell
+                *matCellDef="let trainingPlan"
+                (click)="goToExerciseDetails(trainingPlan)"> {{trainingPlan.muscleGroup}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sets">
+            <th mat-header-cell *matHeaderCellDef> Ilość serii</th>
+            <td class="table-cell" mat-cell
+                *matCellDef="let trainingPlan"
+                (click)="goToExerciseDetails(trainingPlan)"> {{trainingPlan.sets}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="reps">
+            <th mat-header-cell *matHeaderCellDef> Ilość powtórzeń</th>
+            <td class="table-cell" mat-cell
+                *matCellDef="let trainingPlan"
+                (click)="goToExerciseDetails(trainingPlan)"> {{trainingPlan.reps}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+        <mat-paginator #paginatorRight="matPaginator"
+                       showFirstLastButtons
+                       hidePageSize="true"
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>
