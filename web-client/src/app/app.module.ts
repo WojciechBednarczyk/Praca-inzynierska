@@ -39,6 +39,8 @@ import {PersonalTrainerMenteesComponent} from './personal-trainer-mentees/person
 import {PlanCreatorComponent} from './plan-creator/plan-creator.component';
 import {ExerciseDialogComponent} from './exercise-dialog/exercise-dialog.component';
 import {TrainingPlansComponent} from './training-plans/training-plans.component';
+import {DescriptionDialogComponent} from './description-dialog/description-dialog.component';
+import {EditProfileDialogComponent} from './edit-profile-dialog/edit-profile-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import {TrainingPlansComponent} from './training-plans/training-plans.component'
     PlanCreatorComponent,
     ExerciseDialogComponent,
     TrainingPlansComponent,
+    DescriptionDialogComponent,
+    EditProfileDialogComponent,
   ],
   imports: [
     BrowserModule,

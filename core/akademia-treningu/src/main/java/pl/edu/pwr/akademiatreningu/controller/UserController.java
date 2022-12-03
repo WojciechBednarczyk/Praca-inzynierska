@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.akademiatreningu.dto.MenteeDto;
 import pl.edu.pwr.akademiatreningu.dto.PersonalTrainerDto;
+import pl.edu.pwr.akademiatreningu.dto.ProfileDto;
 import pl.edu.pwr.akademiatreningu.dto.UserDto;
 import pl.edu.pwr.akademiatreningu.service.UserService;
 
@@ -39,5 +40,11 @@ public class UserController {
     @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
     public List<UserDto> getPersonalTrainer(@RequestParam String firstName, @RequestParam String secondName, @RequestParam String location) throws ParseException {
         return userService.getSearchedUsers(firstName, secondName, location);
+    }
+
+    @PostMapping("/user/profile")
+    @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
+    public void updateProfile(@RequestBody ProfileDto profileDto) {
+        userService.updateProfile(profileDto);
     }
 }

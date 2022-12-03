@@ -1,5 +1,10 @@
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +37,28 @@ export class UserService {
     httpParams = httpParams.append("location", location);
 
     return this.http.get(searchUrl, {params: httpParams});
+  }
+
+  setDescription(description: string, userId: number): Observable<any> {
+    const url = 'http://localhost:8080/api/auth/personal-trainer/description';
+    return this.http.post<any>(url, {
+      description: description,
+      userId: userId
+    }, httpOptions);
+  }
+
+  updateProfile(form: any, userId: number): Observable<any> {
+    const url = 'http://localhost:8080/api/auth/user/profile';
+    return this.http.post<any>(url, {
+      weight: form.weight,
+      height: form.height,
+      bodyFat: form.bodyFat,
+      waistCircumference: form.waistCircumference,
+      bicepsCircumference: form.bicepsCircumference,
+      thighCircumference: form.thighCircumference,
+      chestCircumference: form.chestCircumference,
+      location: form.location,
+      userId: userId
+    }, httpOptions);
   }
 }
