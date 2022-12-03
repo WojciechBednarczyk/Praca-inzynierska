@@ -4,10 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.edu.pwr.akademiatreningu.model.Training;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface TrainingPlanRepository extends JpaRepository<Training, Integer> {
 
-    Optional<Training> findByUserId(Integer userId);
+    List<Training> findAllByUserId(Integer userId);
 }

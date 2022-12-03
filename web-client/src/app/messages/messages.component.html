@@ -1,6 +1,6 @@
 <div class="messages-container">
   <mat-card class="messages-card">
-    <div>
+    <div style="width: 30%">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="sender">
           <th mat-header-cell *matHeaderCellDef> Nadawca</th>
@@ -26,7 +26,7 @@
       </mat-paginator>
     </div>
 
-    <mat-card style="width: 75%">
+    <mat-card style="width: 65%">
       <pre>{{messageText}}</pre>
     </mat-card>
   </mat-card>

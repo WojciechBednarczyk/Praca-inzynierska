@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.akademiatreningu.dto.TrainingPlanDto;
 import pl.edu.pwr.akademiatreningu.mapper.ExerciseMapper;
+import pl.edu.pwr.akademiatreningu.mapper.TrainingPlanMapper;
 import pl.edu.pwr.akademiatreningu.model.Training;
 import pl.edu.pwr.akademiatreningu.model.TrainingExercise;
 import pl.edu.pwr.akademiatreningu.repository.TrainingExercisesRepository;
@@ -25,6 +26,8 @@ public class TrainingPlanService {
 
     private final ExerciseMapper exerciseMapper;
 
+    private final TrainingPlanMapper trainingPlanMapper;
+
     public void saveTrainingPlan(TrainingPlanDto trainingPlanDto) {
         List<TrainingExercise> trainingExercises = exerciseMapper.mapDtoToExercises(trainingPlanDto.getTrainingPlan());
         Training trainingPlan = Training.builder()
@@ -38,5 +41,10 @@ public class TrainingPlanService {
             exercise.setTraining(trainingPlan);
             trainingExercisesRepository.save(exercise);
         }
+    }
+
+    public List<TrainingPlanDto> getTrainingPlans(Integer userId) {
+        List<Training> trainings = trainingPlanRepository.findAllByUserId(userId);
+        return trainingPlanMapper.mapToExerciseDtoList(trainings);
     }
 }
