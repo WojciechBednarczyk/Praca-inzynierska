@@ -17,6 +17,7 @@ import {MenteeRequestComponent} from "./mentee-request/mentee-request.component"
 import {MenteeRequestResolver} from "./resolvers/mentee-request-resolver";
 import {PersonalTrainerMenteesComponent} from "./personal-trainer-mentees/personal-trainer-mentees.component";
 import {MenteesResolver} from "./resolvers/mentees-resolver";
+import {PlanCreatorComponent} from "./plan-creator/plan-creator.component";
 
 const routes: Routes = [
   {path: "", component: MainPageComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'atlas', component: AtlasComponent},
   {path: 'atlas/:id', component: ExerciseDetailsComponent},
   {path: 'search', component: SearchUsersComponent},
+  {path: 'create-plan', component: PlanCreatorComponent},
   {
     path: 'mentees', component: PersonalTrainerMenteesComponent, resolve: {
       data: MenteesResolver

@@ -1,0 +1,26 @@
+<mat-dialog-content class="mat-typography">
+  <p>Podaj ilość serii oraz powtórzeń</p>
+  <form name="form">
+    <p>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Serie</mat-label>
+        <input matInput
+               name="sets"
+               [(ngModel)]="form.sets"
+               #sets="ngModel">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Powtórzenia</mat-label>
+        <input matInput
+               name="reps"
+               [(ngModel)]="form.reps"
+               #reps="ngModel">
+      </mat-form-field>
+    </p>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="saveToPlan()">Dodaj</button>
+</mat-dialog-actions>

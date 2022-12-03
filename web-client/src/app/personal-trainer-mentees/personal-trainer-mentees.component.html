@@ -28,7 +28,11 @@
         <th class="table-content" mat-header-cell *matHeaderCellDef>Stwórz plan treningowy</th>
         <td class="table-content" mat-cell
             *matCellDef="let mentee">
-          <button mat-raised-button color="primary">Stwórz plan treningowy</button>
+          <button mat-raised-button color="primary" [routerLink]="'/create-plan'" [state]="{ id:mentee.userId,
+           firstName:mentee.firstName,
+           secondName:mentee.secondName}">
+            Stwórz plan treningowy
+          </button>
         </td>
       </ng-container>
 
