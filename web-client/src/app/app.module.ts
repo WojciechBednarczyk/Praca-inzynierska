@@ -42,6 +42,7 @@ import {TrainingPlansComponent} from './training-plans/training-plans.component'
 import {DescriptionDialogComponent} from './description-dialog/description-dialog.component';
 import {EditProfileDialogComponent} from './edit-profile-dialog/edit-profile-dialog.component';
 import {ReviewDialogComponent} from './review-dialog/review-dialog.component';
+import {ReviewsComponent} from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {ReviewDialogComponent} from './review-dialog/review-dialog.component';
     DescriptionDialogComponent,
     EditProfileDialogComponent,
     ReviewDialogComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,

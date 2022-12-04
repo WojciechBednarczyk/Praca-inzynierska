@@ -3,6 +3,7 @@ package pl.edu.pwr.akademiatreningu.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.akademiatreningu.dto.OpinionDto;
+import pl.edu.pwr.akademiatreningu.mapper.OpinionMapper;
 import pl.edu.pwr.akademiatreningu.model.Opinion;
 import pl.edu.pwr.akademiatreningu.model.PersonalTrainer;
 import pl.edu.pwr.akademiatreningu.model.User;
@@ -23,6 +24,8 @@ public class OpinionService {
     private final UserRepository userRepository;
 
     private final PersonalTrainerRepository personalTrainerRepository;
+
+    private final OpinionMapper opinionMapper;
 
     public String saveOpinion(OpinionDto opinionDto) {
 
@@ -54,5 +57,11 @@ public class OpinionService {
             personalTrainerRepository.save(personalTrainer);
             return "Opinia zostala zapisana";
         }
+    }
+
+    public List<OpinionDto> getOpinions(Integer personalTrainerUserId) {
+        User user = userRepository.findById(personalTrainerUserId).get();
+        List<Opinion> opinions = opinionRepository.findAllByPersonalTrainerId(user.getPersonalTrainer().getId());
+        return opinionMapper.mapOpinionsToDto(opinions);
     }
 }
