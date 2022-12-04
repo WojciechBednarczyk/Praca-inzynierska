@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
     const dateOfBirthFormatted = this.dateService.formatDate(dateOfBirth)
     this.authService.register(firstName, secondName, login, password, role, email, dateOfBirthFormatted).subscribe({
       next: data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },

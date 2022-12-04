@@ -21,6 +21,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {httpInterceptorProviders} from './helpers/auth.interceptor';
 import {RegisterComponent} from './register/register.component';
@@ -28,6 +30,19 @@ import {DateService} from './services/date.service';
 import {AtlasComponent} from './atlas/atlas.component';
 import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {SearchUsersComponent} from './search-users/search-users.component';
+import {MessageDialogComponent} from './message-dialog/message-dialog.component';
+import {MessagesComponent} from './messages/messages.component';
+import {MenteeRequestComponent} from './mentee-request/mentee-request.component';
+import {PersonalTrainerMenteesComponent} from './personal-trainer-mentees/personal-trainer-mentees.component';
+import {PlanCreatorComponent} from './plan-creator/plan-creator.component';
+import {ExerciseDialogComponent} from './exercise-dialog/exercise-dialog.component';
+import {TrainingPlansComponent} from './training-plans/training-plans.component';
+import {DescriptionDialogComponent} from './description-dialog/description-dialog.component';
+import {EditProfileDialogComponent} from './edit-profile-dialog/edit-profile-dialog.component';
+import {ReviewDialogComponent} from './review-dialog/review-dialog.component';
+import {ReviewsComponent} from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +54,19 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
     AtlasComponent,
     ExerciseDetailsComponent,
     MyProfileComponent,
+    UserProfileComponent,
+    SearchUsersComponent,
+    MessageDialogComponent,
+    MessagesComponent,
+    MenteeRequestComponent,
+    PersonalTrainerMenteesComponent,
+    PlanCreatorComponent,
+    ExerciseDialogComponent,
+    TrainingPlansComponent,
+    DescriptionDialogComponent,
+    EditProfileDialogComponent,
+    ReviewDialogComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +87,8 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
     MatTableModule,
     MatPaginatorModule,
     YouTubePlayerModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

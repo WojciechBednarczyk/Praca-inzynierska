@@ -23,4 +23,6 @@ public class PersonalTrainerDto {
 
     private String description;
 
+    private Integer userId;
+
 }

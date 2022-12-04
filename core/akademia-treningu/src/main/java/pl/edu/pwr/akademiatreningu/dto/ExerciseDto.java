@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExerciseDTO {
+public class ExerciseDto {
 
     private Integer id;
 

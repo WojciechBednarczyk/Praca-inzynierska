@@ -1,16 +1,18 @@
 package pl.edu.pwr.akademiatreningu.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "trainings")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Training {
 
     @Id
@@ -21,12 +23,12 @@ public class Training {
     private String name;
 
     @Column(name = "date_of_training")
-    private Date dateOfTraining;
+    private LocalDate dateOfTraining;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "training")
-    private Set<TrainingExercise> trainingExercises;
+    private List<TrainingExercise> trainingExercises;
 }

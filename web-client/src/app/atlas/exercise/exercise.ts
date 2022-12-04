@@ -5,4 +5,6 @@ export interface Exercise {
   url: string,
   rating: number,
   muscleGroup: string
+  sets: number
+  reps: number
 }

@@ -1,0 +1,56 @@
+<div class="profile">
+  <mat-card>
+    <div class="name-with-buttons">
+      <h1 class="name">{{data.data.firstName.toUpperCase()}} {{data.data.secondName.toUpperCase()}}</h1>
+      <mat-icon class="icons" title="Wyślij wiadomość" (click)="openDialog()"> message</mat-icon>
+      <mat-icon class="icons" title="Wyślij prośbę od trenera o przyjęcie do grona podopiecznych"
+                *ngIf="isPersonalTrainer" (click)="sendRequest()">person_add
+      </mat-icon>
+      <mat-icon class="icons" title="Wystaw opinię trenerowi" (click)="openReviewDialog()">rate_review</mat-icon>
+    </div>
+
+    <p *ngIf="isPersonalTrainer">Opis: {{data.data.description}}</p>
+
+    <div>
+      <p *ngIf="isMentee"> Waga: {{data.data.weight}} kg</p>
+      <p *ngIf="isMentee"> Wzrost: {{data.data.height}} cm</p>
+      <p> Data urodzenia: {{data.data.dateOfBirth}}</p>
+      <p> Lokalizacja: {{data.data.location}}</p>
+      <p *ngIf="isMentee"> Procent tkanki tłuszczowej: {{data.data.bodyFat}} %</p>
+      <p *ngIf="isMentee"> Obwód talii: {{data.data.waistCircumference}} cm</p>
+      <p *ngIf="isMentee"> Obwód klatki piersiowej: {{data.data.chestCircumference}} cm</p>
+      <p *ngIf="isMentee"> Obwód uda: {{data.data.thighCircumference}} cm</p>
+      <p *ngIf="isMentee"> Obwód bicepsa: {{data.data.bicepsCircumference}} cm</p>
+      <p *ngIf="isPersonalTrainer"> Ocena trenera: {{data.data.rating}}</p>
+    </div>
+    <button mat-raised-button color="primary" *ngIf="isPersonalTrainer" (click)="showOpinions()">Pokaż opinie</button>
+  </mat-card>
+
+  <mat-card style="margin-top: 20px">
+    <h1>Opinie o tym trenerze</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container style="width: 80%" matColumnDef="review">
+        <th mat-header-cell *matHeaderCellDef> Opinia</th>
+        <td mat-cell *matCellDef="let opinion">
+          <pre>{{opinion.review}}</pre>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef> Ocena</th>
+        <td mat-cell *matCellDef="let opinion"> {{opinion.rating}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator
+      [pageSize]="1"
+      showFirstLastButtons
+      hidePageSize="true"
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </mat-card>
+</div>

@@ -1,0 +1,29 @@
+.search-container {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 2em;
+}
+
+.search-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table-cell:hover {
+  cursor: pointer;
+}

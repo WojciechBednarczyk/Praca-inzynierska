@@ -1,0 +1,95 @@
+<div class="search-container">
+  <mat-card>
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+
+      <div class="search-panel">
+        <p style="text-align: center; margin: 5px">
+          <mat-form-field>
+            <input type="text"
+                   class="form-control"
+                   name="firstName"
+                   [(ngModel)]="form.firstName"
+                   #firstName="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted}"
+                   matInput placeholder="Imię">
+          </mat-form-field>
+        </p>
+
+        <p style="text-align: center; margin: 5px">
+          <mat-form-field>
+            <input type="text"
+                   class="form-control"
+                   name="secondName"
+                   [(ngModel)]="form.secondName"
+                   #secondName="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted}"
+                   matInput placeholder="Nazwisko">
+          </mat-form-field>
+        </p>
+
+        <p style="text-align: center; margin: 5px">
+          <mat-form-field>
+            <input type="text"
+                   class="form-control"
+                   name="location"
+                   [(ngModel)]="form.location"
+                   #location="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted}"
+                   matInput placeholder="Lokalizacja">
+          </mat-form-field>
+        </p>
+
+        <div style="text-align: center; margin: 5px">
+          <button mat-stroked-button type="submit" mat-button>Szukaj</button>
+        </div>
+      </div>
+    </form>
+
+  </mat-card>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Imię</th>
+      <td class="table-cell" mat-cell *matCellDef="let user"
+          (click)="routeToUserProfile(user.id,user.role)"> {{user.firstName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="secondName">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko</th>
+      <td class="table-cell" mat-cell *matCellDef="let user"
+          (click)="routeToUserProfile(user.id,user.role)"> {{user.secondName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Lokalizacja</th>
+      <td class="table-cell" mat-cell *matCellDef="let user"
+          (click)="routeToUserProfile(user.id,user.role)"> {{user.location}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Rola</th>
+      <td class="table-cell" mat-cell *matCellDef="let user"
+          (click)="routeToUserProfile(user.id,user.role)"> {{user.role}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+  <mat-card *ngIf="!areUsersFound">
+    <p class="error">Nie znaleziono użytkowników! Zmień parametry wyszukiwania</p>
+  </mat-card>
+</div>

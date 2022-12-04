@@ -5,9 +5,11 @@
   </div>
 
   <div>
-    <button mat-stroked-button class="buttons" *ngIf="isLoggedIn">Społeczność</button>
+    <button mat-stroked-button class="buttons" [routerLink]="'/search'" *ngIf="isLoggedIn">Społeczność</button>
     <button mat-stroked-button class="buttons" [routerLink]="'/atlas'">Atlas ćwiczeń</button>
-    <button mat-stroked-button class="buttons" *ngIf="isLoggedIn">Dziennik</button>
+    <button mat-stroked-button class="buttons" [routerLink]="'/training-plans'" *ngIf="isMentee">Plany treningowe
+    </button>
+    <button mat-stroked-button class="buttons" [routerLink]="'/mentees'" *ngIf="isPersonalTrainer">Podopieczni</button>
   </div>
 
   <div class="account-buttons-div">
@@ -20,8 +22,16 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="'/my-profile'">
-        <mat-icon class="profile">account_circle</mat-icon>
+        <mat-icon>account_circle</mat-icon>
         <span>Profil</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/messages'">
+        <mat-icon>message</mat-icon>
+        <span>Wiadomości</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/mentee-request'" *ngIf="isPersonalTrainer">
+        <mat-icon>face</mat-icon>
+        <span>Prośby</span>
       </button>
       <button mat-menu-item (click)="logout()" [routerLink]="'/'">
         <mat-icon>keyboard_tab</mat-icon>

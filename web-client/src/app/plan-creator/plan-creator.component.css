@@ -1,0 +1,28 @@
+.creator-container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2em;
+}
+
+.left-container {
+  width: 50%;
+}
+
+.main-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.add:hover {
+  cursor: pointer;
+}
+
+.save-button {
+  text-align: right;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+}

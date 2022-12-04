@@ -2,7 +2,7 @@ package pl.edu.pwr.akademiatreningu.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pwr.akademiatreningu.dto.ExerciseDTO;
+import pl.edu.pwr.akademiatreningu.dto.ExerciseDto;
 import pl.edu.pwr.akademiatreningu.service.ExerciseService;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class ExerciseController {
 
     @GetMapping("/get")
     @ResponseBody
-    public List<ExerciseDTO> getExercises() {
+    public List<ExerciseDto> getExercises() {
         return exerciseService.findAll();
     }
 

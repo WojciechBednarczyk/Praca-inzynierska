@@ -17,7 +17,8 @@
       <ng-container matColumnDef="muscle group">
         <th mat-header-cell *matHeaderCellDef> Grupa mięśniowa</th>
         <td class="table-cell" mat-cell *matCellDef="let exercise"
-            [routerLink]="['/atlas', exercise.id]"> {{exercise.muscleGroup}} </td>
+            [routerLink]="['/atlas', exercise.id]"> {{exercise.muscleGroup}}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="rating">
