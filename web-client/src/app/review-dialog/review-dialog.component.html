@@ -1,0 +1,35 @@
+<mat-dialog-content class="mat-typography">
+  <form *ngIf="!isReviewSent"
+        name="form">
+    <p>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Treść opinii</mat-label>
+        <textarea style="height: 230px" matInput
+                  name="review"
+                  [(ngModel)]="form.review"
+                  #review="ngModel"></textarea>
+      </mat-form-field>
+    </p>
+    <p style="text-align: center">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Ocena trenera</mat-label>
+        <input matInput
+               type="number"
+               min="1"
+               max="5"
+               name="rating"
+               [(ngModel)]="form.rating"
+               #rating="ngModel">
+      </mat-form-field>
+    </p>
+  </form>
+
+  <p style="height: 270px; text-align: center" *ngIf="isReviewSent">
+    Opinia została zapisana na koncie trenera
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="!isReviewSent">Anuluj</button>
+  <button mat-button (click)="sendReview()" *ngIf="!isReviewSent">Wyślij opinie</button>
+  <button mat-button mat-dialog-close *ngIf="isReviewSent">Zamknij okno</button>
+</mat-dialog-actions>
