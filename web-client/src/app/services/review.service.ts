@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 const httpOptions = {
@@ -24,5 +24,12 @@ export class ReviewService {
       personalTrainerId: personalTrainerId,
       userId: userId,
     }, {headers: new HttpHeaders({'Content-Type': 'application/json'}), observe: 'response', responseType: 'text'});
+  }
+
+  getOpinions(personalTrainerId: number) {
+    const url = 'http://localhost:8080/api/auth/opinion';
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append("personalTrainerUserId", personalTrainerId);
+    return this.http.get(url, {params: httpParams});
   }
 }

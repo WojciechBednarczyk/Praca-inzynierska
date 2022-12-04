@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserProfileRouteResolver} from "../resolvers/user-profile-route-resolver";
 import {MatDialog} from "@angular/material/dialog";
@@ -6,6 +6,9 @@ import {MessageDialogComponent} from "../message-dialog/message-dialog.component
 import {RequestService} from "../services/request.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ReviewDialogComponent} from "../review-dialog/review-dialog.component";
+import {ReviewService} from "../services/review.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-user-profile',
@@ -14,17 +17,24 @@ import {ReviewDialogComponent} from "../review-dialog/review-dialog.component";
 })
 export class UserProfileComponent implements OnInit {
 
-  data: any
-  isMentee: boolean = false
-  isPersonalTrainer: boolean = false
-  response: string | null = ''
+  data: any;
+  isMentee: boolean = false;
+  isPersonalTrainer: boolean = false;
+  response: string | null = '';
+  areOpinionsVisible: boolean = false;
+  opinions: any;
+  displayedColumns: string[] = ['review', 'rating'];
+  dataSource!: MatTableDataSource<any>
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private activatedRoute: ActivatedRoute,
               private userProfileRouteResolver: UserProfileRouteResolver,
               public dialog: MatDialog,
               private requestService: RequestService,
               route: ActivatedRoute,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private reviewService: ReviewService,) {
 
   }
 
@@ -39,6 +49,16 @@ export class UserProfileComponent implements OnInit {
         this.isMentee = false;
       }
     })
+    this.reviewService.getOpinions(this.data.data.userId)
+      .toPromise().then(data => {
+      this.opinions = data;
+      this.dataSource = new MatTableDataSource<any>(this.opinions);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   openDialog() {
@@ -84,5 +104,10 @@ export class UserProfileComponent implements OnInit {
     const token = window.sessionStorage.getItem('auth-user');
 
     return token ? JSON.parse(token).id : [];
+  }
+
+  showOpinions() {
+    this.areOpinionsVisible = true;
+    this.dataSource = new MatTableDataSource<any>(this.opinions)
   }
 }
