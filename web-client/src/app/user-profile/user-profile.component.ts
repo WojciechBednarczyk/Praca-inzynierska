@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MessageDialogComponent} from "../message-dialog/message-dialog.component";
 import {RequestService} from "../services/request.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ReviewDialogComponent} from "../review-dialog/review-dialog.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -43,7 +44,7 @@ export class UserProfileComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(MessageDialogComponent, {
       width: '50%',
-      height: '50%',
+      height: '60%',
     });
 
     dialogRef.componentInstance.receiverId = this.data.data.userId;
@@ -51,6 +52,21 @@ export class UserProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  async openReviewDialog() {
+    const dialogRef = this.dialog.open(ReviewDialogComponent, {
+      width: '50%',
+      height: '70%',
+    });
+
+    dialogRef.componentInstance.personalTrainerId = this.data.data.userId;
+    dialogRef.componentInstance.menteeId = this.getUserId();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 
   sendRequest() {
