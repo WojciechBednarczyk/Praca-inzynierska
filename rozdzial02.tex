@@ -3,62 +3,105 @@ Przed przyst¹pieniem do pracy nad aplikacj¹, nale¿a³o dok³adnie przemyœleæ jak i
 
 
 \section{Wymagania funkcjonalne u¿ytkownika}
+W aplikacji poszczególne funkcjonalnoœci bêd¹ dostêpne w zale¿noœci od roli jak¹ bêdzie mia³ u¿ytkownik. W systemie dostêpne bêd¹ role: niezalogowany u¿ytkownik, podopieczny oraz trener. Funkcjonalnoœci mo¿na podzieliæ na te dostêpne dla ka¿dego u¿ytkownika, zalogowanego u¿ytkownika oraz na te które bêd¹ dostêpne dla konkretnej roli. Takie rozwi¹zanie pozwoli zapobiec przypadkom w których u¿ytkownik mo¿e korzystaæ z danej funkcjonalnoœci do której nie powinien mieæ dostêpu.\\
 % TO DO: przypominam - wymagania nie mog¹ byæ jedynie list¹ wyliczeniow¹. To siê Ÿle czyta. Konieczy jest jakiœ tekst z bogatszym opisem. 
 %       Na pocz¹tek mo¿na by³oby wymieniæ typu u¿ytkowników, potem opowiedzieæ o zakresie dostêpnych dla nich funkcji.
 %       Nastêpnie mo¿na odwo³aæ siê do szczegó³ów pokazaych na diagramie przypadków u¿ycia.
-\subsection{Niezalogowany u¿ytkownik}
-\begin{itemize}
-\item U¿ytkownik ma mo¿liwoœæ za³o¿enia konta w systemie
-\item U¿ytkownik ma mo¿liwoœæ zalogowania siê do systemu
-\item U¿ytkownik ma mo¿liwoœæ przegl¹dania atlasu æwiczeñ
-\item U¿ytkownik ma mo¿liwoœæ sprawdzenia szczegó³ów danego æwiczenia
-\end{itemize}
 
-\subsection{Podopieczny}
-\begin{itemize}
-\item Podopieczny ma mo¿liwoœæ wystawienia opinii trenerowi
-\item Podopieczny ma mo¿liwoœæ wys³ania proœby do trenera o przyjêcie w grono podopiecznych
-\end{itemize}
+\noindent
+\textbf{FR-1}
+Niezalogowany u¿ytkownik mo¿e za³o¿yæ konto w systemie podaj¹c wymagane dane takie jak login, has³o oraz podstawowe dane osobowe\\
 
-\subsection{Trener}
-\begin{itemize}
-\item Trener ma mo¿liwoœæ stworzenia planu treningowego dla swojego podopiecznego
-\item Trener ma mo¿liwoœæ odrzucenia proœby o przyjêcie do grona podopiecznych
-\item Trener ma mo¿liwoœæ zaakceptowania proœby o przyjêcia do grona podopiecznych
-\end{itemize}
+\noindent
+\textbf{FR-2}
+Niezalogowany u¿ytkownik mo¿e zalogowaæ siê do systemu podaj¹c login oraz has³o\\
 
-\subsection{Wspólne dla trenera oraz podopiecznego}
-\begin{itemize}
-\item Mo¿liwoœæ zmiany danych w profilu
-\item Mo¿liwoœæ wys³ania wiadomoœci do innego u¿ytkownika
-\item Mo¿liwoœæ napisania posta na blogu
-\item Mo¿liwoœæ wyszukania profilu innego u¿ytkownika
-\end{itemize}
+\noindent
+\textbf{FR-3}
+Ka¿dy u¿ytkownik mo¿e przegl¹daæ tabele w której znajduj¹ siê æwiczenia fitness\\
+
+\noindent
+\textbf{FR-4}
+Ka¿dy u¿ytkownik mo¿e przegl¹daæ szczegó³y æwiczenia na których znajduje siê opis jak wykonaæ æwiczenie oraz film instrukta¿owy\\
+
+\noindent
+\textbf{FR-5}
+U¿ytkownik z rol¹ podopiecznego mo¿e wystawiæ opinie trenerowi z którym wspó³pracuje\\
+
+\noindent
+\textbf{FR-6}
+U¿ytkownik z rol¹ podopiecznego mo¿e wys³aæ proœbê do trenera o wspó³pracê\\
+
+\noindent
+\textbf{FR-7}
+Trener mo¿e stworzyæ plan treningowy dla podopiecznego bazuj¹c na tabeli z æwiczeniami\\
+
+\noindent
+\textbf{FR-8}
+U¿ytkownik z rol¹ trenera mo¿e odrzuciæ proœbê o rozpoczêcie wspó³pracy od podopiecznego\\
+
+\noindent
+\textbf{FR-9}
+U¿ytkownik z rol¹ trenera mo¿e zaakceptowaæ proœbê o rozpoczêcie wspó³pracy od podopiecznego\\
+
+\noindent
+\textbf{FR-10}
+U¿ytkownik z rol¹ trenera mo¿e zakoñczyæ wspó³pracê z podopiecznym\\
+
+\noindent
+\textbf{FR-11}
+Zalogowany u¿ytkownik mo¿e zmieniæ swoje dane w profilu\\
+
+\noindent
+\textbf{FR-12}
+Zalogowany u¿ytkownik mo¿e wys³aæ wiadomoœæ do innego u¿ytkownika istniej¹cego w systemie\\
+
+\noindent
+\textbf{FR-13}
+Zalogowany u¿ytkownik ma mo¿liwoœæ wylogowania siê z systemu\\
+
+\noindent
+\textbf{FR-14}
+Zalogowany u¿ytkownik ma mo¿liwoœæ napisania posta na swoim profilu\\
+
+\noindent
+\textbf{FR-15}
+Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej¹cego w systemie\\
+
+Bardziej szczegó³owy opis funkcjonalnoœci zosta³ przedstawiony na diagramie przypadków u¿ycia ~\ref{fig:diagramPrzypadkowUzycia} oraz w scenariuszach przypadków u¿ycia
 
 \section{Wymaganie niefunkcjonalne systemu}
 
-\begin{itemize}
-\item Aplikacja musi byæ dostêpna 24/7
-\item Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta
-\item Aplikacja ma byæ wdro¿ona na darmowym hostingu np.\ Heroku
-\item Baza danych bêdzie wdro¿ona na darmowym serwerze
-\item Do korzystania z aplikacji wymagany jest dostêp do internetu
-\item Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych
-\item Autoryzacja przebiega przy pomocy JWT zapisywanym w cookies
-\end{itemize}
+\noindent
+\textbf{NFR-1}
+Aplikacja musi byæ dostêpna 24/7\\
 
-\section{Diagram ERD}
-% TO DO: diagram do przeredagowania. W obecnej postaci na wydrukach bêdzie on nieczytelny !!!!!
-%        proszê "zacieœniæ", poza tym proszê przypilnowaæ, by w œrodku tabel nie by³o zbêdne wolnej przestrzeni (od do³u i z boku) 
-\begin{figure}[htb]
-  \centering
-\includegraphics[width=.9\textwidth]{rys02/diagram_erd}
-  \caption{Diagram ERD}
-  \label{fig:diagramy}
-\end{figure}
+\noindent
+\textbf{NFR-2}
+Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta\\
 
-Diagram ulegnie modyfikacji
+\noindent
+\textbf{NFR-3}
+Aplikacja ma byæ wdro¿ona na darmowym hostingu np.\ Heroku\\
+
+\noindent
+\textbf{NFR-4}
+Baza danych bêdzie wdro¿ona na darmowym serwerze\\
+
+\noindent
+\textbf{NFR-5}
+Do korzystania z aplikacji wymagany jest dostêp do internetu\\
+
+\noindent
+\textbf{NFR-6}
+Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych\\
+
+\noindent
+\textbf{NFR-7}
+Autoryzacja przebiega przy pomocy JWT zapisywanym w plikach cookies\\
+
 \newpage
+
 \section{Diagram przypadków u¿ycia}
 % TO DO: przerysowa³em dla Pana diagram przypadków u¿ycia.
 %        ród³o znajdzie Pan w repozytorium.
@@ -68,7 +111,7 @@ Diagram ulegnie modyfikacji
   \centering
 	\includegraphics[width=1\textwidth]{rys02/useCaseDiagram}
 	\caption{Diagram przypadków u¿ycia}
-  \label{fig:diagramy}
+  \label{fig:diagramPrzypadkowUzycia}
 \end{figure}
 
 \subsection{Scenariusze przypadków u¿ycia}
@@ -118,57 +161,60 @@ Diagram ulegnie modyfikacji
 	\end{itemize}
 \end{enumerate}\ \\
 
-% TO DO: proszê poprawiæ formatowanie pozosta³ych opisów przypadków u¿ycia, by by³o zgodne z tym, co powy¿ej
 \noindent
-\textbf{Przypadek u¿ycia: } Przegl¹danie atlasu æwiczeñ\\
-\textbf{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
-\textbf{Opis: } Przegl¹danie tabeli z æwiczeniami na której znajduje siê numer, nazwa, grupa miêœniowa oraz ocena æwiczenia  \\
-\textbf{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie startowym. \\
-\textbf{Przebieg: }
+\textbf{PU03: Przegl¹danie atlasu æwiczeñ}\\
+\emph{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
+\emph{Opis: } Przegl¹danie tabeli z æwiczeniami na której znajduje siê numer, nazwa, grupa miêœniowa oraz ocena æwiczenia  \\
+\emph{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie startowym. \\
+\emph{Przebieg: }
 \begin{enumerate}
   \item U¿ytkownik klika w przycisk "`Atlas æwiczeñ"'
   \item Otwiera siê widok atlasu æwiczeñ na którym znajduje siê tabela z æwiczeniami
 	\item U¿ytkownik mo¿e przechodziæ do kolejnych stron tabeli klikaj¹c w przyciski strza³ek pod tabel¹
-\end{enumerate}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Przegl¹danie szczegó³ów æwiczenia\\
-\textbf{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
-\textbf{Opis: } Przegl¹danie szczegó³ów danego æwiczeniae\\
-\textbf{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie atlasu æwiczeñ. \\
-\textbf{Przebieg: }
+\textbf{PU04: Przegl¹danie szczegó³ów æwiczenia}\\
+\emph{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
+\emph{Opis: } Przegl¹danie szczegó³ów danego æwiczeniae\\
+\emph{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie atlasu æwiczeñ. \\
+\emph{Przebieg: }
 \begin{enumerate}
   \item U¿ytkownik klika w wybrane æwiczenie w tabeli
   \item Otwiera siê widok szczegó³ów æwiczenia na którym znajduje siê nazwa, opis, ocena oraz film instrukta¿owy æwiczenia
-\end{enumerate}
+\end{enumerate}\ \\
+\newpage
+
 \noindent
-\textbf{Przypadek u¿ycia: } Wystawienie opinii trenerowi\\
-\textbf{Aktor: } Podopieczny\\
-\textbf{Opis: } Wystawienie opinii przez podopiecznego dla swojego trenera\\
-\textbf{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny znajduje siê w gronie podopiecznych tego trenera\\
-\textbf{Przebieg: }
+\textbf{PU05: Wystawienie opinii trenerowi}\\
+\emph{Aktor: } Podopieczny\\
+\emph{Opis: } Wystawienie opinii przez podopiecznego dla swojego trenera\\
+\emph{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny znajduje siê w gronie podopiecznych tego trenera\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Podopieczny klika przycisk wystawiania opinii
   \item Pokazuje siê pole tekstowe w którym podopieczny mo¿e wpisaæ swoj¹ opinie i wystawiæ ocenê.
 	\item Po wpisaniu opinii, podopieczny klika w przycisk zapisz
 	\item Opinia zostaje zapisana na koncie trenera
-\end{enumerate}
-\newpage
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Wys³anie proœby do trenera o przyjêcie w grono podopiecznych\\
-\textbf{Aktor: } Podopieczny\\
-\textbf{Opis: } Wys³anie proœby do danego trenera o przyjêcie w grono podopiecznych co umo¿liwi wspó³pracê\\
-\textbf{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny nie jest w gronie podopiecznych tego trenera\\
-\textbf{Przebieg: }
+\textbf{PU06: Wys³anie proœby do trenera o przyjêcie w grono podopiecznych}\\
+\emph{Aktor: } Podopieczny\\
+\emph{Opis: } Wys³anie proœby do danego trenera o przyjêcie w grono podopiecznych co umo¿liwi wspó³pracê\\
+\emph{Warunki wstêpne: } Podopieczny jest zalogowany. Podopieczny znajduje siê na ekranie profilu trenera. Podopieczny nie jest w gronie podopiecznych tego trenera\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Podopieczny klika przycisk wys³ania proœby o przyjêcia w grono podopiecznych
 	\item Pokazuje siê informacja z potwierdzeniem wys³ania proœby
-\end{enumerate}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Stworzenie planu treningowego\\
-\textbf{Aktor: } Trener\\
-\textbf{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w systemie\\
-\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych \\
-\textbf{Przebieg: }
+\textbf{PU07: Stworzenie planu treningowego}\\
+\emph{Aktor: } Trener\\
+\emph{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w systemie\\
+\emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych \\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Trener klika w ikonê opcji obok wybranego podopiecznego w tabeli
 	\item Pokazuje siê ma³e menu z dostêpnymi opcjami
@@ -177,37 +223,40 @@ Diagram ulegnie modyfikacji
 	\item Trener wybiera æwiczenia do planu z listy æwiczeñ
 	\item Trener klika w przycisk zapisz
 	\item Plan treningowy zostaje zapisany dla podopiecznego
-\end{enumerate}
+\end{enumerate}\ \\
+\newpage
+
 \noindent	
-\textbf{Przypadek u¿ycia: } Odrzucenie proœby o przyjêcie do grona podopiecznych\\
-\textbf{Aktor: } Trener\\
-\textbf{Opis: } Trener mo¿e odrzuciæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
-\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
-\textbf{Przebieg: }
+\textbf{PU08: Odrzucenie proœby o przyjêcie do grona podopiecznych}\\
+\emph{Aktor: } Trener\\
+\emph{Opis: } Trener mo¿e odrzuciæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
+\emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Na ekranie próœb o przyjêcie wyœwietla siê lista z proœbami
 	\item Trener obok wybranej proœby klika w ikonê odrzucenia
 	\item Pokazuje siê informacja o odrzuceniu proœby
-\end{enumerate}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Zaakceptowanie proœby o przyjêcie do grona podopiecznych\\
-\textbf{Aktor: } Trener\\
-\textbf{Opis: } Trener mo¿e zaakceptowaæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
-\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
-\textbf{Przebieg: }
+\textbf{PU09: Zaakceptowanie proœby o przyjêcie do grona podopiecznych}\\
+\emph{Aktor: } Trener\\
+\emph{Opis: } Trener mo¿e zaakceptowaæ proœbê wys³an¹ przez podopiecznego o przyjêcie w grono podopiecznych\\
+\emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie próœb o przyjêcie\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Na ekranie próœb o przyjêcie wyœwietla siê lista z proœbami
 	\item Trener obok wybranej proœby klika w ikonê akceptacji
 	\item Podopieczny zostaje zapisany do grona podopiecznych tego trenera
 	\item Pokazuje siê informacja o zaakceptowaniu proœby
-\end{enumerate}
-\newpage
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Usuniêcie podopiecznego z grona podopiecznych\\
-\textbf{Aktor: } Trener\\
-\textbf{Opis: } Trener mo¿e usun¹æ swojego podopiecznego z grona podopiecznych\\
-\textbf{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych\\
-\textbf{Przebieg: }
+\textbf{PU10: Usuniêcie podopiecznego z grona podopiecznych}\\
+\emph{Aktor: } Trener\\
+\emph{Opis: } Trener mo¿e usun¹æ swojego podopiecznego z grona podopiecznych\\
+\emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Trener klika w ikonê opcji obok wybranego podopiecznego w tabeli
 	\item Pokazuje siê ma³e menu z dostêpnymi opcjami
@@ -216,61 +265,66 @@ Diagram ulegnie modyfikacji
 	\item Trener wybiera przycisk akceptacji
 	\item Podopieczny zostaje usuniêty z grona podopiecznych tego trenera
 	\item Pokazuje siê informacja z potwierdzeniem usuniêcia podopiecznego z grona podopiecznych
-\end{enumerate}
+\end{enumerate}\ \\
+\newpage
+
 \noindent
-\textbf{Przypadek u¿ycia: } Zmiana danych w profilu\\
-\textbf{Aktor: } Trener, Podopieczny\\
-\textbf{Opis: } Zalogowany u¿ytkownik mo¿e zmieniæ swoje dane w profilu takie jak email, has³o czy lokalizacja\\
-\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie swojego profilu\\
-\textbf{Przebieg: }
+\textbf{PU11: Zmiana danych w profilu}\\
+\emph{Aktor: } Trener, Podopieczny\\
+\emph{Opis: } Zalogowany u¿ytkownik mo¿e zmieniæ swoje dane w profilu takie jak email, has³o czy lokalizacja\\
+\emph{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie swojego profilu\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na ekranie swojego profilu klika w przycisk "`Zmieñ dane"'
 	\item Pokazuje siê formularz z danymi do zmiany
 	\item Zalogowany u¿ytkownik wype³nia wybrane pola formularza danymi
 	\item Zalogowany u¿ytkownik klika w przycisk "`Zapisz zmiany"'
-	\begin{enumerate}
-	\item[--] Wprowadzone dane s¹ poprawne
-	\begin{enumerate}
-	\item[--] Dane u¿ytkownika zosta³y zmienione
-	\end{enumerate}
-	\item[--] Wprowadzone dane s¹ niepoprawne
-	\begin{enumerate}
-	\item[--] System informuje u¿ytkownika o b³êdnie wprowadzonych danych
-	\end{enumerate}
-	\end{enumerate}
-\end{enumerate}
+	\begin{itemize}
+	\item Wprowadzone dane s¹ poprawne
+	\begin{itemize}
+	\item Dane u¿ytkownika zosta³y zmienione
+	\end{itemize}
+	\item Wprowadzone dane s¹ niepoprawne
+	\begin{itemize}
+	\item System informuje u¿ytkownika o b³êdnie wprowadzonych danych
+	\end{itemize}
+	\end{itemize}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Wys³anie wiadomoœci do innego u¿ytkownika\\
-\textbf{Aktor: } Trener, Podopieczny\\
-\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wys³aæ wiadomoœæ do innego u¿ytkownika\\
-\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie profilu innego u¿ytkownika\\
-\textbf{Przebieg: }
+\textbf{PU12: Wys³anie wiadomoœci do innego u¿ytkownika}\\
+\emph{Aktor: } Trener, Podopieczny\\
+\emph{Opis: } Zalogowany u¿ytkownik mo¿e wys³aæ wiadomoœæ do innego u¿ytkownika\\
+\emph{Warunki wstêpne: } U¿ytkownik jest zalogowany. U¿ytkownik znajduje siê na ekranie profilu innego u¿ytkownika\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na ekranie profilu innego u¿ytkownika klika w przycisk "`Wyœlij wiadomoœæ"'
 	\item Pokazuje siê pola tekstowe w które mo¿na wpisaæ wiadomoœæ
 	\item Zalogowany u¿ytkownik wpisuje wiadomoœæ w polu tekstowym
 	\item Zalogowany u¿ytkownik klika w przycisk "`Wyœlij"'
 	\item Wiadomoœæ zostaje wys³ana do innego u¿ytkownika
-\end{enumerate}
-\newpage
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Wylogowanie z systemu\\
-\textbf{Aktor: } Trener, Podopieczny\\
-\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wylogowaæ siê z systemu tym samym koñcz¹c sesje\\
-\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
-\textbf{Przebieg: }
+\textbf{PU13: Wylogowanie z systemu}\\
+\emph{Aktor: } Trener, Podopieczny\\
+\emph{Opis: } Zalogowany u¿ytkownik mo¿e wylogowaæ siê z systemu tym samym koñcz¹c sesje\\
+\emph{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na dowolnym ekranie klika w ikonê profilu na pasku nawigacji
 	\item Pokazuj¹ siê ma³e menu z dostêpnymi opcjami
 	\item Zalogowany u¿ytkownik klika w przycisk "`Wyloguj"'
 	\item Zalogowany u¿ytkownik zostaje wylogowany z systemu
-\end{enumerate}
+\end{enumerate}\ \\
+\newpage
+
 \noindent
-\textbf{Przypadek u¿ycia: } Napisanie posta na blogu\\
-\textbf{Aktor: } Trener, Podopieczny\\
-\textbf{Opis: } Zalogowany u¿ytkownik mo¿e napisaæ posta na swoim profilu\\
-\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
-\textbf{Przebieg: }
+\textbf{PU14: Napisanie posta na blogu}\\
+\emph{Aktor: } Trener, Podopieczny\\
+\emph{Opis: } Zalogowany u¿ytkownik mo¿e napisaæ posta na swoim profilu\\
+\emph{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na dowolnym ekranie klika w przycisk "`Dziennik"' w pasku nawigacji
 	\item Pokazuj¹ siê ekran bloga z napisanymi postami
@@ -278,13 +332,14 @@ Diagram ulegnie modyfikacji
 	\item Pokazuje siê pole tekstowe w którym mo¿na wpisaæ treœæ posta
 	\item Zalogowany u¿ytkownik klika w przycisk "`Zapisz"'
 	\item Post zostaje zapisany na profilu u¿ytkownika
-\end{enumerate}
+\end{enumerate}\ \\
+
 \noindent
-\textbf{Przypadek u¿ycia: } Wyszukanie profilu u¿ytkownika\\
-\textbf{Aktor: } Trener, Podopieczny\\
-\textbf{Opis: } Zalogowany u¿ytkownik mo¿e wyszukaæ profil innego u¿ytkownika\\
-\textbf{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
-\textbf{Przebieg: }
+\textbf{PU15: Wyszukanie profilu u¿ytkownika}\\
+\emph{Aktor: } Trener, Podopieczny\\
+\emph{Opis: } Zalogowany u¿ytkownik mo¿e wyszukaæ profil innego u¿ytkownika\\
+\emph{Warunki wstêpne: } U¿ytkownik jest zalogowany\\
+\emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na dowolnym ekranie klika w ikonê szukania na pasku nawigacji
 	\item Pokazuj¹ siê pole tekstowe w którym mo¿na wpisaæ imiê lub nazwisko szukanego u¿ytkownika
@@ -292,10 +347,28 @@ Diagram ulegnie modyfikacji
 	\item Zalogowany u¿ytkownik klika w ikonê szukania
 	\item Pokazuje siê ekran z list¹ znalezionych u¿ytkowników
 	\item Po klikniêciu w wybranego u¿ytkownika pokazuje siê ekran jego profilu
-\end{enumerate}
+\end{enumerate}\ \\
 
+\newpage
 \section{Diagram pakietów}
-TODO
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=1\textwidth]{rys02/diagram-pakietow}
+	\caption{Diagram pakietów}
+  \label{fig:diagramy}
+\end{figure}
+
+\section{Diagram ERD}
+% TO DO: diagram do przeredagowania. W obecnej postaci na wydrukach bêdzie on nieczytelny !!!!!
+%        proszê "zacieœniæ", poza tym proszê przypilnowaæ, by w œrodku tabel nie by³o zbêdne wolnej przestrzeni (od do³u i z boku) 
+\begin{figure}[htb]
+  \centering
+\includegraphics[width=.9\textwidth]{rys02/diagram_erd}
+  \caption{Diagram ERD}
+  \label{fig:diagramy}
+\end{figure}
+
+\newpage
 
 \section{Architektura aplikacji}
 TODO

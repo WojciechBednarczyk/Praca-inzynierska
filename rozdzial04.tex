@@ -1,1 +1,393 @@
-\chapter{Projekt aplikacji}
+\chapter{Implementacja}
+
+Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programownia obiektowego. Podczas implementacji starano siê uwzglêdniæ dobre praktyki programowania oraz pisanie czystego kodu. Zasady te obejmuj¹ takie zagadanienia jak nazewnictwo klas oraz metod, komentarze w kodzie czy obs³ugê b³êdów. Dobrze zosta³o to opisane w pracy \cite{CleanCode}. Poszczególne komponenty aplikacji zosta³y podzielone na pakiety, które zosta³y opisane w kolejnych sekcjach. Strukturê aplikacji backendowej przedstawia rysunek ~\ref{fig:pakiety}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.475\textwidth]{rys04/podzial_na_pakiety}
+	\caption{Struktura aplikacji backendowej}
+  \label{fig:pakiety}
+\end{figure}
+
+\section{Controller}
+W pakiecie controller znajduj¹ siê restowe kontrolery które pozwalaj¹ na komunikacjê z zewnêtrznymi serwisami poprzez wysy³anie ¿¹dañ HTTP. Podstawowymi metodami HTTP s¹: 
+\begin{itemize}
+\item GET - ¯¹danie dziêki któremu mo¿emy otrzymywaæ dane z serwera
+\item POST - W ciele ¿¹dania przesy³ane s¹ dane (najczêœciej w formacie JSON), które nastêpnie s¹ przetwarzane przez serwer. Wykorzystywana najczêœciej gdy na stronie internetowej znajduj¹ siê formularze.
+\item PUT - ¯¹danie pozwalaj¹ce na aktualizacjê danego zasobu na serwerze
+\item DELETE - ¯¹danie u¿ywane do usuwania zasobu na serwerze
+\end{itemize} 
+
+Dziêki Spring Boot tworzenie kontrolerów w Javie jest bardzo proste. Aby klasa sta³a siê kontrolerem nale¿y oznaczyæ j¹ adnotacj¹ @RestController. Na listingu ~\ref{lst:kontroler} przedstawiono przyk³adowy kontroler w projektowanej aplikacji. Sama klasa oznaczona jest jeszcze adnotacjami @CrossOrigin która zezwala na wykonywanie asynchronicznych zapytañ HTTP do serwisów pod innym adresem, @RequiredArgsConstructor która tworzy konstruktor z polami oznaczonymi final, co pozwala na automatyczne wstrzykiwanie zale¿noœci springowych (w tym przypadku MessageService) oraz @RequestMapping która jako arugemnt przyjmuje œcie¿kê pod któr¹ bêdzie dostêpne projektowanie API. Metody oznaczone s¹ adnotacjami @Mapping z przedrostkiem oznaczaj¹cym metodê HTTP np. @PostMapping które okreœlaj¹ jakie ¿¹dania mo¿na wykonywaæ na danej metodzie. Ponadto adnotacja @PreAuthorize definiuje sposób dostêpu do metody. Bardziej szczegó³owo zostanie to opisane w sekcji \emph{Security}. Sam kontroler ma za zadanie odbieraæ ¿¹dania, natomiast dalsze przetwarzanie informacji odbywa siê w serwisach.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{MessageController}, label=lst:kontroler]
+package pl.edu.pwr.akademiatreningu.controller;
+
+import (...)
+
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/api/auth")
+public class MessageControler {
+
+    private final MessageService messageService;
+
+    @PostMapping("/message")
+    @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
+    public ResponseEntity postMessage(
+            @RequestBody MessageDto messageDto) {
+
+        messageService.saveMessage(messageDto);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping("/messages")
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_MENTEE') or hasRole('ROLE_PERSONAL_TRAINER')")
+    public List<MessageWithSenderDto> getMessages(@RequestParam Integer userId) {
+        return messageService.getUserMessages(userId);
+    }
+}
+
+\end{lstlisting}
+
+\section{DTO}
+W tym pakiecie znajduj¹ siê klasy definiuj¹ce obiekty DTO. Obiekty DTO to obiekty które s¹ przesy³ane poza logikê biznesow¹ aplikacji np. do Frontendu. Zawieraj¹ one tylko te pola które programista chce udostêpniæ poza aplikacj¹. Dziêki takiemu rozwi¹zaniu nie wystawiamy ca³ych obiektów które mog¹ zawieraæ poufne informacje takie jak login, has³o czy adres. To w³aœnie te obiekty lub ich zbiory s¹ zwracane przez kontrolery. 
+
+Na listingu ~\ref{lst:dto} przedstawiono przyk³adow¹ klasê DTO która odpowiada klasie User z projektowanej aplikacji. Klasa ta zawiera tylko pola które chcemy wyœwietliæ na frontendzie. Nie znajdziemy tu pól z loginem, has³em czy emailem.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{UserDto}, label=lst:dto]
+package pl.edu.pwr.akademiatreningu.dto;
+
+import lombok.*;
+
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
+
+    private Integer id;
+
+    private String firstName;
+
+    private String secondName;
+
+    private String location;
+
+    private String role;
+}
+
+\end{lstlisting}
+
+\section{Mapper}
+
+Pakiet ten zawiera specjalne mappery które mapuj¹ obiekt encji na obiekty DTO i odwrotnie. Na listingu ~\ref{lst:mapper} przedstawiono przyk³adow¹ klasê mappera. Mo¿na zauwa¿yæ ¿e zosta³a oznaczona adnotacj¹ @Component co oznacza ¿e nie trzeba tworzyæ obiektu tej klasy, poniewa¿ Spring robi to automatycznie. Zawiera 2 publiczne metody które s¹ wywo³ywane przez odpowiednie serwisy. Metody te jako parametr przyjmuj¹ listê DTO lub encji i zwracaj¹ listy z odpowiednio zmapowanymi obiektami.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{ExerciseMapper}, label=lst:mapper]
+package pl.edu.pwr.akademiatreningu.mapper;
+
+import (...)
+
+@Component
+@RequiredArgsConstructor
+public class ExerciseMapper {
+
+    private final ExerciseRepository exerciseRepository;
+
+    public List<ExerciseDto> mapExercisesToDto(List<Exercise> exercises) {
+        return exercises.stream()
+                .map(this::convertToDto)
+                .toList();
+    }
+
+    private ExerciseDto convertToDto(Exercise exercise) {
+        return ExerciseDto.builder()
+                .id(exercise.getId())
+                .name(exercise.getName())
+                .description(exercise.getDescription())
+                .muscleGroup(exercise.getMuscleGroup())
+                .url(exercise.getUrl())
+                .rating(exercise.getRating())
+                .build();
+    }
+
+    public List<TrainingExercise> mapDtoToExercises(List<TrainingExerciseDto> trainingPlan) {
+        return trainingPlan.stream()
+                .map(this::convertToExercise)
+                .toList();
+    }
+
+    private TrainingExercise convertToExercise(TrainingExerciseDto trainingExerciseDto) {
+        return TrainingExercise.builder()
+                .reps(trainingExerciseDto.getReps())
+                .sets(trainingExerciseDto.getSets())
+                .exercise(exerciseRepository.findById(trainingExerciseDto.getExerciseId()).get())
+                .build();
+    }
+}
+
+\end{lstlisting}
+
+\section{Model}
+W tym pakiecie znajduj¹ siê klasy które s¹ encjami JPA. Reprezentuj¹ one encje w bazie danych. Klasy te charakteryzuj¹ siê tym, ¿e musz¹ posiadaæ bezargumentowy konstruktor. Ponadto, aby zadeklarowaæ klasê jako encjê JPA nale¿y dodaæ adnotacjê @Entity oraz klasa musi zawieraæ pole oznaczone adnotacj¹ @Id. 
+
+Na listingu ~\ref{lst:model1} przedstawiono przyk³adowy kod klasy z pakietu Model. Oprócz wczeœniej wspomnianych adnotacji zawiera ona tak¿e adnotacjê @Table która jako parametr przyjmuje nazwê tabeli w bazie danych której ma byæ encj¹ JPA. Na polu id zosta³a dodana tak¿e adnotacja @GeneratedValue która definiuje wed³ug jakiej strategii przydzielane s¹ id kluczy publicznych w bazie danych. Dodatkowo na polach które maj¹ niejednoznaczne nazwy z polami w bazie danych, zosta³a dodana adnotacja @Column która definiuje które pole w tej klasie odpowiada polu w bazie danych. Ponadto, adnotacjami typu @OneToMany, @OneToOne zosta³y oznaczone pola które definiuj¹ relacje z innymi encjami JPA. Jako argument przyjmuje nazwê pola pod jak¹ bêdzie zadeklarowana encja w innej klasie. 
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{User}, label=lst:model1]
+package pl.edu.pwr.akademiatreningu.model;
+
+import (...)
+
+@Entity
+@Table(name = "users")
+@Getter
+@Setter
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "second_name")
+    private String secondName;
+
+    private String login;
+
+    private String password;
+
+    private String email;
+
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    private String location;
+
+    @Enumerated(EnumType.STRING)
+    private ERole role;
+
+    @OneToMany(mappedBy = "userSender")
+    private Set<Message> sendMessages;
+
+    @OneToMany(mappedBy = "userReceiver")
+    private Set<Message> receivedMessages;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Training> trainings;
+
+    @OneToOne(mappedBy = "user")
+    private Mentee mentee;
+
+    @OneToOne(mappedBy = "user")
+    private PersonalTrainer personalTrainer;
+
+    public User(String firstName, String secondName, String login, String password, String email, Date dateOfBirth, String location, ERole role) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.location = location;
+        this.role = role;
+    }
+
+    public User() {
+
+    }
+}
+
+\end{lstlisting}
+
+Powi¹zana encja natomiast musi zawieraæ to pole z zadeklarowan¹ wczeœniej nazw¹. Ponadto nale¿y oznaczyæ je adnotacj¹ @JoinColumn podaj¹c jako argument podaj¹c nazwê klucza obcego. Zosta³o to przedstawione na kolejnym listingu ~\ref{lst:model2}.  
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{Post}, label=lst:model2]
+package pl.edu.pwr.akademiatreningu.model;
+
+import (...)
+
+@Entity
+@Table(name = "posts")
+@Getter
+@Setter
+public class Post {
+
+    (...)
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+}
+
+\end{lstlisting}
+
+\section{Repository}
+
+Pakiet ten zawiera repozytoria JPA które wykonuj¹ operacje na bazie danych. Repozytoria te s¹ interfejsami które rozszerzaj¹ interfejs JpaRepository z pakietu Spring Data JPA. Interfejsy te s¹ sparametryzowane i przyjmuj¹ 2 parametry. Pierwszy z nich okreœla typ encji która jest przechowywana w repozytorium, natomiast drugi okreœla typ identyfikatora encji. JpaRepository udostêpnia metody dla operacji typu CRUD. Dla operacji których repozytorium nie udostêpnia domyœlnie , nale¿y zadeklarowaæ w³asne metody które tworzy siê poprzez ³¹czenie nazwy akcji oraz pól encji.
+
+Na listingu ~\ref{lst:repository} przedstawiono przyk³adowe repozytorium z projektowanej aplikacji. W przypadku operacji szukania konkretnej encji, repozytorium zwraca typ Optional który mo¿e przechowywaæ znalezion¹ encjê lub wartoœæ null w przypadku gdy nie znaleziono encji w bazie danych. Repozytoria oznaczone s¹ adnotacjami @Repository.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy interfejsu UserRepository, label=lst:repository]
+package pl.edu.pwr.akademiatreningu.repository;
+
+import (...)
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    Optional<User> findByLogin(String login);
+
+    Optional<User> findById(Integer id);
+
+    Boolean existsByLogin(String login);
+
+    Boolean existsByEmail(String email);
+
+    List<User> findByFirstNameOrSecondNameOrLocation(String firstName, String secondName, String location);
+}
+
+\end{lstlisting}
+
+\section{Security}
+
+W pakiecie tym znajduj¹ siê klasy odpowiedzialne za autoryzacje i uwierzytelnianie w projektowanej aplikacji. Uwierzytelnianie to weryfikacja to¿samoœci u¿ytkownika. W projektowanej aplikacji odbywa siê poprzez podanie loginu i has³a. Autoryzacja natomiast, to nadanie odpowiednich uprawnieñ do korzystania z aplikacji. W aplikacji skorzystano z JWT który przechowywany jest w plikach Cookie. JWT jest otwartym standardem, który pozwala na wymianê danych miêdzy dwoma stronami. Przekazywane dane s¹ zakodowane. Wykorzystywany jest przede wszystkim do autoryzacji aplikacji. Struktura JWT sk³ada siê z trzech elementów: nag³ówka, zawartoœci oraz sygnatury. W projektowanej aplikacji w JWT przechowywana bêdzie informacja o id u¿ytkownika oraz jego roli w systemie. 
+
+Jedn¹ z podstawowych funkcjonalnoœci aplikacji jest mo¿liwoœæ za³o¿enia konta w systemie z odpowiedni¹ rol¹ oraz mo¿liwoœæ zalogowania siê do niego. Bez konta u¿ytkownika funkcjonalnoœæ ca³ej aplikacji jest znacznie uszczuplona. Na rysunku ~\ref{fig:autoryzacja} przedstawiono w jaki sposób tworzone jest konto u¿ytkownika oraz w jaki sposób system korzysta z JWT.
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys04/autoryzacja}
+	\caption{Wykorzystanie JWT w projektowanej aplikacji}
+  \label{fig:autoryzacja}
+\end{figure}
+
+W pakiecie security znajduje siê klasa WebSecurityConfig która jest odpowiedzialna za konfiguracjê Spring Security w projektowanej aplikacji. Klasa ta musi byæ oznaczona adnotacj¹ @Configuration oraz @EnableWebSecurity które pozwol¹ automatycznie znaleŸæ konfiguracje przez Springa. Na listingu ~\ref{lst:webConfig} przedstawiono konfiguracjê w projektowanej aplikacji. Oprócz wczeœniej wspomnianych adnotacji klasa oznaczona jest tak¿e adnotacj¹ @EnableGlobalMethodSecurity w której ustawiany jest parametr prePostEnabled na wartoœæ true. Pozwala to na korzystanie z adnotacji @PreAuthorize na kontrolerach dziêki którym autoryzacja przebiega przed wywo³aniem metody.
+
+W klasie mo¿na wyró¿niæ beany PasswordEncoder, SecurityFilterChain oraz DaoAuthenticationProvider. PasswordEncoder zwraca implementacjê enkodera has³a korzystaj¹cego z funkcji hashuj¹cej Bcrypt. SecurityFilterChain odpowiada za skonfigurowanie filtra. Wszystkie ¿¹dania przychodz¹ce do aplikacji pocz¹tkowo przechodz¹ przez filtr, po czym je¿eli ¿¹danie przesz³o przez filtr przeprowadzana jest w³aœciwa obs³uga ¿¹dania. DaoAuthenticationProvider ustawia enkoder has³a oraz serwis odpowiedzialny za dostarczanie informacji o u¿ytkowniku.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{WebSecurityConfig}, label=lst:webConfig]
+package pl.edu.pwr.akademiatreningu.security;
+
+import (...)
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        prePostEnabled = true)
+public class WebSecurityConfig {
+
+    (...)
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/test/**").permitAll()
+                .antMatchers("/api/exercises/**").permitAll()
+                .anyRequest().authenticated();
+
+        http.authenticationProvider(authenticationProvider());
+
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    (...)
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
+    }
+
+    (...)
+}
+\end{lstlisting}
+
+W pakiecie security znajduje siê tak¿e klasa JwtUtils, która dostarcza metod do generowania, parsowania z cookie oraz walidacji JWT. W pliku application.properties ustawiono 3 wartoœci odnosz¹ce siê do tego pod jak¹ nazw¹ zapisywany bêdzie JWT, na podstawie jakiego klucza bêdzie szyfrowany JWT oraz jak d³ugo JWT bêdzie aktywny.
+
+\section{Service}
+
+W tym pakiecie zawarta jest ca³a logika biznesowa aplikacji. Znajduj¹ siê w nim serwisy oznaczone adnotacjami @Service dziêki czemu s¹ tworzone automatycznie przez kontekst aplikacji Springa. Do nich przekazywane s¹ dane odbierane przez kontrolery. Nastêpnie korzystaj¹ z mapperów, repozytoriów lub innych serwisów przetwarzaj¹c dane. 
+
+Na listingu ~\ref{lst:service} przedstawiono przyk³adowy serwis z projektowanej aplikacji odpowiedzialny za przetwarzanie informacji zwi¹zanych z opiniami trenera personalnego. Zawiera on dwie metody do zapisywania opinii do konkretnego trenera oraz pobrania wszystkich opinii dla danego trenera. Metoda odpowiedzialna za zapisanie opinii przeprowadza takie operacje jak sprawdzenie czy opinia mo¿e zostaæ zapisana oraz obliczanie œredniej oceny trenera na podstawie wszystkich wystawionych opinii. Druga metoda pobiera z repozytorium opinie na podstawie id trenera oraz zwraca do kontrolera zmapowan¹ listê obiektów DTO.
+
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{OpinionService}, label=lst:service]
+package pl.edu.pwr.akademiatreningu.service;
+
+import (...)
+
+@Service
+@RequiredArgsConstructor
+public class OpinionService {
+
+    private final OpinionRepository opinionRepository;
+
+    private final UserRepository userRepository;
+
+    private final PersonalTrainerRepository personalTrainerRepository;
+
+    private final OpinionMapper opinionMapper;
+
+    public String saveOpinion(OpinionDto opinionDto) {
+
+        User user = userRepository.findById(opinionDto.getUserId()).get();
+
+        if (user.getMentee().getPersonalTrainer() == null || user.getMentee().getPersonalTrainer().getUser().getId() != opinionDto.getPersonalTrainerId()) {
+            return "Nie mozesz wystawic opinii dla nie swojego trenera";
+        } else if (opinionRepository.findByPersonalTrainerIdAndMenteeId(user.getMentee().getPersonalTrainer().getId(), user.getMentee().getId()).isPresent()) {
+            return "Wystawiono juz opinie dla tego trenera";
+        } else {
+            Opinion opinion = Opinion.builder()
+                    .description(opinionDto.getReview())
+                    .rating(opinionDto.getRating())
+                    .personalTrainer(user.getMentee().getPersonalTrainer())
+                    .mentee(user.getMentee())
+                    .build();
+            opinionRepository.save(opinion);
+            Integer count = opinionRepository.countAllByPersonalTrainerId(user.getMentee().getPersonalTrainer().getId());
+            List<Opinion> opinions = opinionRepository.findAll();
+            Integer sum = 0;
+            for (Opinion iterator : opinions) {
+                sum += iterator.getRating();
+            }
+            BigDecimal value = new BigDecimal(sum / (float) count);
+            value = value.setScale(1, RoundingMode.HALF_EVEN);
+            Float overallRating = value.floatValue();
+            PersonalTrainer personalTrainer = user.getMentee().getPersonalTrainer();
+            personalTrainer.setRating(overallRating);
+            personalTrainerRepository.save(personalTrainer);
+            return "Opinia zostala zapisana";
+        }
+    }
+
+    public List<OpinionDto> getOpinions(Integer personalTrainerUserId) {
+        User user = userRepository.findById(personalTrainerUserId).get();
+        List<Opinion> opinions = opinionRepository.findAllByPersonalTrainerId(user.getPersonalTrainer().getId());
+        return opinionMapper.mapOpinionsToDto(opinions);
+    }
+}
+
+\end{lstlisting}

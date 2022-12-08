@@ -1,1 +1,105 @@
 \chapter{Wykorzystane technologie}
+
+Wybór technologii jest wa¿nym etapem w tworzeniu tworzeniu ka¿dej aplikacji. Obecnie istnieje mnóstwo technologii programistycznych które oferuj¹ wiele mo¿liwoœci. Ka¿da z nich ma swoje wady i zalety. Nale¿y przeanalizowaæ które rozwi¹zania bêd¹ odpowiednie zarówno dla programisty jak i dla aplikacji. Podczas wyboru technologii do projektowanej aplikacji autor kierowa³ siê przede wszystkim doœwiadczeniem w poszczególnych technologiach. Uwzglêdniono tak¿e takie aspekty jak dobrze napisana dokumentacja, ogólnodostêpnoœæ czy popularnoœæ dziêki której mo¿na by³o rozwi¹zywaæ napotkane problemy z pomoc¹ spo³ecznoœci. W aplikacji wykorzystywano technologie w wersjach najnowszych w momencie pisania pracy.
+
+\section{G³ówne technologie programistyczne}
+
+\textbf {Java} - Jest to jeden z najpopularniejszych jêzyków programowania do tworzenia oprogramowania. Wed³ug indeksu PYPL z 2022 roku, który opiera siê na iloœci wyszukiwañ danego jêzyka w serwisie Google, Java zajê³a 2 pozycjê z popularnoœci¹ na poziomie 16.93\%. Powsta³ w 1995 roku, a za jego twórcê uwa¿a siê Jamesa Goslinga. Jêzyk ten opiera siê na obiektowoœci. Kody Ÿród³owe s¹ kompilowane do kodu bajtowego który jest wykonywany przez maszynê wirtualn¹ Javy. G³ówn¹ jego zalet¹ jest wieloplatformowoœæ. Kod mo¿e zostaæ napisany na dowolnym urz¹dzeniu i po skompilowaniu uruchomiony na dowolnym urz¹dzeniu wyposa¿onym w wirtualn¹ maszynê Javy. Na potrzeby aplikacji wybrano Jave w wersji 17.\\
+
+\noindent
+\textbf{Spring} - Powsta³ w 2003 roku, a jego pierwszym twórc¹ by³ Rod Johnson. Jest frameworkiem najchêtniej wykorzystywanym przez programistów Java ze wzglêdu na swoj¹ wszechstronnoœæ. Ma mo¿liwoœæ integracji z innymi technologiami backendowymi czy frontendowymi. Ponadto jest on ³atwy do nauki, oraz skraca iloœæ pisanego kodu. Oferuje on narzêdzia do tworzenia aplikacji webowych, mikroserwisów, rozwi¹zañ chmurowych oraz wiele innych. G³ównym za³o¿eniem Springa jest szybsze oraz ³atwiejsze tworzenie aplikacji. Jego dzia³anie oparte jest o tzw. Beany które s¹ obiektami zarz¹dzanymi przez kontekst aplikacji Springa. S¹ one tworzone automatycznie przez Springa, a programista tylko wskazuje miejsce gdzie ich u¿yæ. Nazywa siê to wstrzykiwaniem zale¿noœci. Mówi¹c o Springu bardzo czêsto w domyœle mówi siê o jednym z jego modu³ów Spring Boot, poniewa¿ wielu programistów nie wyobra¿a sobie aplikacji Springa bez niego\cite{Spring}.\\
+
+\noindent
+\textbf{Spring Boot} - Najpopularniejszy modu³ Springa. Jego g³ówn¹ zalet¹ jest autokonfiguracja. Programista nie musi martwiæ siê pisaniem skryptów konfiguracyjnych poniewa¿ Spring Boot wygeneruje j¹ sam na podstawie dostarczonych mu zale¿noœci. Ponadto zapewania skonfigurowany kontener aplikacji na uruchomienie aplikacji jednym klikniêciem. W aplikacji wybrano wersjê 2.7.4.\\
+
+\noindent
+\textbf{Spring Data JPA} - Modu³ Springa u³atwiaj¹cy implementacje repozytoriów bazuj¹cych na JPA. JPA to standard mapowania relacyjno-obiektowego dla jêzyka Java. Dziêki Spring Data JPA mo¿na w ³atwy sposób zaimplementowaæ warstwê bazy danych z u¿yciem minimalnej iloœci kodu. Repozytoria maj¹ postaæ interfejsu Java i zawieraj¹ metody które u¿ywaj¹ konwencji nazw okreœlaj¹cych sposób pracy z danymi. Samo repozytorium musi byæ oznaczone adnotacj¹ @Repository i rozszerzaæ interfejs JpaRepository.\\
+
+\noindent
+\textbf{Spring Security} - Modu³ który w ³atwy sposób pozwala na uwierzytelnianie i autoryzacje w aplikacji Java. Oferuje on m.in. zabezpieczenie kontrolerów poprzez ograniczenie dostêpu do metod bazuj¹c na roli w systemie. W przesz³oœci Spring Security by³ konfigurowany przez d³ugie pliki XML, które by³y problematyczne w odczytywaniu. Obecnie konfiguracja oparta jest na Javie, dziêki czemu jest ³atwiejsza oraz czytelniejsza.\\
+
+\noindent
+\textbf{Spring Web} - Ostatni wykorzystany modu³ w projektowanej aplikacji. Oferuje on tworzenie kontrolerów które pozwalaj¹ na komunikacjê z innymi serwisami poprzez ¿¹dania HTTP. Kontrolery oznaczone s¹ adnotacj¹ @RestController, która pod sob¹ ma jeszcze adnotacje @Controller oraz @Component. Serwer aplikacji wystawia endpointy ze zdefiniowanymi przez programistê adresami URL oraz dostêpnymi ¿¹daniami HTTP.\\
+
+\noindent
+\textbf{Angular} - Otwarty framework do tworzenia aplikacji typu SPA. Jest rozwijany przez firmê Google, a jego pierwsza wydanie powsta³o w 2016 roku. Pocz¹tkowo mia³ on byæ kontynuacj¹ frameworku AngularJS. Zosta³ napisany w jêzyku TypeScript. Oparty jest na komponentach co u³atwia skalowalnoœæ budowanej aplikacji. Jego kolejn¹ zalet¹ jest ³atwoœæ i szybkoœæ w tworzeniu aplikacji dziêki narzêdziu Angular CLI. W aplikacji wykorzystano Angular w wersji 14.\\
+
+\noindent
+\textbf{TypeScript} - Jêzyk programowania który rozszerza jêzyk JavaScript o statyczne typowanie oraz programowanie zorientowane obiektowo. Zosta³ stworzony przez firmê Microsoft w 2012 roku. TypeScript jest konwertowany do jêzyka JavaScript dlatego ka¿dy program napisany w tym jêzyku jest poprawnym programem w jêzyku TypeScript.\\
+
+\noindent
+\textbf{CSS} - Jêzyk programowania który definiuje w jaki sposób elementy s¹ wyœwietlanie na stronie WWW. Zosta³ stworzony w 1996 roku przez firmê W3C. Jego celem by³o tak¿e rozdzielenie struktury dokumentu od jego formy prezentacji.\\
+
+\noindent
+\textbf{HTML} - Jêzyk znacznikowy który jest u¿ywany do tworzenia dokumentów hipertekstowych. Definiuje jakie informacje s¹ wyœwietlane na stronie WWW. Obecnie najnowsz¹ wersj¹ HTML jest wersja 5.\\
+
+\noindent
+\textbf{MySQL} - Jest jednym z najpopularniejszych systemów zarz¹dzania relacyjnymi bazami danych. Jest wspierany przez firmê Oracle, a jego pierwsze wydanie mia³o miejsce w 1995 roku. Oferuje on bardzo wysok¹ wydajnoœæ dziêki czemu mo¿e bez problemu obs³ugiwaæ du¿¹ iloœæ zapytañ. Oprócz tego jest uniwersalny i dostêpny na wielu systemach operacyjnych. W aplikacji wykorzystano wersjê 8.0.29.\\
+
+\noindent
+\textbf{Git} - Jest najpopularniejszym systemem kontroli wersji. Jego twórc¹ by³ Linus Torvalds, a pierwsza wersja zosta³a wydana w 2005 roku. Jego g³ównymi zaletami s¹ efektywnoœæ w pracy nad du¿ymi projektami, mo¿liwoœæ pracy na lokalnym repozytorium oraz wsparcie dla pracy na kilku ga³êziach.\\
+
+\section{Biblioteki}
+\noindent
+\textbf{Angular Material} - Biblioteka komponentów angularowych które s¹ wysokiej jakoœci, przetestowane oraz ³atwe w u¿yciu. Oferuje m.in. tabele, ikony, przyciski i wiele innych. Komponenty s¹ modyfikowalne wed³ug specyfikacji.\\
+
+\noindent
+\textbf{Lombok} - Biblioteka Javy która u³atwia tworzenie klas. Dziêki zastosowaniu adnotacji mo¿na pozbyæ siê kodu takiego jak gettery, settery oraz konstruktory które zostan¹ wygenerowane automatycznie dziêki czemu tworzony kod jest krótszy oraz bardziej czytelny.\\
+
+\noindent
+\textbf{JUnit} - Biblioteka do testów jednostkowych. Aktualnie najnowsz¹ wersj¹ jest JUnit 5 który sk³ada siê z 3 komponentów.
+\begin{itemize}
+\item JUnit Platform - Platforma do uruchamiania testów.
+\item JUnit Jupiter - Oferuje API do pisania testów jednostkowych.
+\item JUnit Vintage - Oferuje API do uruchamiania testów napisanych w starszych wersjach JUnit\\
+\end{itemize}
+
+\noindent
+\textbf{Mockito} - Biblioteka która u³atwia testowanie kodu. Pozwala tworzyæ tzw. mocki które s¹ imitacj¹ rzeczywistych obiektów. Mocki oferuj¹ zmianê zachowania obiektu, a tak¿e weryfikacje wywo³añ ich metod.\\
+
+\noindent
+\textbf{Flyway} - Pozwala na wersjonowanie bazy danych. Flyway tworzy w bazie danych tabelê z histori¹ uruchomionych skryptów. Skrypty te s¹ uruchamiane wraz ze startem aplikacji o ile nie znajduj¹ siê w tabeli.\\
+
+\noindent
+\textbf{JJWT} - Biblioteka oferuj¹ca wsparcie JWT dla wirtualnej maszyny Javy.\\
+
+\section{Narzêdzia}
+
+\noindent
+\textbf{Intellij IDEA} - Zintegrowane œrodowisko programistyczne od firmy JetBrains które przyœpiesza pisanie kodu w jêzyku Java oraz dziêki wbudowanym funkcjom u³atwia tworzenie aplikacji. Zawiera szybki kompilator oraz wsparcie dla Javy 8.\\
+
+\noindent
+\textbf{SonarLint} - Plugin do Intellij IDEA który podczas pisania kodu znajduje b³êdy w programie oraz z³e praktyki programowania. Ponadto informuje jak rozwi¹zaæ te problemy.\\
+
+\noindent
+\textbf{Apache Maven} - Narzêdzie do automatycznego budowania projektu dla jêzyka Java. Plik konfiguracyjny ma postaæ XML'a i nosi nazwê POM. Budowanie projektu oparte jest na cyklach. Domyœlnie cykle wygl¹daj¹ nastêpuj¹co:
+\begin{itemize}
+\item Validate - przeprowadza weryfikacje projektu czy wszystkie potrzebne informacje s¹ dostêpne
+\item Compile - kompiluje kody Ÿród³owe
+\item Test - przeprowadza testy jednostkowe
+\item Package - ze skompilowanych Ÿróde³ tworzy archiwum do dystrybucji o odpowiednim formacie np. JAR
+\item Verify - sprawdza czy projekt spe³nia kryteria jakoœci 
+\item Install - instaluje archiwum w lokalnym repozytorium
+\item Deploy - kopiuje archiwum do zdalnego repozytorium\\
+\end{itemize}
+
+\noindent
+\textbf{Angular CLI} - Jest narzêdziem dostêpnym z poziomu linii komend. Zawiera zestaw komend które u³atwiaj¹ tworzenie aplikacji w angularze. Najpopularniejsze komendy:
+\begin{itemize}
+\item ng build - buduje finaln¹ wersjê aplikacji
+\item ng serve - uruchamia aplikacjê
+\item ng generate - generuje plik w zale¿noœci od wybranej opcji (np. komponent, serwis)
+\item ng test - uruchamia testy jednostkowe
+\item ng e2e - uruchamia testy funkcjonalne\\
+\end{itemize}
+
+\noindent
+\textbf{Visual Studio Code} - Edytor kodu Ÿród³owego który oferuje kolorowanie sk³adni. Wykorzystywany chêtnie do pisania kodu aplikacji frontendowych.\\
+
+\noindent
+\textbf{DBeaver} - Narzêdzie do administrowania baz¹ danych które wspiera najpopularniejsze systemy zarz¹dzania baz¹ danych.\\
+
+\noindent
+\textbf{Postman} - Aplikacja dla programistów pozwalaj¹ca na wysy³anie ¿¹dañ HTTP. S³u¿y m.in. do testowania API.\\
+
+
