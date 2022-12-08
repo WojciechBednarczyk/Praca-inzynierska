@@ -1,1 +1,279 @@
-\chapter{Å‚}
+\chapter{Interfejs graficzny}
+
+Dobrze zaprojektowana aplikacja to taka która nie wymaga instrukcji obs³ugi. Aplikacja powinna byæ intuicyjna dla u¿ytkownika, tak aby nie musia³ siê zastanawiaæ w jaki sposób poprawnie z niej korzystaæ. Istniej¹ aplikacje w których po wejœciu na stronê startow¹ ciê¿ko siê odnaleŸæ. Mnóstwo obrazków czy reklam utrudnia korzystanie z takiej aplikacji przez co niektóre z funkcjonalnoœci s¹ trudniejsze do skorzystania. W³aœnie dlatego podczas prac nad aplikacj¹ skupiono siê na prostocie i przystêpnym wygl¹dzie dziêki któremu ³atwo mo¿na nawigowaæ po aplikacji. Wszystko po to, aby zapewniæ jak najwiêkszy komfort podczas korzystania przez u¿ytkownika. W zale¿noœci od roli w systemie dostêpne s¹ ró¿ne interfejsy graficzne.
+
+\section{Ogólnodostêpny interfejs}
+
+Podstawowy interfejs z niewielk¹ iloœci¹ dostêpnych funkcjonalnoœci. Dostêpny jest dla wszystkich u¿ytkowników systemu, zarówno tych zalogowanych, jak i niezalogowanych.
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_startowa}
+	\caption{Strona startowa aplikacji}
+  \label{fig:strona_startowa}
+\end{figure}
+
+Po wpisaniu adresu url aplikacji ukazuje siê strona startowa aplikacji ~\ref{fig:strona_startowa} wraz z tekstem powitalnym. Z tego miejsca mo¿emy przejœæ do innych komponentów.
+\begin{enumerate}
+\item Przycisk po klikniêciu którego zostajemy przekierowani do ekranu logowania
+\item Przycisk po klikniêciu którego zostajemy przekierowani do ekranu rejestracji
+\item Przycisk po klikniêciu którego zostajemy przekierowani do atlasu æwiczeñ w którym znajduje siê tabela z æwiczeniami
+\item Tytu³ aplikacji po klikniêciu którego zostajemy przekierowani na stronê startow¹
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_rejestracji}
+	\caption{Strona rejestracji u¿ytkownika}
+  \label{fig:strona_rejestracji}
+\end{figure}
+
+Po przejœciu na stronê rejestracji nowego u¿ytkownika ukazuje siê formularz do stworzenia nowego konta ~\ref{fig:strona_rejestracji}.
+\begin{enumerate}
+\item Pole tekstowe do wprowadzenia imienia
+\item Pole tekstowe do wprowadzenia nazwiska
+\item Pole tekstowe do wprowadzenia loginu
+\item Pole tekstowe do wprowadzenia has³a
+\item Rozwijalne menu do wybrania roli
+\item Pole tekstowe do wprowadzenia e-maila
+\item Datepicker po klikniêciu którego mo¿na wybraæ datê urodzenia
+\item Hyperlink po klikniêciu którego zostajemy przeniesieni na stronê logowania
+\item Przycisk po klikniêciu którego wysy³ane jest ¿¹danie z danymi potrzebnymi do utworzenia konta
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_logowania}
+	\caption{Strona logowania}
+  \label{fig:strona_logowania}
+\end{figure}
+
+Po przejœciu na stronê logowania ukazuje siê formularz pozwalaj¹cy zalogowaæ siê do swojego konta~\ref{fig:strona_logowania}.
+\begin{enumerate}
+\item Pole tekstowe do wprowadzenia loginu
+\item Pole tekstowe do wprowadzenia has³a
+\item Hyperlink po klikniêciu którego zostajemy przeniesieni na stronê rejestracji
+\item Przycisk po klikniêciu którego wysy³ane jest ¿¹danie z danymi potrzebnymi do zalogowania siê
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/atlas_cwiczen}
+	\caption{Strona atlasu æwiczeñ}
+  \label{fig:atlas_cwiczen}
+\end{figure}
+
+Po przejœciu na stronê atlasu æwiczeñ ukazuje siê tabela z æwiczeniami~\ref{fig:atlas_cwiczen}.
+\begin{enumerate}
+\item Tabela w której znajduj¹ siê æwiczenia
+\item Wiersz w tabeli po klikniêciu zostajemy przeniesieni na stronê ze szczegó³ami æwiczenia
+\item Rozwijalne menu pozwalaj¹ce na wybranie liczby wierszy które maj¹ byæ wyœwietlane na jednej stronie tabeli
+\item Przyciski do nawigacji miêdzy stronami tabeli
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/szczegoly_cwiczenia}
+	\caption{Strona ze szczegó³ami æwiczenia}
+  \label{fig:szczegoly_cwiczenia}
+\end{figure}
+
+Po przejœciu na stronê ze szczegó³ami æwiczenia ukazuje siê film instrukta¿owy oraz opis æwiczenia~\ref{fig:szczegoly_cwiczenia}.
+\begin{enumerate}
+\item Film instrukta¿owy jak poprawnie wykonaæ æwiczenie
+\item Opis jak poprawnie wykonaæ æwiczenie
+\end{enumerate}
+
+\newpage
+
+\section{Interfejs dostêpny dla zalogowanych u¿ytkowników}
+
+Interfejs który jest dostêpny dla zalogowanych u¿ytkowników, zarówno z rol¹ trenera, jak i podopiecznego. Zawiera on wiêcej funkcjonalnoœci od interfejsu dla niezalogowanych u¿ytkowników.
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_startowa_zalogowany}
+	\caption{Strona startowa dla zalogowanego u¿ytkownika}
+  \label{fig:strona_startowa_zalogowany}
+\end{figure}
+
+Po zalogowaniu siê u¿ytkownika, strona startowa zmienia swój wygl¹d~\ref{fig:strona_startowa_zalogowany}.
+\begin{enumerate}
+\item Przycisk po klikniêciu którego pojawia siê menu
+\item Przycisk po klikniêciu którego zostajemy przeniesieni na stronê swojego profilu
+\item Przycisk po klikniêciu którego zostajemy przeniesieni na stronê z wiadomoœciami u¿ytkownika
+\item Przycisk po klikniêciu którego zostajemy wylogowani z systemu
+\item Przycisk po klikniêciu którego zostajemy przeniesieni na stronê z wyszukiwaniem innych u¿ytkowników
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_wiadomosci}
+	\caption{Strona z wiadomoœciami u¿ytkownika}
+  \label{fig:strona_wiadomosci}
+\end{figure}
+
+Po przejœciu na stronê z wiadomoœciami u¿ytkownika ukazuj¹ nam siê wiadomoœci wys³ane do danego u¿ytkownika~\ref{fig:strona_wiadomosci}.
+\begin{enumerate}
+\item Tabela z wiadomoœciami wys³anymi do u¿ytkownika po klikniêciu której wyœwietla siê treœæ wiadomoœci
+\item Miejsce w którym wyœwietlana jest treœæ wiadomoœci
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_wyszukiwania}
+	\caption{Strona wyszukiwania innnych u¿ytkowników}
+  \label{fig:strona_wyszukiwania}
+\end{figure}
+
+Po przejœciu na stronê wyszukiwania u¿ytkowników ukazujê nam siê panel do wyszukiwania u¿ytkowników~\ref{fig:strona_wyszukiwania}.
+\begin{enumerate}
+\item Pole tekstowe do wprowadzenia imienia
+\item Pole tekstowe do wprowadzenia nazwiska
+\item Pole tekstowe do wprowadzenia lokalizacji
+\item Przycisk po klikniêciu którego parametry wyszukiwania s¹ przesy³ane na serwer
+\item Tabela z wynikiem wyszukiwania
+\item Wiersz w tabeli po klikniêciu którego zostajemy przekierowani na profil wybranego u¿ytkownika
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/profil_trenera}
+	\caption{Profil wyszukanego trenera}
+  \label{fig:profil_trenera}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/profil_podopiecznego}
+	\caption{Profil wyszukanego podopiecznego}
+  \label{fig:profil_podopiecznego}
+\end{figure}
+
+Po przejœciu na profil u¿ytkownika wyœwietlaj¹ siê informacje o nim~\ref{fig:profil_trenera}~\ref{fig:profil_podopiecznego}.
+\begin{enumerate}
+\item Informacje na temat u¿ytkownika
+\item Przycisk po klikniêciu którego otwiera siê dialog gdzie mo¿emy wys³aæ wiadomoœæ do u¿ytkownika
+\item Je¿eli wybrany u¿ytkownik jest trenerem, wyœwietlane s¹ tak¿e opinie o nim
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/wiadomosc_dialog}
+	\caption{Dialog do wysy³ania wiadomoœci}
+  \label{fig:wiadomosc_dialog}
+\end{figure}
+
+Po klikniêciu w przycisk wys³ania wiadomoœci wyœwietlaja siê dialog w którym mo¿na wpisaæ swoj¹ wiadomoœæ~\ref{fig:wiadomosc_dialog}.
+\begin{enumerate}
+\item Pole tekstowe do wprowadzenia treœci wiadomoœci
+\item Przycisk do anulowania wysy³ania wiadomoœci
+\item Przycisk do wysy³ania wiadomoœci
+\end{enumerate}
+
+\newpage
+\section{Interfejs dostêpny dla podopiecznego}
+
+Interfejs który dostêpny dla u¿ytkownika z rol¹ podopiecznego. Oferuje funkcjonalnoœci które s¹ dostêpne wy³¹cznie dla tej roli w systemie.
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/strona_startowa_podopieczny}
+	\caption{Strona startowa podopiecznego}
+  \label{fig:strona_startowa_podopieczny}
+\end{figure}
+
+Po zalogowaniu siê jako u¿ytkownik z rol¹ podopiecznego wyœwietla siê zmieniona strona startowa~\ref{fig:strona_startowa_podopieczny}.
+\begin{enumerate}
+\item Przycisk po klikniêciu którego zostajemy przekierowani na stronê z naszymi planami treningowymi
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/plany_treningowe}
+	\caption{Strona z planami treningowymi podopiecznego}
+  \label{fig:plany_treningowe}
+\end{figure}
+
+Po przejœciu na stronê z planami treningowymi wyœwietla siê tabela z przypisanymi planami do podopiecznego~\ref{fig:plany_treningowe}.
+\begin{enumerate}
+\item Tabela z przypisanymi planami treningowymi
+\item Wiersz w tabeli który reprezentuje plan treningowy. Po klikniêciu plan treningowy jest wyœwietlany w odpowiednim miejscu
+\item Tabela z æwiczeniami które znajduj¹ siê w wybranym planie treningowym
+\item Wiersz w tabeli który reprezentuje æwiczenie. Po klikniêciu zostajemy przekierowani do strony ze szczegó³ami æwiczenia
+\end{enumerate}
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/moj_profil_podopiecznego}
+	\caption{Profil podopiecznego}
+  \label{fig:moj_profil_podopiecznego}
+\end{figure}
+
+Po przejœciu na stronê swojego profilu pokazuj¹ siê informacje o zalogowanym u¿ytkowniku~\ref{fig:moj_profil_podopiecznego}.
+\begin{enumerate}
+\item Miejsce w którym wyœwietlane s¹ informacje o zalogowanym podopiecznym
+\item Przycisk po klikniêciu którego otwiera siê dialog do edycji danych
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/edycja_danych_podopieczny}
+	\caption{Dialog z formularzem do edycji danych podopiecznego}
+  \label{fig:edycja_danych_podopieczny}
+\end{figure}
+
+Po klikniêciu przycisku do edycji danych otwiera siê dialog z formularzem do edycji danych~\ref{fig:edycja_danych_podopieczny}.
+\begin{enumerate}
+\item Pole do wprowadzenia wagi
+\item Pole do wprowadzenia wzrostu
+\item Pole do wprowadzenia tkanki t³uszczowej
+\item Pole do wprowadzenia obwodu talii
+\item Pole do wprowadzenia obwodu bicepsa
+\item Pole do wprowadzenia obwodu uda
+\item Pole do wprowadzenia obwodu klatki
+\item Pole do wprowadzenia lokalizacji
+\item Przycisk po klikniêciu którego wysy³ane jest ¿¹danie z danymi do edycji
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/profil_trenera_widziany_przez_podopiecznego}
+	\caption{Profil wyszukanego trenera przez podopiecznego}
+  \label{fig:profil_trenera_widziany_przez_podopiecznego}
+\end{figure}
+
+Po przejœciu na profil trenera bêd¹c zalogowanym jako podopieczny pojawiaj¹ siê nowe mo¿liwoœci~\ref{fig:profil_trenera_widziany_przez_podopiecznego}.
+\begin{enumerate}
+\item Przycisk po klikniêciu którego wysy³ane jest zapytanie do trenera o przyjêcie do grona podopiecznych
+\item Przycisk po klikniêciu którego otwiera siê dialog w którym mo¿emy wystawiæ opiniê trenerowi
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.9\textwidth]{rys05/wystawianie_opinii}
+	\caption{Dialog z formularzem do wystawienia opinii trenerowi}
+  \label{fig:wystawianie_opinii}
+\end{figure}
+
+Po klikniêciu w przycisk wystawienia opinii, otwiera siê dialog z formularzem do wystawienia opinii trenerowi~\ref{fig:wystawianie_opinii}.
+\begin{enumerate}
+\item Pole tekstowe do wprowadzenia treœci opinii
+\item Pole do wprowadzenia oceny trenera
+\item Przycisk po klikniêciu którego wystawianie opinii jest anulowane
+\item Przycisk po klikniêciu którego wysy³ane jest ¿¹danie z opini¹
+\end{enumerate}
