@@ -51,8 +51,8 @@ export class MyProfileComponent implements OnInit {
 
   editProfile() {
     const dialogRef = this.dialog.open(EditProfileDialogComponent, {
-      width: '35%',
-      height: '70%',
+      // width: '35%',
+      // height: '70%',
     });
 
     dialogRef.componentInstance.userId = this.getUserId();

@@ -19,4 +19,10 @@ export class UserProfileRouteResolver implements Resolve<any> {
   getRole() {
     return this.role;
   }
+
+  getLoggedInRole() {
+    const token = window.sessionStorage.getItem('auth-user');
+
+    return token ? JSON.parse(token).role : [];
+  }
 }

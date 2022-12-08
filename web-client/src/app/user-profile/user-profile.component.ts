@@ -19,7 +19,9 @@ export class UserProfileComponent implements OnInit {
 
   data: any;
   isMentee: boolean = false;
+  isMenteeLoggedIn: boolean = false;
   isPersonalTrainer: boolean = false;
+  isPersonalTrainerLoggedIn: boolean = false;
   response: string | null = '';
   areOpinionsVisible: boolean = false;
   opinions: any;
@@ -48,6 +50,14 @@ export class UserProfileComponent implements OnInit {
         this.isPersonalTrainer = true;
         this.isMentee = false;
       }
+      if (this.userProfileRouteResolver.getLoggedInRole() === 'ROLE_MENTEE') {
+        this.isMenteeLoggedIn = true;
+        this.isPersonalTrainerLoggedIn = false;
+      } else if (this.userProfileRouteResolver.getLoggedInRole() === 'ROLE_PERSONAL_TRAINER') {
+        this.isMenteeLoggedIn = false;
+        this.isPersonalTrainerLoggedIn = true;
+      }
+
     })
     this.reviewService.getOpinions(this.data.data.userId)
       .toPromise().then(data => {
