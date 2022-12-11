@@ -4,9 +4,7 @@ Przed przystπpieniem do implementacji jakiegokolwiek systemu naleøy dok≥adnie pr
 
 \section{Wymagania funkcjonalne}
 DostÍp do poszczegÛlnych funkcji aplikacji bÍdzie uzaleøniony od roli uøytkownika. Zdefiniowano nastÍpujπce role: niezalogowany uøytkownik, podopieczny oraz trener. DziÍki podzia≥owi na role ≥atwiej i bezpieczniej bÍdzie przebiegaÊ jej pÛüniejsza implementacja i uøytkowanie.\\
-% TO DO: przypominam - wymagania nie mogπ byÊ jedynie listπ wyliczeniowπ. To siÍ üle czyta. Konieczy jest jakiú tekst z bogatszym opisem. 
-%       Na poczπtek moøna by≥oby wymieniÊ typu uøytkownikÛw, potem opowiedzieÊ o zakresie dostÍpnych dla nich funkcji.
-%       NastÍpnie moøna odwo≥aÊ siÍ do szczegÛ≥Ûw pokazaych na diagramie przypadkÛw uøycia.
+% TO DO: DONE
 
 \noindent
 \textbf{FR-1}
@@ -49,18 +47,12 @@ Zalogowany uøytkownik moøe wys≥aÊ wiadomoúÊ do innego uøytkownika istniejπcego w
 Zalogowany uøytkownik ma moøliwoúÊ wylogowania siÍ z systemu\\[5pt]
 \noindent
 \textbf{FR-14}
-Zalogowany uøytkownik ma moøliwoúÊ napisania posta na swoim profilu\\[5pt]
-\noindent
-\textbf{FR-15}
 Zalogowany uøytkownik ma moøliwoúÊ wyszukania profilu innego uøytkownika istniejπcego w systemie\\[5pt]
 \noindent Opis ten uzupe≥nia diagram przypadkÛw uøycia pokazany na rysunku~\ref{fig:diagramPrzypadkowUzycia}.
-% TO DO: przerysowa≥em dla Pana diagram przypadkÛw uøycia.
-%        èrÛd≥o znajdzie Pan w repozytorium.
-%        Moøna by≥oby siÍ zastanowiÊ, czy jest on merytorycznie najlepszy.
-%        Technicznie zaú biorπc proszÍ, przy ewentualnych zmianach, by jakoúÊ rysunku by≥a podobna do tego, co Panu dostarczy≥em.
+% TO DO: DONE
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=1\textwidth]{rys02/useCaseDiagram}
+	\includegraphics[width=1\textwidth]{rys02/useCaseDiagram2}
 	\caption{Diagram przypadkÛw uøycia}
   \label{fig:diagramPrzypadkowUzycia}
 \end{figure}
@@ -267,22 +259,7 @@ Zalogowany uøytkownik ma moøliwoúÊ wyszukania profilu innego uøytkownika istniej
 \end{enumerate}
 
 \noindent
-\textbf{PU14: Napisanie posta na blogu}\\
-\emph{Aktor: } Trener, Podopieczny\\
-\emph{Opis: } Zalogowany uøytkownik moøe napisaÊ posta na swoim profilu\\
-\emph{Warunki wstÍpne: } Uøytkownik jest zalogowany\\
-\emph{Przebieg: }
-\begin{enumerate}
-  \item Zalogowany uøytkownik na dowolnym ekranie klika w przycisk "`Dziennik"' w pasku nawigacji
-	\item Pokazujπ siÍ ekran bloga z napisanymi postami
-	\item Zalogowany uøytkownik klika w przycisk "`Nowy post"'
-	\item Pokazuje siÍ pole tekstowe w ktÛrym moøna wpisaÊ treúÊ posta
-	\item Zalogowany uøytkownik klika w przycisk "`Zapisz"'
-	\item Post zostaje zapisany na profilu uøytkownika
-\end{enumerate}
-
-\noindent
-\textbf{PU15: Wyszukanie profilu uøytkownika}\\
+\textbf{PU14: Wyszukanie profilu uøytkownika}\\
 \emph{Aktor: } Trener, Podopieczny\\
 \emph{Opis: } Zalogowany uøytkownik moøe wyszukaÊ profil innego uøytkownika\\
 \emph{Warunki wstÍpne: } Uøytkownik jest zalogowany\\
@@ -296,28 +273,68 @@ Zalogowany uøytkownik ma moøliwoúÊ wyszukania profilu innego uøytkownika istniej
 	\item Po klikniÍciu w wybranego uøytkownika pokazuje siÍ ekran jego profilu
 \end{enumerate}
 
-% TO DO: diagram pakietÛw i diagram encji to juø implementacja. ProszÍ przenieúÊ do odpowiedniego rozdzia≥u
-\section{Diagram pakietÛw}
-% TO DO: dodaÊ opis diagramu pakietÛw 
-\begin{figure}[htb]
-  \centering
-	\includegraphics[width=1\textwidth]{rys02/diagram-pakietow}
-	\caption{Diagram pakietÛw}
-  \label{fig:diagramy}
-\end{figure}
+\section{Wymaganie niefunkcjonalne systemu}
 
-\section{Diagram ERD}
-% TO DO: diagram do przeredagowania. W obecnej postaci na wydrukach bÍdzie on nieczytelny !!!!!
-%        proszÍ "zacieúniÊ", poza tym proszÍ przypilnowaÊ, by w úrodku tabel nie by≥o zbÍdne wolnej przestrzeni (od do≥u i z boku) 
-\begin{figure}[htb]
-  \centering
-\includegraphics[width=.9\textwidth]{rys02/diagram_erd}
-  \caption{Diagram ERD}
-  \label{fig:diagramy}
-\end{figure}
+Wymaganie niefunkcjonalne to wymaganie ktÛre nie sπ zwiπzane z funkcjonalnoúciπ projektowanej aplikacji. Okreúlajπ one techniczne aspekty aplikacji oraz poøπdane zachowanie systemu. Wymagania te mogπ odnosiÊ siÍ do dostÍpnoúci, wydajnoúci czy bezpieczeÒstwa projektowanej aplikacji.\\
+
+\noindent
+\textbf{NFR-1}
+Aplikacja musi byÊ dostÍpna 24/7\\
+
+\noindent
+\textbf{NFR-2}
+Aplikacja musi byÊ niezaleøna od systemu operacyjnego klienta\\
+
+\noindent
+\textbf{NFR-3}
+Aplikacja ma byÊ wdroøona na darmowym hostingu np.\ Heroku\\
+
+\noindent
+\textbf{NFR-4}
+Baza danych bÍdzie wdroøona na darmowym serwerze\\
+
+\noindent
+\textbf{NFR-5}
+Do korzystania z aplikacji wymagany jest dostÍp do internetu\\
+
+\noindent
+\textbf{NFR-6}
+Has≥o do konta uøytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych\\
+
+\noindent
+\textbf{NFR-7}
+Autoryzacja przebiega przy pomocy JWT zapisywanym w plikach cookies\\
+
+\noindent
+\textbf{NFR-8}
+Aplikacja musi dzia≥aÊ poprawnie na najpopularniejszych przeglπdarkach typu Firefox, Chrome czy Safari\\
+
+\noindent
+\textbf{NFR-9}
+Kopia bazy danych bÍdzie tworzona automatycznie raz w tygodniu\\
 
 \newpage
 
+\section{Koncept aplikacji}
+
+\begin{figure}[htb]
+  \centering
+\includegraphics[width=.9\textwidth]{rys02/koncept}
+  \caption{Koncept aplikacji}
+  \label{fig:koncept}
+\end{figure}
+
+Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu uøytkownika. Widok aplikacji moøna podzieliÊ na dwie g≥Ûwne sekcje. Sekcja oznaczona na rysunku cyfrπ 1 jest paskiem nawigacyjnym. Pozwoli on na proste i intuicyjne przemieszczanie siÍ po poszczegÛlnych komponentach aplikacji. Sekcja oznaczona na rysunku cyfrπ 2 jest sekcjπ g≥Ûwnπ. Na niej bÍdzie przebiega≥o wiÍkszoúÊ interakcji z uøytkownikiem. Wyúwietlane na niej bÍdπ poszczegÛlne komponenty ktÛre bÍdπ oferowa≥y wczeúniej wspomniane funkcjonalnoúci.
+
+
 \section{Architektura aplikacji}
-TODO
+
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=0.8\textwidth]{rys02/architektura}
+	\caption{Architektura aplikacji}
+  \label{fig:architektura}
+\end{figure}
+
+Na rysunku ~\ref{fig:architektura} przedstawiono uproszczonπ architekture projektowanego systemu. WyszczegÛlniono na nim bazÍ danych, backend oraz frontend. Komunikacja pomiÍdzy frontendem a backendem odbywa siÍ poprzez REST API. Uøytkownicy uzyskujπ dostÍp do aplikacji poprzez frontend.
 

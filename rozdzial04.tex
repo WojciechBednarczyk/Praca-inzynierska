@@ -9,6 +9,14 @@ Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programo
   \label{fig:pakiety}
 \end{figure}
 
+\begin{figure}[htb]
+  \centering
+	\includegraphics[width=1\textwidth]{rys04/diagram-pakietow}
+	\caption{Diagram pakietów}
+  \label{fig:diagram_pakietow}
+\end{figure}
+
+
 \section{Controller}
 W pakiecie controller znajduj¹ siê restowe kontrolery które pozwalaj¹ na komunikacjê z zewnêtrznymi serwisami poprzez wysy³anie ¿¹dañ HTTP. Podstawowymi metodami HTTP s¹: 
 \begin{itemize}
@@ -144,8 +152,6 @@ import (...)
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
 public class User {
 
     @Id
@@ -180,9 +186,6 @@ public class User {
     private Set<Message> receivedMessages;
 
     @OneToMany(mappedBy = "user")
-    private Set<Post> posts;
-
-    @OneToMany(mappedBy = "user")
     private Set<Training> trainings;
 
     @OneToOne(mappedBy = "user")
@@ -191,20 +194,7 @@ public class User {
     @OneToOne(mappedBy = "user")
     private PersonalTrainer personalTrainer;
 
-    public User(String firstName, String secondName, String login, String password, String email, Date dateOfBirth, String location, ERole role) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.location = location;
-        this.role = role;
-    }
-
-    public User() {
-
-    }
+    (...)
 }
 
 \end{lstlisting}
@@ -217,10 +207,8 @@ package pl.edu.pwr.akademiatreningu.model;
 import (...)
 
 @Entity
-@Table(name = "posts")
-@Getter
-@Setter
-public class Post {
+@Table(name = "trainings")
+public class Training {
 
     (...)
 
@@ -332,62 +320,38 @@ W pakiecie security znajduje siê tak¿e klasa JwtUtils, która dostarcza metod do 
 
 W tym pakiecie zawarta jest ca³a logika biznesowa aplikacji. Znajduj¹ siê w nim serwisy oznaczone adnotacjami @Service dziêki czemu s¹ tworzone automatycznie przez kontekst aplikacji Springa. Do nich przekazywane s¹ dane odbierane przez kontrolery. Nastêpnie korzystaj¹ z mapperów, repozytoriów lub innych serwisów przetwarzaj¹c dane. 
 
-Na listingu ~\ref{lst:service} przedstawiono przyk³adowy serwis z projektowanej aplikacji odpowiedzialny za przetwarzanie informacji zwi¹zanych z opiniami trenera personalnego. Zawiera on dwie metody do zapisywania opinii do konkretnego trenera oraz pobrania wszystkich opinii dla danego trenera. Metoda odpowiedzialna za zapisanie opinii przeprowadza takie operacje jak sprawdzenie czy opinia mo¿e zostaæ zapisana oraz obliczanie œredniej oceny trenera na podstawie wszystkich wystawionych opinii. Druga metoda pobiera z repozytorium opinie na podstawie id trenera oraz zwraca do kontrolera zmapowan¹ listê obiektów DTO.
+Na listingu ~\ref{lst:service} przedstawiono przyk³adowy serwis z projektowanej aplikacji odpowiedzialny za przetwarzanie informacji zwi¹zanych z æwiczeniami. Zawiera on jedn¹ metodê która zwraca wszystkie æwiczenia znajduj¹ce siê w bazie danych. Przed zwróceniem listy æwiczeñ do kontrolera, s¹ one mapowane do postaci DTO.
 
-\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{OpinionService}, label=lst:service]
+\begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{ExerciseService}, label=lst:service]
 package pl.edu.pwr.akademiatreningu.service;
 
 import (...)
 
 @Service
 @RequiredArgsConstructor
-public class OpinionService {
+public class ExerciseService {
 
-    private final OpinionRepository opinionRepository;
+    private final ExerciseRepository exerciseRepository;
 
-    private final UserRepository userRepository;
+    private final ExerciseMapper exerciseMapper;
 
-    private final PersonalTrainerRepository personalTrainerRepository;
-
-    private final OpinionMapper opinionMapper;
-
-    public String saveOpinion(OpinionDto opinionDto) {
-
-        User user = userRepository.findById(opinionDto.getUserId()).get();
-
-        if (user.getMentee().getPersonalTrainer() == null || user.getMentee().getPersonalTrainer().getUser().getId() != opinionDto.getPersonalTrainerId()) {
-            return "Nie mozesz wystawic opinii dla nie swojego trenera";
-        } else if (opinionRepository.findByPersonalTrainerIdAndMenteeId(user.getMentee().getPersonalTrainer().getId(), user.getMentee().getId()).isPresent()) {
-            return "Wystawiono juz opinie dla tego trenera";
-        } else {
-            Opinion opinion = Opinion.builder()
-                    .description(opinionDto.getReview())
-                    .rating(opinionDto.getRating())
-                    .personalTrainer(user.getMentee().getPersonalTrainer())
-                    .mentee(user.getMentee())
-                    .build();
-            opinionRepository.save(opinion);
-            Integer count = opinionRepository.countAllByPersonalTrainerId(user.getMentee().getPersonalTrainer().getId());
-            List<Opinion> opinions = opinionRepository.findAll();
-            Integer sum = 0;
-            for (Opinion iterator : opinions) {
-                sum += iterator.getRating();
-            }
-            BigDecimal value = new BigDecimal(sum / (float) count);
-            value = value.setScale(1, RoundingMode.HALF_EVEN);
-            Float overallRating = value.floatValue();
-            PersonalTrainer personalTrainer = user.getMentee().getPersonalTrainer();
-            personalTrainer.setRating(overallRating);
-            personalTrainerRepository.save(personalTrainer);
-            return "Opinia zostala zapisana";
-        }
-    }
-
-    public List<OpinionDto> getOpinions(Integer personalTrainerUserId) {
-        User user = userRepository.findById(personalTrainerUserId).get();
-        List<Opinion> opinions = opinionRepository.findAllByPersonalTrainerId(user.getPersonalTrainer().getId());
-        return opinionMapper.mapOpinionsToDto(opinions);
+    public List<ExerciseDto> findAll() {
+        List<Exercise> exercises = exerciseRepository.findAll();
+        return exerciseMapper.mapExercisesToDto(exercises);
     }
 }
 
 \end{lstlisting}
+
+\newpage
+
+\section{Diagram ERD}
+
+Na rysunkku ~\ref{fig:diagramERD} przedstawiono diagram ERD projektowanej aplikacji. Mo¿na na nim wyró¿niæ tabelê \emph{users} która jest jedn¹ z g³ównych tabel w systemie. Odpowiedzialna jest za przechowywanie informacji o kontach u¿ytkowników. Oprócz tej tabeli mo¿na wyró¿niæ tak¿e tabele \emph{MENTEES} oraz \emph{PERSONAL\_TRAINERS} które równie¿ przechowuj¹ informacje o u¿ytkowniku, jednak jest to zale¿ne od roli w systemie. Pozosta³e tabele zawieraj¹ informacje o wiadomoœciach miêdzy u¿ytkownikami, planach treningowach czy opiniach o trenerze.
+
+\begin{figure}[htb]
+  \centering
+\includegraphics[width=.9\textwidth]{rys04/diagramERD}
+  \caption{Diagram ERD}
+  \label{fig:diagramERD}
+\end{figure}
