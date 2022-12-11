@@ -3,7 +3,7 @@ Przed przyst¹pieniem do implementacji jakiegokolwiek systemu nale¿y dok³adnie pr
 
 
 \section{Wymagania funkcjonalne}
-Dostêp do poszczególnych funkcji aplikacji bêdzie uzale¿niony od roli u¿ytkownika. Zdefiniowano nastêpuj¹ce role: niezalogowany u¿ytkownik, podopieczny oraz trener. Dziêki podzia³owi na role ³atwiej i bezpieczniej bêdzie przebiegaæ jej póŸniejsza implementacja i u¿ytkowanie.\\
+Dostêp do poszczególnych funkcji aplikacji bêdzie uzale¿niony od roli u¿ytkownika. Zdefiniowano nastêpuj¹ce role: niezalogowany u¿ytkownik, podopieczny oraz trener (któr¹œ z tych ról bêdzie mia³ zalogowany u¿ytkownik). Dziêki podzia³owi na role ³atwiej i bezpieczniej bêdzie przebiegaæ jej póŸniejsza implementacja i u¿ytkowanie.\\
 % TO DO: DONE
 
 \noindent
@@ -20,22 +20,22 @@ Ka¿dy u¿ytkownik mo¿e przegl¹daæ tabele w której znajduj¹ siê æwiczenia fitness\
 Ka¿dy u¿ytkownik mo¿e przegl¹daæ szczegó³y æwiczenia na których znajduje siê opis jak wykonaæ æwiczenie oraz film instrukta¿owy\\[5pt]
 \noindent
 \textbf{FR-5}
-U¿ytkownik z rol¹ podopiecznego mo¿e wystawiæ opinie trenerowi z którym wspó³pracuje\\[5pt]
+Podopieczny mo¿e wystawiæ opinie trenerowi, z którym wspó³pracuje\\[5pt]
 \noindent
 \textbf{FR-6}
-U¿ytkownik z rol¹ podopiecznego mo¿e wys³aæ proœbê do trenera o wspó³pracê\\[5pt]
+Podopieczny mo¿e wys³aæ do trenera proœbê o wspó³pracê\\[5pt]
 \noindent
 \textbf{FR-7}
 Trener mo¿e stworzyæ plan treningowy dla podopiecznego bazuj¹c na tabeli z æwiczeniami\\[5pt]
 \noindent
 \textbf{FR-8}
-U¿ytkownik z rol¹ trenera mo¿e odrzuciæ proœbê o rozpoczêcie wspó³pracy od podopiecznego\\[5pt]
+Trener mo¿e odrzuciæ proœbê podopiecznego o rozpoczêcie wspó³pracy\\[5pt]
 \noindent
 \textbf{FR-9}
-U¿ytkownik z rol¹ trenera mo¿e zaakceptowaæ proœbê o rozpoczêcie wspó³pracy od podopiecznego\\[5pt]
+Trener mo¿e zaakceptowaæ proœbê podopiecznego o rozpoczêcie wspó³pracy\\[5pt]
 \noindent
 \textbf{FR-10}
-U¿ytkownik z rol¹ trenera mo¿e zakoñczyæ wspó³pracê z podopiecznym\\[5pt]
+Trener mo¿e zakoñczyæ wspó³pracê z podopiecznym\\[5pt]
 \noindent
 \textbf{FR-11}
 Zalogowany u¿ytkownik mo¿e zmieniæ swoje dane w profilu\\[5pt]
@@ -69,13 +69,13 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
   \item Otwiera siê widok rejestracji na którym znajduje siê formularz
 	\item Niezalogowany u¿ytkownik wype³nia wymagane pola w formularzu
 	\item Niezalogowany u¿ytkownik klika w przycisk ''Zarejestruj''
-	\begin{itemize}%[noitemsep,topsep=4pt,parsep=0pt,partopsep=4pt,leftmargin=*]
+	\begin{itemize}[topsep=0pt]%[noitemsep,topsep=4pt,parsep=0pt,partopsep=4pt,leftmargin=*]
 	\item Wprowadzone dane s¹ poprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item Konto u¿ytkownika zostaje utworzone
 	\end{itemize}
 	\item Wprowadzone dane s¹ niepoprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item System informuje u¿ytkownika o b³êdnie wprowadzonych danych
 	\end{itemize}
 	\end{itemize}
@@ -92,13 +92,13 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
   \item Otwiera siê widok logowanie na którym znajduje siê formularz
 	\item Niezalogowany u¿ytkownik w formularzu login oraz has³o
 	\item Niezalogowany u¿ytkownik klika w przycisk "`Zaloguj"'
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item Wprowadzone dane s¹ poprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item U¿ytkownik jest zalogowany w systemie
 	\end{itemize}
 	\item Wprowadzone dane s¹ niepoprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item System informuje u¿ytkownika o b³êdnie wprowadzonych danych
 	\end{itemize}
 	\end{itemize}
@@ -113,7 +113,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \begin{enumerate}
   \item U¿ytkownik klika w przycisk "`Atlas æwiczeñ"'
   \item Otwiera siê widok atlasu æwiczeñ na którym znajduje siê tabela z æwiczeniami
-	\item U¿ytkownik mo¿e przechodziæ do kolejnych stron tabeli klikaj¹c w przyciski strza³ek pod tabel¹
+	\item U¿ytkownik mo¿e przechodziæ po stronach tabeli klikaj¹c w przyciski strza³ek pod tabel¹
 \end{enumerate}
 
 \noindent
@@ -154,7 +154,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \noindent
 \textbf{PU07: Stworzenie planu treningowego}\\
 \emph{Aktor: } Trener\\
-\emph{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w systemie\\
+\emph{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w~systemie\\
 \emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych \\
 \emph{Przebieg: }
 \begin{enumerate}
@@ -205,7 +205,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 	\item Pokazuje siê komunikat czy na pewno usun¹æ podopiecznego
 	\item Trener wybiera przycisk akceptacji
 	\item Podopieczny zostaje usuniêty z grona podopiecznych tego trenera
-	\item Pokazuje siê informacja z potwierdzeniem usuniêcia podopiecznego z grona podopiecznych
+	\item Pojawia siê potwierdzenie usuniêcia podopiecznego z grona podopiecznych
 \end{enumerate}
 
 \noindent
@@ -219,13 +219,13 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 	\item Pokazuje siê formularz z danymi do zmiany
 	\item Zalogowany u¿ytkownik wype³nia wybrane pola formularza danymi
 	\item Zalogowany u¿ytkownik klika w przycisk "`Zapisz zmiany"'
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item Wprowadzone dane s¹ poprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item Dane u¿ytkownika zosta³y zmienione
 	\end{itemize}
 	\item Wprowadzone dane s¹ niepoprawne
-	\begin{itemize}
+	\begin{itemize}[topsep=0pt]
 	\item System informuje u¿ytkownika o b³êdnie wprowadzonych danych
 	\end{itemize}
 	\end{itemize}
@@ -274,58 +274,44 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \end{enumerate}
 
 \section{Wymaganie niefunkcjonalne systemu}
-
-Wymaganie niefunkcjonalne to wymaganie które nie s¹ zwi¹zane z funkcjonalnoœci¹ projektowanej aplikacji. Okreœlaj¹ one techniczne aspekty aplikacji oraz po¿¹dane zachowanie systemu. Wymagania te mog¹ odnosiæ siê do dostêpnoœci, wydajnoœci czy bezpieczeñstwa projektowanej aplikacji.\\
+Wymaganie niefunkcjonalne opisane dalej okreœlaj¹ techniczne aspekty aplikacji oraz po¿¹dane zachowanie systemu. Wymagania te mog¹ odnosiæ siê do dostêpnoœci, wydajnoœci czy bezpieczeñstwa projektowanej aplikacji.\\
 
 \noindent
 \textbf{NFR-1}
-Aplikacja musi byæ dostêpna 24/7\\
-
+Aplikacja musi byæ dostêpna 24/7\\[5pt]
 \noindent
 \textbf{NFR-2}
-Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta\\
-
+Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta\\[5pt]
 \noindent
 \textbf{NFR-3}
-Aplikacja ma byæ wdro¿ona na darmowym hostingu np.\ Heroku\\
-
+Aplikacja ma byæ wdro¿ona na darmowym hostingu np.\ Heroku\\[5pt]
 \noindent
 \textbf{NFR-4}
-Baza danych bêdzie wdro¿ona na darmowym serwerze\\
-
+Baza danych bêdzie wdro¿ona na darmowym serwerze\\[5pt]
 \noindent
 \textbf{NFR-5}
-Do korzystania z aplikacji wymagany jest dostêp do internetu\\
-
+Do korzystania z aplikacji wymagany jest dostêp do internetu\\[5pt]
 \noindent
 \textbf{NFR-6}
-Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych\\
-
+Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych\\[5pt]
 \noindent
 \textbf{NFR-7}
-Autoryzacja przebiega przy pomocy JWT zapisywanym w plikach cookies\\
-
+Autoryzacja przebiega przy pomocy JWT zapisywanym w plikach cookies\\[5pt]
 \noindent
 \textbf{NFR-8}
-Aplikacja musi dzia³aæ poprawnie na najpopularniejszych przegl¹darkach typu Firefox, Chrome czy Safari\\
-
+Aplikacja musi dzia³aæ poprawnie na najpopularniejszych przegl¹darkach typu Firefox, Chrome czy Safari\\[5pt]
 \noindent
 \textbf{NFR-9}
-Kopia bazy danych bêdzie tworzona automatycznie raz w tygodniu\\
-
-\newpage
+Kopia bazy danych bêdzie tworzona automatycznie raz w tygodniu
 
 \section{Koncept aplikacji}
-
+Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Widok aplikacji mo¿na podzieliæ na dwie g³ówne sekcje. Sekcja oznaczona na rysunku cyfr¹ 1 jest paskiem nawigacyjnym. Pozwoli on na proste i intuicyjne przemieszczanie siê po poszczególnych komponentach aplikacji. Sekcja oznaczona na rysunku cyfr¹ 2 jest sekcj¹ g³ówn¹. Na niej bêdzie przebiega³o wiêkszoœæ interakcji z u¿ytkownikiem. Wyœwietlane na niej bêd¹ poszczególne komponenty które bêd¹ oferowa³y wczeœniej wspomniane funkcjonalnoœci.
 \begin{figure}[htb]
   \centering
 \includegraphics[width=.9\textwidth]{rys02/koncept}
   \caption{Koncept aplikacji}
   \label{fig:koncept}
 \end{figure}
-
-Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Widok aplikacji mo¿na podzieliæ na dwie g³ówne sekcje. Sekcja oznaczona na rysunku cyfr¹ 1 jest paskiem nawigacyjnym. Pozwoli on na proste i intuicyjne przemieszczanie siê po poszczególnych komponentach aplikacji. Sekcja oznaczona na rysunku cyfr¹ 2 jest sekcj¹ g³ówn¹. Na niej bêdzie przebiega³o wiêkszoœæ interakcji z u¿ytkownikiem. Wyœwietlane na niej bêd¹ poszczególne komponenty które bêd¹ oferowa³y wczeœniej wspomniane funkcjonalnoœci.
-
 
 \section{Architektura aplikacji}
 
