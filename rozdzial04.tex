@@ -25,7 +25,7 @@ W pakiecie \texttt{controller} znajduj¹ siê restowe kontrolery które pozwalaj¹ n
 \item \texttt{DELETE} -- ¿¹danie u¿ywane do usuwania zasobu na serwerze.
 \end{itemize} 
 
-Dziêki Spring Boot tworzenie kontrolerów w Javie jest bardzo proste. Aby klasa sta³a siê kontrolerem nale¿y oznaczyæ j¹ anotacj¹ \texttt{@RestController}. Na listingu ~\ref{lst:kontroler} przedstawiono przyk³adowy kontroler w projektowanej aplikacji. Sama klasa oznaczona jest jeszcze anotacjami @CrossOrigin która zezwala na wykonywanie asynchronicznych zapytañ HTTP do serwisów pod innym adresem, \texttt{@RequiredArgsConstructor} która tworzy konstruktor z polami oznaczonymi final, co pozwala na automatyczne wstrzykiwanie zale¿noœci springowych (w tym przypadku MessageService) oraz @RequestMapping która jako arugemnt przyjmuje œcie¿kê pod któr¹ bêdzie dostêpne projektowanie API. Metody oznaczone s¹ anotacjami \texttt{@Mapping} z przedrostkiem oznaczaj¹cym metodê HTTP np.~\texttt{@PostMapping} które okreœlaj¹ jakie ¿¹dania mo¿na wykonywaæ na danej metodzie. Ponadto anotacja \texttt{@PreAuthorize} definiuje sposób dostêpu do metody. Bardziej szczegó³owo zostanie to opisane w sekcji \emph{Security}. Sam kontroler ma za zadanie odbieraæ ¿¹dania, natomiast dalsze przetwarzanie informacji odbywa siê w serwisach.
+Dziêki Spring Boot tworzenie kontrolerów w Javie jest bardzo proste. Aby klasa sta³a siê kontrolerem nale¿y oznaczyæ j¹ anotacj¹ \texttt{@RestController}. Na listingu ~\ref{lst:kontroler} przedstawiono przyk³adowy kontroler w projektowanej aplikacji. Sama klasa oznaczona jest jeszcze anotacjami @CrossOrigin która zezwala na wykonywanie asynchronicznych zapytañ HTTP do serwisów pod innym adresem, \texttt{@RequiredArgsConstructor} która tworzy konstruktor z polami oznaczonymi final, co pozwala na automatyczne wstrzykiwanie zale¿noœci springowych (w tym przypadku MessageService) oraz \texttt{@RequestMapping} która jako arugemnt przyjmuje œcie¿kê pod któr¹ bêdzie dostêpne projektowanie API. Metody oznaczone s¹ anotacjami \texttt{@Mapping} z przedrostkiem oznaczaj¹cym metodê HTTP np.~\texttt{@PostMapping} które okreœlaj¹ jakie ¿¹dania mo¿na wykonywaæ na danej metodzie. Ponadto anotacja \texttt{@PreAuthorize} definiuje sposób dostêpu do metody. Bardziej szczegó³owo zostanie to opisane w sekcji \emph{Security}. Sam kontroler ma za zadanie odbieraæ ¿¹dania, natomiast dalsze przetwarzanie informacji odbywa siê w serwisach.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{MessageController}, label=lst:kontroler]
 package pl.edu.pwr.akademiatreningu.controller;
@@ -92,7 +92,7 @@ public class UserDto {
 
 \section{Mapper}
 
-Pakiet ten zawiera specjalne mappery które mapuj¹ obiekt encji na obiekty DTO i odwrotnie. Na listingu ~\ref{lst:mapper} przedstawiono przyk³adow¹ klasê mappera. Mo¿na zauwa¿yæ ¿e zosta³a oznaczona anotacj¹ @Component co oznacza ¿e nie trzeba tworzyæ obiektu tej klasy, poniewa¿ Spring robi to automatycznie. Zawiera 2 publiczne metody które s¹ wywo³ywane przez odpowiednie serwisy. Metody te jako parametr przyjmuj¹ listê DTO lub encji i zwracaj¹ listy z odpowiednio zmapowanymi obiektami.
+Pakiet ten zawiera specjalne mappery które mapuj¹ obiekt encji na obiekty DTO i odwrotnie. Na listingu ~\ref{lst:mapper} przedstawiono przyk³adow¹ klasê mappera. Mo¿na zauwa¿yæ ¿e zosta³a oznaczona anotacj¹ \texttt{@Component} co oznacza ¿e nie trzeba tworzyæ obiektu tej klasy, poniewa¿ Spring robi to automatycznie. Zawiera 2 publiczne metody które s¹ wywo³ywane przez odpowiednie serwisy. Metody te jako parametr przyjmuj¹ listê DTO lub encji i zwracaj¹ listy z odpowiednio zmapowanymi obiektami.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{ExerciseMapper}, label=lst:mapper]
 package pl.edu.pwr.akademiatreningu.mapper;
@@ -140,9 +140,10 @@ public class ExerciseMapper {
 \end{lstlisting}
 
 \section{Model}
-W tym pakiecie znajduj¹ siê klasy które s¹ encjami JPA. Reprezentuj¹ one encje w bazie danych. Klasy te charakteryzuj¹ siê tym, ¿e musz¹ posiadaæ bezargumentowy konstruktor. Ponadto, aby zadeklarowaæ klasê jako encjê JPA nale¿y dodaæ anotacjê @Entity oraz klasa musi zawieraæ pole oznaczone anotacj¹ @Id. 
 
-Na listingu ~\ref{lst:model1} przedstawiono przyk³adowy kod klasy z pakietu Model. Oprócz wczeœniej wspomnianych anotacji zawiera ona tak¿e anotacjê @Table która jako parametr przyjmuje nazwê tabeli w bazie danych której ma byæ encj¹ JPA. Na polu id zosta³a dodana tak¿e anotacja @GeneratedValue która definiuje wed³ug jakiej strategii przydzielane s¹ id kluczy publicznych w bazie danych. Dodatkowo na polach które maj¹ niejednoznaczne nazwy z polami w bazie danych, zosta³a dodana anotacja @Column która definiuje które pole w tej klasie odpowiada polu w bazie danych. Ponadto, anotacjami typu @OneToMany, @OneToOne zosta³y oznaczone pola które definiuj¹ relacje z innymi encjami JPA. Jako argument przyjmuje nazwê pola pod jak¹ bêdzie zadeklarowana encja w innej klasie. 
+W tym pakiecie znajduj¹ siê klasy które s¹ encjami JPA. Reprezentuj¹ one encje w bazie danych. Klasy te charakteryzuj¹ siê tym, ¿e musz¹ posiadaæ bezargumentowy konstruktor. Ponadto, aby zadeklarowaæ klasê jako encjê JPA nale¿y dodaæ anotacjê \texttt{@Entity} oraz klasa musi zawieraæ pole oznaczone anotacj¹ \texttt{@Id}. 
+
+Na listingu ~\ref{lst:model1} przedstawiono przyk³adowy kod klasy z pakietu Model. Oprócz wczeœniej wspomnianych anotacji zawiera ona tak¿e anotacjê \texttt{@Table} która jako parametr przyjmuje nazwê tabeli w bazie danych której ma byæ encj¹ JPA. Na polu id zosta³a dodana tak¿e anotacja @GeneratedValue która definiuje wed³ug jakiej strategii przydzielane s¹ id kluczy publicznych w bazie danych. Dodatkowo na polach które maj¹ niejednoznaczne nazwy z polami w bazie danych, zosta³a dodana anotacja \texttt{@Column} która definiuje które pole w tej klasie odpowiada polu w bazie danych. Ponadto, anotacjami typu \texttt{@OneToMany}, \texttt{@OneToOne} zosta³y oznaczone pola które definiuj¹ relacje z innymi encjami JPA. Jako argument przyjmuje nazwê pola pod jak¹ bêdzie zadeklarowana encja w innej klasie. 
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{User}, label=lst:model1]
 package pl.edu.pwr.akademiatreningu.model;
@@ -198,7 +199,7 @@ public class User {
 
 \end{lstlisting}
 
-Powi¹zana encja natomiast musi zawieraæ to pole z zadeklarowan¹ wczeœniej nazw¹. Ponadto nale¿y oznaczyæ je anotacj¹ @JoinColumn podaj¹c jako argument podaj¹c nazwê klucza obcego. Zosta³o to przedstawione na kolejnym listingu ~\ref{lst:model2}.  
+Powi¹zana encja natomiast musi zawieraæ to pole z zadeklarowan¹ wczeœniej nazw¹. Ponadto nale¿y oznaczyæ je anotacj¹ \texttt{@JoinColumn} podaj¹c jako argument podaj¹c nazwê klucza obcego. Zosta³o to przedstawione na kolejnym listingu ~\ref{lst:model2}.  
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{Post}, label=lst:model2]
 package pl.edu.pwr.akademiatreningu.model;
@@ -222,7 +223,7 @@ public class Training {
 
 Pakiet ten zawiera repozytoria JPA które wykonuj¹ operacje na bazie danych. Repozytoria te s¹ interfejsami które rozszerzaj¹ interfejs JpaRepository z pakietu Spring Data JPA. Interfejsy te s¹ sparametryzowane i przyjmuj¹ 2 parametry. Pierwszy z nich okreœla typ encji która jest przechowywana w repozytorium, natomiast drugi okreœla typ identyfikatora encji. JpaRepository udostêpnia metody dla operacji typu CRUD. Dla operacji których repozytorium nie udostêpnia domyœlnie , nale¿y zadeklarowaæ w³asne metody które tworzy siê poprzez ³¹czenie nazwy akcji oraz pól encji.
 
-Na listingu ~\ref{lst:repository} przedstawiono przyk³adowe repozytorium z projektowanej aplikacji. W przypadku operacji szukania konkretnej encji, repozytorium zwraca typ Optional który mo¿e przechowywaæ znalezion¹ encjê lub wartoœæ null w przypadku gdy nie znaleziono encji w bazie danych. Repozytoria oznaczone s¹ anotacjami @Repository.
+Na listingu ~\ref{lst:repository} przedstawiono przyk³adowe repozytorium z projektowanej aplikacji. W przypadku operacji szukania konkretnej encji, repozytorium zwraca typ Optional który mo¿e przechowywaæ znalezion¹ encjê lub wartoœæ null w przypadku gdy nie znaleziono encji w bazie danych. Repozytoria oznaczone s¹ anotacjami \texttt{@Repository}.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy interfejsu UserRepository, label=lst:repository]
 package pl.edu.pwr.akademiatreningu.repository;
@@ -258,7 +259,7 @@ Jedn¹ z podstawowych funkcjonalnoœci aplikacji jest mo¿liwoœæ za³o¿enia konta w 
   \label{fig:autoryzacja}
 \end{figure}
 
-W pakiecie security znajduje siê klasa WebSecurityConfig która jest odpowiedzialna za konfiguracjê Spring Security w projektowanej aplikacji. Klasa ta musi byæ oznaczona anotacj¹ @Configuration oraz @EnableWebSecurity które pozwol¹ automatycznie znaleŸæ konfiguracje przez Springa. Na listingu ~\ref{lst:webConfig} przedstawiono konfiguracjê w projektowanej aplikacji. Oprócz wczeœniej wspomnianych anotacji klasa oznaczona jest tak¿e anotacj¹ @EnableGlobalMethodSecurity w której ustawiany jest parametr prePostEnabled na wartoœæ true. Pozwala to na korzystanie z anotacji @PreAuthorize na kontrolerach dziêki którym autoryzacja przebiega przed wywo³aniem metody.
+W pakiecie security znajduje siê klasa WebSecurityConfig która jest odpowiedzialna za konfiguracjê Spring Security w projektowanej aplikacji. Klasa ta musi byæ oznaczona anotacj¹ \texttt{@Configuration} oraz \texttt{@EnableWebSecurity} które pozwol¹ automatycznie znaleŸæ konfiguracje przez Springa. Na listingu ~\ref{lst:webConfig} przedstawiono konfiguracjê w projektowanej aplikacji. Oprócz wczeœniej wspomnianych anotacji klasa oznaczona jest tak¿e anotacj¹ \texttt{@EnableGlobalMethodSecurity} w której ustawiany jest parametr prePostEnabled na wartoœæ true. Pozwala to na korzystanie z anotacji \texttt{@PreAuthorize} na kontrolerach dziêki którym autoryzacja przebiega przed wywo³aniem metody.
 
 W klasie mo¿na wyró¿niæ beany PasswordEncoder, SecurityFilterChain oraz DaoAuthenticationProvider. PasswordEncoder zwraca implementacjê enkodera has³a korzystaj¹cego z funkcji hashuj¹cej Bcrypt. SecurityFilterChain odpowiada za skonfigurowanie filtra. Wszystkie ¿¹dania przychodz¹ce do aplikacji pocz¹tkowo przechodz¹ przez filtr, po czym je¿eli ¿¹danie przesz³o przez filtr przeprowadzana jest w³aœciwa obs³uga ¿¹dania. DaoAuthenticationProvider ustawia enkoder has³a oraz serwis odpowiedzialny za dostarczanie informacji o u¿ytkowniku.
 
@@ -317,7 +318,7 @@ W pakiecie security znajduje siê tak¿e klasa JwtUtils, która dostarcza metod do 
 
 \section{Service}
 
-W tym pakiecie zawarta jest ca³a logika biznesowa aplikacji. Znajduj¹ siê w nim serwisy oznaczone anotacjami @Service dziêki czemu s¹ tworzone automatycznie przez kontekst aplikacji Springa. Do nich przekazywane s¹ dane odbierane przez kontrolery. Nastêpnie korzystaj¹ z mapperów, repozytoriów lub innych serwisów przetwarzaj¹c dane. 
+W tym pakiecie zawarta jest ca³a logika biznesowa aplikacji. Znajduj¹ siê w nim serwisy oznaczone anotacjami \texttt{@Service} dziêki czemu s¹ tworzone automatycznie przez kontekst aplikacji Springa. Do nich przekazywane s¹ dane odbierane przez kontrolery. Nastêpnie korzystaj¹ z mapperów, repozytoriów lub innych serwisów przetwarzaj¹c dane. 
 
 Na listingu ~\ref{lst:service} przedstawiono przyk³adowy serwis z projektowanej aplikacji odpowiedzialny za przetwarzanie informacji zwi¹zanych z æwiczeniami. Zawiera on jedn¹ metodê która zwraca wszystkie æwiczenia znajduj¹ce siê w bazie danych. Przed zwróceniem listy æwiczeñ do kontrolera, s¹ one mapowane do postaci DTO.
 
