@@ -61,4 +61,10 @@ export class UserService {
       userId: userId
     }, httpOptions);
   }
+
+  removeMentee(requestId: number) {
+    const httpParams = new HttpParams().set("userId", requestId);
+    const url = 'http://localhost:8080/api/auth/personal-trainer/mentee/remove';
+    return this.http.post(url, '', {params: httpParams});
+  }
 }

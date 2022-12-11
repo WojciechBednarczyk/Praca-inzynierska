@@ -57,4 +57,10 @@ public class PersonalTrainerController {
     public void getMentee(@RequestBody DescriptionDto descriptionDto) {
         userService.setPersonalTrainerDescription(descriptionDto);
     }
+
+    @PostMapping("/personal-trainer/mentee/remove")
+    @PreAuthorize("hasRole('ROLE_PERSONAL_TRAINER')")
+    public void removeMentee(@RequestParam Integer userId) {
+        userService.removeMentee(userId);
+    }
 }

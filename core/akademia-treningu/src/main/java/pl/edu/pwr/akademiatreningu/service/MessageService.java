@@ -19,9 +19,10 @@ public class MessageService {
 
     private final MessageMapper messageMapper;
 
-    public void saveMessage(MessageDto messageDto) {
+    public Message saveMessage(MessageDto messageDto) {
         messageDto.setDateOfSent(LocalDate.now());
-        messageRepository.save(messageMapper.mapMessageDtoToEntity(messageDto));
+        Message message = messageMapper.mapMessageDtoToEntity(messageDto);
+        return messageRepository.save(message);
     }
 
     public List<MessageWithSenderDto> getUserMessages(Integer userId) {

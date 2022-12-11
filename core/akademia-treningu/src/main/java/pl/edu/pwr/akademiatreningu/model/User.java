@@ -50,7 +50,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Training> trainings;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private Mentee mentee;
 
     @OneToOne(mappedBy = "user")

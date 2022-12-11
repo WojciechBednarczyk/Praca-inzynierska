@@ -46,6 +46,16 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="remove">
+        <th class="table-content" mat-header-cell *matHeaderCellDef>Usuń Podopiecznego</th>
+        <td class="table-content" mat-cell
+            *matCellDef="let mentee">
+          <button
+            mat-raised-button color="warn" (click)="removeMentee(mentee.userId)">X
+          </button>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

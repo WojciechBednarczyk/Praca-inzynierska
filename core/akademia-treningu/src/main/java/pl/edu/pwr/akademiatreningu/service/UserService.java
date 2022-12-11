@@ -91,6 +91,15 @@ public class UserService {
         requestRepository.deleteByMenteeIdAndPersonalTrainerId(request.getMentee().getId(), request.getPersonalTrainer().getId());
     }
 
+    @Transactional
+    public void removeMentee(Integer userId) {
+        User user = userRepository.findById(userId).get();
+        Integer menteeId = user.getMentee().getId();
+        Mentee mentee = menteeRepository.findById(menteeId).get();
+        mentee.setPersonalTrainer(null);
+        menteeRepository.save(mentee);
+    }
+
     public List<PersonalTrainerRequestDto> getMenteesRequests(Integer personalTrainerId) {
         User user = userRepository.findById(personalTrainerId).get();
         List<PersonalTrainerRequest> personalTrainerRequests = requestRepository.findByPersonalTrainerId(user.getPersonalTrainer().getId());
