@@ -1,5 +1,5 @@
 \chapter{Implementacja}
-% TO DO: kod ma byæ pisany czcionk¹ maszynow¹ !!!! W szczególnoœci dotyczy to anotacji!!!! Proszê poprawiæ!!!!
+% TO DO: DONE
 Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programownia obiektowego. Podczas implementacji starano siê uwzglêdniæ dobre praktyki programowania oraz pisanie czystego kodu. Zasady te obejmuj¹ takie zagadanienia jak nazewnictwo klas oraz metod, komentarze w kodzie czy obs³ugê b³êdów. Dobrze zosta³o to opisane w pracy \cite{CleanCode}. Poszczególne komponenty aplikacji zosta³y podzielone na pakiety, które zosta³y opisane w kolejnych sekcjach. Strukturê aplikacji backendowej pokazano na rysunku~\ref{fig:pakiety}~.
 \begin{figure}[htb]
   \centering
@@ -7,13 +7,7 @@ Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programo
 	\caption{Struktura aplikacji backendowej}
   \label{fig:pakiety}
 \end{figure}
-% TO DO: diagram do przerysowania - za du¿o bia³ej przestrzeni, niepotrzebne te¿ jest zró¿nicowanie czcionek (i u¿ycie bolda)
-\begin{figure}[htb]
-  \centering
-	\includegraphics[width=1\textwidth]{rys04/diagram-pakietow}
-	\caption{Diagram pakietów}
-  \label{fig:diagram_pakietow}
-\end{figure}
+% zrezygnowano z diagramu pakietów ze wzglêdu na rysunek przedstawiaj¹cy podzia³ na pakiety oraz opisane zale¿noœci pomiêdzy nimi w kolejnych sekcjach 
 
 
 \section{Controller}
@@ -64,6 +58,8 @@ public class MessageControler {
 W tym pakiecie znajduj¹ siê klasy definiuj¹ce obiekty DTO. Obiekty DTO to obiekty które s¹ przesy³ane poza logikê biznesow¹ aplikacji np. do Frontendu. Zawieraj¹ one tylko te pola które programista chce udostêpniæ poza aplikacj¹. Dziêki takiemu rozwi¹zaniu nie wystawiamy ca³ych obiektów które mog¹ zawieraæ poufne informacje takie jak login, has³o czy adres. To w³aœnie te obiekty lub ich zbiory s¹ zwracane przez kontrolery. 
 
 Na listingu ~\ref{lst:dto} przedstawiono przyk³adow¹ klasê DTO która odpowiada klasie User z projektowanej aplikacji. Klasa ta zawiera tylko pola które chcemy wyœwietliæ na frontendzie. Nie znajdziemy tu pól z loginem, has³em czy emailem.
+
+\newpage
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{UserDto}, label=lst:dto]
 package pl.edu.pwr.akademiatreningu.dto;

@@ -116,7 +116,7 @@ Testy integracyjne s³u¿¹ do przetestowania interakcji pomiêdzy poszczególnymi ko
 
 Postman jest darmow¹ aplikacj¹ s³u¿¹c¹ do testowania API. Jest to idealne narzêdzie dla programistów do testów integracyjnych. Pozwala na wysy³anie ¿¹dañ na konkrenty adres URL z oczekiwaniem na odpowiedŸ która jest nastêpnie wyœwietlana. Ponadto do wysy³anych ¿¹dañ mo¿na w ³atwy sposób dodaæ parametry ¿¹dania, nag³ówki oraz cia³o ¿¹dania w wybranym formacie np. JSON.
 
-Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \emph{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania. W odpowiedzi otrzymano kod odpowiedzi oraz cia³o odpowiedzi. Kod odpowiedzi 200 oraz treœæ odpowiedzi potwierdzaj¹ poprawnoœæ zaimplementowanej funkcji.
+Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania. W odpowiedzi otrzymano kod odpowiedzi oraz cia³o odpowiedzi. Kod odpowiedzi 200 oraz treœæ odpowiedzi potwierdzaj¹ poprawnoœæ zaimplementowanej funkcji.
 
 \begin{figure}[htb]
   \centering
@@ -127,7 +127,7 @@ Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹da
 
 \newpage
 
-Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \emph{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania takimi samymi jak ostatnio co oznacza, ¿e konto nie powinno zostaæ utworzone. W odpowiedzi otrzymano kod odpowiedzi 400 oraz cia³o odpowiedzi informuj¹ce o tym, ¿e konto u¿ytkownika z takim loginem istnieje ju¿ w systemie i nie zosta³o stworzone nowe. Potwierdza to poprawnoœæ zaimplementowanej funkcji.
+Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania takimi samymi jak ostatnio co oznacza, ¿e konto nie powinno zostaæ utworzone. W odpowiedzi otrzymano kod odpowiedzi 400 oraz cia³o odpowiedzi informuj¹ce o tym, ¿e konto u¿ytkownika z takim loginem istnieje ju¿ w systemie i nie zosta³o stworzone nowe. Potwierdza to poprawnoœæ zaimplementowanej funkcji.
 
 \begin{figure}[htb]
   \centering
