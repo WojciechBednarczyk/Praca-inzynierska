@@ -1,3 +1,7 @@
 \chapter{Instrukcja wdro¿eniowa}
-Jeœli praca skoñczy³a siê wykonaniem jakiegoœ oprogramowania, to w dodatku powinna pojawiæ siê instrukcja wdro¿eniowa (o tym jak skompilowaæ/zainstalowaæ to oprogramowanie).
-Przyda³oby siê równie¿  krótkie how to (jak uruchomiæ system i coœ w nim zrobiæ -- zademonstrowane na jakimœ najprostszym przypadku u¿ycia). Mo¿na z tego zrobiæ osobny dodatek,
+
+Dodatek ten przedstawia sposób uruchomienia aplikacji. Na p³ycie CD w folderze \emph{dist} znajduje siê archiwum \emph{jar} zawieraj¹ce backend aplikacji oraz folder o nazwie \emph{akademia-treningu} który zawiera wersjê dystrybucyjn¹ frontendu. 
+
+Przed uruchomieniem aplikacji, w systemie powinna byæ zainstalowana Java w wersji 17 oraz ustawiona zmienna systemowa \emph{PATH} wskazuj¹ca na miejsce instalacji Javy. Oprócz tego konieczne jest zainstalowanie menad¿era pakietów npm. Aby uruchomiæ backend aplikacji nale¿y otworzyæ konsolê w miejscu w którym znajduje siê plik jar i wpisaæ komendê \texttt{java -jar akademia-treningu.jar}. Czêœæ backendowa aplikacji powinna zostaæ uruchomiona. 
+
+W tym samym miejscu w konsoli nale¿y wpisaæ komendê \texttt{npx http-server akademia-treningu --port=4200}, aby uruchomiæ czêœæ frontendow¹ aplikacji. Mo¿liwe, ¿e menad¿er pakietów poprosi o doinstalowanie pakietu http-server. Nale¿y siê zgodziæ. Po poprawnym uruchomieniu mo¿na uruchomiæ przegl¹darke i przejœæ na stronê \url{http://localhost:4200} na której znajdowaæ siê bêdzie zaprojektowana aplikacja.
