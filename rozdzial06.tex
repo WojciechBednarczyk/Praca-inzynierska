@@ -54,9 +54,10 @@ public class OpinionMapperTest {
         List<OpinionDto> result = opinionMapper.mapOpinionsToDto(opinions);
 
         // Then
-        assertThat(result).isNotEmpty();
-        assertThat(result).hasSameSizeAs(expectedResult);
-        assertThat(result).usingRecursiveComparison().isEqualTo(expectedResult);
+        assertThat(result)
+						.isNotEmpty()
+						.hasSameSizeAs(expectedResult)
+						.usingRecursiveComparison().isEqualTo(expectedResult);
     }
 }
 \end{lstlisting}
@@ -102,9 +103,10 @@ public class ExerciseServiceTest {
         // Then
 				verify(exerciseRepository).findAll();
         verify(exerciseMapper).mapExercisesToDto(queryResult);
-        assertThat(result).isNotEmpty();
-        assertThat(result).hasSameSizeAs(expectedResult);
-        assertThat(result).usingRecursiveComparison().isEqualTo(expectedResult);
+        assertThat(result)
+							.isNotEmpty();
+							.hasSameSizeAs(expectedResult);
+							.usingRecursiveComparison().isEqualTo(expectedResult);
     }
 }
 
@@ -120,7 +122,7 @@ Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹da
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys06/rejestracja-sukces}
+	\includegraphics[width=0.7\textwidth]{rys06/rejestracja-sukces}
 	\caption{Wys³anie ¿¹dania rejestracji nowego u¿ytkownika z aplikacji Postman - sukces}
   \label{fig:rejestracja-sukces}
 \end{figure}
@@ -131,7 +133,7 @@ Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys06/rejestracja-niepowodzenie}
+	\includegraphics[width=0.7\textwidth]{rys06/rejestracja-niepowodzenie}
 	\caption{Wys³anie ¿¹dania rejestracji nowego u¿ytkownika z aplikacji Postman - niepowodzenie}
   \label{fig:rejestracja-niepowodzenie}
 \end{figure}
@@ -140,23 +142,25 @@ Wed³ug wczeœniej zdefiniowanych wymagañ, niektóre z funkcji powinny byæ dostêpne
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys06/opinie_bez_logowania}
+	\includegraphics[width=0.7\textwidth]{rys06/opinie_bez_logowania}
 	\caption{Wys³anie ¿¹dania uzyskania opinii o trenerze nie bêd¹c zalogowanym}
   \label{fig:opinie_bez_logowania}
 \end{figure}
+
+\newpage
 
 Rysunek ~\ref{fig:opinie_sukces} przedstawia wys³anie ¿¹dania dotycz¹cego opinii o trenerze w momencie gdy u¿ytkownik jest zalogowany. W odpowiedzi otrzymano kod odpowiedzi 200, natomiast w ciele odpowiedzi zosta³y wyœwietlone opinie zapisane w formacie JSON. Ponadto, wraz z ¿¹daniem zosta³ wys³any token JWT zapisany w pliku cookies. Zosta³o to przedstawione na rysunku ~\ref{fig:opinie_cookies}. Potwierdza to poprawnoœæ zaimplementowanej funkcjonalnoœci. 
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys06/opinie_sukces}
+	\includegraphics[width=0.7\textwidth]{rys06/opinie_sukces}
 	\caption{Wys³anie ¿¹dania uzyskania opinii o trenerze bêd¹c zalogowanym}
   \label{fig:opinie_sukces}
 \end{figure}
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys06/opinie_cookies}
+	\includegraphics[width=0.7\textwidth]{rys06/opinie_cookies}
 	\caption{Wys³ane cookies wraz z ¿¹daniem}
   \label{fig:opinie_cookies}
 \end{figure}

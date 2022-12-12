@@ -273,6 +273,8 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 	\item Po klikniêciu w wybranego u¿ytkownika pokazuje siê ekran jego profilu
 \end{enumerate}
 
+\newpage
+
 \section{Wymaganie niefunkcjonalne systemu}
 Wymaganie niefunkcjonalne opisane dalej okreœlaj¹ techniczne aspekty aplikacji oraz po¿¹dane zachowanie systemu. Wymagania te mog¹ odnosiæ siê do dostêpnoœci, wydajnoœci czy bezpieczeñstwa projektowanej aplikacji.\\
 
@@ -284,24 +286,21 @@ Aplikacja musi byæ dostêpna 24/7\\[5pt]
 Aplikacja musi byæ niezale¿na od systemu operacyjnego klienta\\[5pt]
 \noindent
 \textbf{NFR-3}
-Aplikacja ma byæ wdro¿ona na darmowym hostingu np.\ Heroku\\[5pt]
-\noindent
-\textbf{NFR-4}
 Baza danych bêdzie wdro¿ona na darmowym serwerze\\[5pt]
 \noindent
-\textbf{NFR-5}
+\textbf{NFR-4}
 Do korzystania z aplikacji wymagany jest dostêp do internetu\\[5pt]
 \noindent
-\textbf{NFR-6}
+\textbf{NFR-5}
 Has³o do konta u¿ytkownika jest szyfrowane algorytmem bCrypt i zapisywane do bazy danych\\[5pt]
 \noindent
-\textbf{NFR-7}
+\textbf{NFR-6}
 Autoryzacja przebiega przy pomocy JWT zapisywanym w plikach cookies\\[5pt]
 \noindent
-\textbf{NFR-8}
+\textbf{NFR-7}
 Aplikacja musi dzia³aæ poprawnie na najpopularniejszych przegl¹darkach typu Firefox, Chrome czy Safari\\[5pt]
 \noindent
-\textbf{NFR-9}
+\textbf{NFR-8}
 Kopia bazy danych bêdzie tworzona automatycznie raz w tygodniu
 
 \section{Koncept aplikacji}
@@ -315,6 +314,8 @@ Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Wido
 
 \section{Architektura aplikacji}
 
+Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekture projektowanego systemu. Wyszczególniono na nim bazê danych, backend oraz frontend. Komunikacja pomiêdzy frontendem a backendem odbywa siê poprzez REST API. U¿ytkownicy uzyskuj¹ dostêp do aplikacji poprzez frontend.
+
 \begin{figure}[htb]
   \centering
 	\includegraphics[width=0.8\textwidth]{rys02/architektura}
@@ -322,5 +323,4 @@ Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Wido
   \label{fig:architektura}
 \end{figure}
 
-Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekture projektowanego systemu. Wyszczególniono na nim bazê danych, backend oraz frontend. Komunikacja pomiêdzy frontendem a backendem odbywa siê poprzez REST API. U¿ytkownicy uzyskuj¹ dostêp do aplikacji poprzez frontend.
 
