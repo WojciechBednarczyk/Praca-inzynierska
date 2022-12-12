@@ -1,6 +1,6 @@
 \chapter{Implementacja}
 % TO DO: DONE
-Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programownia obiektowego. Podczas implementacji starano siê uwzglêdniæ dobre praktyki programowania oraz pisanie czystego kodu. Zasady te obejmuj¹ takie zagadanienia jak nazewnictwo klas oraz metod, komentarze w kodzie czy obs³ugê b³êdów. Dobrze zosta³o to opisane w pracy \cite{CleanCode}. Poszczególne komponenty aplikacji zosta³y podzielone na pakiety, które zosta³y opisane w kolejnych sekcjach. Strukturê aplikacji backendowej pokazano na rysunku~\ref{fig:pakiety}~.
+Aplikacja backendowa zosta³a napisana w jêzyku Java z zachowaniem zasad programowania obiektowego. Podczas implementacji starano siê uwzglêdniæ dobre praktyki programowania oraz pisanie czystego kodu. Zasady te obejmuj¹ takie zagadnienia jak nazewnictwo klas oraz metod, komentarze w kodzie czy obs³ugê b³êdów. Dobrze zosta³o to opisane w pracy \cite{CleanCode}. Poszczególne komponenty aplikacji zosta³y podzielone na pakiety, które zosta³y opisane w kolejnych sekcjach. Strukturê aplikacji backendowej pokazano na rysunku~\ref{fig:pakiety}~.
 \begin{figure}[htb]
   \centering
 	\includegraphics[width=0.42\textwidth]{rys04/podzial_na_pakiety}
@@ -339,15 +339,14 @@ public class ExerciseService {
 
 \end{lstlisting}
 
-\newpage
-
 \section{Diagram ERD}
-
-Na rysunkku ~\ref{fig:diagramERD} przedstawiono diagram ERD projektowanej aplikacji. Mo¿na na nim wyró¿niæ tabelê \emph{USERS} która jest jedn¹ z g³ównych tabel w systemie. Odpowiedzialna jest za przechowywanie informacji o kontach u¿ytkowników. Oprócz tej tabeli mo¿na wyró¿niæ tak¿e tabele \emph{MENTEES} oraz \emph{PERSONAL\_TRAINERS} które równie¿ przechowuj¹ informacje o u¿ytkowniku, jednak jest to zale¿ne od roli w systemie. Pozosta³e tabele zawieraj¹ informacje o wiadomoœciach miêdzy u¿ytkownikami, planach treningowach czy opiniach o trenerze.
-
-\begin{figure}[htb]
+Na rysunku~\ref{fig:diagramERD} przedstawiono diagram ERD projektowanej aplikacji.
+\begin{figure}[b]
   \centering
-\includegraphics[width=.9\textwidth]{rys04/diagramERD}
+\includegraphics[width=.83\textwidth]{rys04/diagramERD}
   \caption{Diagram ERD}
   \label{fig:diagramERD}
-\end{figure}
+\end{figure} 
+Mo¿na na nim wyró¿niæ tabelê \texttt{USERS} która jest jedn¹ z g³ównych tabel w systemie. Odpowiedzialna jest za przechowywanie informacji o kontach u¿ytkowników. Oprócz tej tabeli mo¿na wyró¿niæ tak¿e tabele \texttt{MENTEES} oraz \texttt{PERSONAL\_TRAINERS} które równie¿ przechowuj¹ informacje o u¿ytkowniku, jednak jest to zale¿ne od roli w systemie. Pozosta³e tabele zawieraj¹ informacje o wiadomoœciach miêdzy u¿ytkownikami, planach treningowach czy opiniach o trenerze.
+
+
