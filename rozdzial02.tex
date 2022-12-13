@@ -314,7 +314,11 @@ Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Wido
 
 \section{Architektura aplikacji}
 
-Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekturê projektowanego systemu. Wyszczególniono na nim bazê danych, backend oraz frontend. Komunikacja pomiêdzy frontendem a backendem odbywa siê poprzez REST API. U¿ytkownicy uzyskuj¹ dostêp do aplikacji poprzez frontend.
+Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekturê projektowanego systemu. Wyszczególniono na nim bazê danych, backend oraz frontend. Baza danych bêdzie przechowywa³a wszystkie informacje potrzebne do funkcjonowania aplikacji. W projektowanej aplikacji zastosowano relacyjny model bazy danych.  
+
+Backend jest czêœci¹ aplikacji która jest niewidoczna dla u¿ytkownika oraz nie ma do niej bezpoœredniego dostêpu. Odpowiedzialny jest za ca³¹ logikê biznesow¹ aplikacji. Komunikuje siê bezpoœrednio z baz¹ danych pobieraj¹c lub zapisuj¹c dane do niej. Po przetworzeniu danych wysy³a odpowiedŸ do frontendu.
+
+Frontend jest czêœci¹ aplikacji która dzia³a po stronie u¿ytkownika najczêœciej w przegl¹darce. Odpowiedzialny jest za interakcje z u¿ytkownikiem, pobieranie od niego danych, a nastêpnie przesy³anie ich do backendu w celu przetworzenia. Po otrzymaniu wiadomoœci zwrotnej od backendu, wyœwietla j¹ w odpowiedni sposób w aplikacji. Komunikacja pomiêdzy frontendem, a backendem odbywa siê poprzes REST API
 
 \begin{figure}[htb]
   \centering
@@ -323,5 +327,5 @@ Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekturê projek
   \label{fig:architektura}
 \end{figure}
 
-% TO DO: proszê dopisaæ tu przynajmniej jeden akapit, bo podrozdzia³ jest za krótki. Mo¿e Pan napisaæ o przewidywanym ruchu i wolumenie wymienianych danych, potrzebnej infrastrukturze itp.
+% TO DO: DONE
 

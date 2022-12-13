@@ -22,10 +22,6 @@ W pakiecie \texttt{controller} znajduj¹ siê restowe kontrolery które pozwalaj¹ n
 Dziêki Spring Boot tworzenie kontrolerów w Javie jest bardzo proste. Aby klasa sta³a siê kontrolerem nale¿y oznaczyæ j¹ anotacj¹ \texttt{@RestController}. Na listingu ~\ref{lst:kontroler} przedstawiono przyk³adowy kontroler w projektowanej aplikacji. Sama klasa oznaczona jest jeszcze anotacjami @CrossOrigin która zezwala na wykonywanie asynchronicznych zapytañ HTTP do serwisów pod innym adresem, \texttt{@RequiredArgsConstructor} która tworzy konstruktor z polami oznaczonymi final, co pozwala na automatyczne wstrzykiwanie zale¿noœci springowych (w tym przypadku MessageService) oraz \texttt{@RequestMapping} która jako arugemnt przyjmuje œcie¿kê pod któr¹ bêdzie dostêpne projektowanie API. Metody oznaczone s¹ anotacjami \texttt{@Mapping} z przedrostkiem oznaczaj¹cym metodê HTTP np.~\texttt{@PostMapping} które okreœlaj¹ jakie ¿¹dania mo¿na wykonywaæ na danej metodzie. Ponadto anotacja \texttt{@PreAuthorize} definiuje sposób dostêpu do metody. Bardziej szczegó³owo zostanie to opisane w sekcji \emph{Security}. Sam kontroler ma za zadanie odbieraæ ¿¹dania, natomiast dalsze przetwarzanie informacji odbywa siê w serwisach.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{MessageController}, label=lst:kontroler]
-package pl.edu.pwr.akademiatreningu.controller;
-
-import (...)
-
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequiredArgsConstructor
@@ -62,10 +58,6 @@ Na listingu ~\ref{lst:dto} przedstawiono przyk³adow¹ klasê DTO która odpowiada k
 \newpage
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{UserDto}, label=lst:dto]
-package pl.edu.pwr.akademiatreningu.dto;
-
-import lombok.*;
-
 @Builder
 @Getter
 @Setter
@@ -91,10 +83,6 @@ public class UserDto {
 Pakiet ten zawiera specjalne mappery które mapuj¹ obiekt encji na obiekty DTO i odwrotnie. Na listingu ~\ref{lst:mapper} przedstawiono przyk³adow¹ klasê mappera. Mo¿na zauwa¿yæ ¿e zosta³a oznaczona anotacj¹ \texttt{@Component} co oznacza ¿e nie trzeba tworzyæ obiektu tej klasy, poniewa¿ Spring robi to automatycznie. Zawiera 2 publiczne metody które s¹ wywo³ywane przez odpowiednie serwisy. Metody te jako parametr przyjmuj¹ listê DTO lub encji i zwracaj¹ listy z odpowiednio zmapowanymi obiektami.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{ExerciseMapper}, label=lst:mapper]
-package pl.edu.pwr.akademiatreningu.mapper;
-
-import (...)
-
 @Component
 @RequiredArgsConstructor
 public class ExerciseMapper {
@@ -142,10 +130,6 @@ W tym pakiecie znajduj¹ siê klasy które s¹ encjami JPA. Reprezentuj¹ one encje w
 Na listingu ~\ref{lst:model1} przedstawiono przyk³adowy kod klasy z pakietu Model. Oprócz wczeœniej wspomnianych anotacji zawiera ona tak¿e anotacjê \texttt{@Table} która jako parametr przyjmuje nazwê tabeli w bazie danych której ma byæ encj¹ JPA. Na polu id zosta³a dodana tak¿e anotacja @GeneratedValue która definiuje wed³ug jakiej strategii przydzielane s¹ id kluczy publicznych w bazie danych. Dodatkowo na polach które maj¹ niejednoznaczne nazwy z polami w bazie danych, zosta³a dodana anotacja \texttt{@Column} która definiuje które pole w tej klasie odpowiada polu w bazie danych. Ponadto, anotacjami typu \texttt{@OneToMany}, \texttt{@OneToOne} zosta³y oznaczone pola które definiuj¹ relacje z innymi encjami JPA. Jako argument przyjmuje nazwê pola pod jak¹ bêdzie zadeklarowana encja w innej klasie. 
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{User}, label=lst:model1]
-package pl.edu.pwr.akademiatreningu.model;
-
-import (...)
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -198,10 +182,6 @@ public class User {
 Powi¹zana encja natomiast musi zawieraæ to pole z zadeklarowan¹ wczeœniej nazw¹. Ponadto nale¿y oznaczyæ je anotacj¹ \texttt{@JoinColumn} podaj¹c jako argument podaj¹c nazwê klucza obcego. Zosta³o to przedstawione na kolejnym listingu ~\ref{lst:model2}.  
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{Post}, label=lst:model2]
-package pl.edu.pwr.akademiatreningu.model;
-
-import (...)
-
 @Entity
 @Table(name = "trainings")
 public class Training {
@@ -221,11 +201,9 @@ Pakiet ten zawiera repozytoria JPA które wykonuj¹ operacje na bazie danych. Repo
 
 Na listingu ~\ref{lst:repository} przedstawiono przyk³adowe repozytorium z projektowanej aplikacji. W przypadku operacji szukania konkretnej encji, repozytorium zwraca typ Optional który mo¿e przechowywaæ znalezion¹ encjê lub wartoœæ null w przypadku gdy nie znaleziono encji w bazie danych. Repozytoria oznaczone s¹ anotacjami \texttt{@Repository}.
 
+\newpage
+
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy interfejsu UserRepository, label=lst:repository]
-package pl.edu.pwr.akademiatreningu.repository;
-
-import (...)
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
@@ -250,7 +228,7 @@ Jedn¹ z podstawowych funkcjonalnoœci aplikacji jest mo¿liwoœæ za³o¿enia konta w 
 
 \begin{figure}[htb]
   \centering
-	\includegraphics[width=0.9\textwidth]{rys04/autoryzacja}
+	\includegraphics[width=0.71\textwidth]{rys04/autoryzacja}
 	\caption{Wykorzystanie JWT w projektowanej aplikacji}
   \label{fig:autoryzacja}
 \end{figure}
@@ -260,10 +238,6 @@ W pakiecie security znajduje siê klasa WebSecurityConfig która jest odpowiedzial
 W klasie mo¿na wyró¿niæ beany PasswordEncoder, SecurityFilterChain oraz DaoAuthenticationProvider. PasswordEncoder zwraca implementacjê enkodera has³a korzystaj¹cego z funkcji hashuj¹cej Bcrypt. SecurityFilterChain odpowiada za skonfigurowanie filtra. Wszystkie ¿¹dania przychodz¹ce do aplikacji pocz¹tkowo przechodz¹ przez filtr, po czym je¿eli ¿¹danie przesz³o przez filtr przeprowadzana jest w³aœciwa obs³uga ¿¹dania. DaoAuthenticationProvider ustawia enkoder has³a oraz serwis odpowiedzialny za dostarczanie informacji o u¿ytkowniku.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{WebSecurityConfig}, label=lst:webConfig]
-package pl.edu.pwr.akademiatreningu.security;
-
-import (...)
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -319,10 +293,6 @@ W tym pakiecie zawarta jest ca³a logika biznesowa aplikacji. Znajduj¹ siê w nim 
 Na listingu ~\ref{lst:service} przedstawiono przyk³adowy serwis z projektowanej aplikacji odpowiedzialny za przetwarzanie informacji zwi¹zanych z æwiczeniami. Zawiera on jedn¹ metodê która zwraca wszystkie æwiczenia znajduj¹ce siê w bazie danych. Przed zwróceniem listy æwiczeñ do kontrolera, s¹ one mapowane do postaci DTO.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy \emph{ExerciseService}, label=lst:service]
-package pl.edu.pwr.akademiatreningu.service;
-
-import (...)
-
 @Service
 @RequiredArgsConstructor
 public class ExerciseService {
@@ -338,6 +308,8 @@ public class ExerciseService {
 }
 
 \end{lstlisting}
+
+\newpage
 
 \section{Diagram ERD}
 Na rysunku~\ref{fig:diagramERD} przedstawiono diagram ERD projektowanej aplikacji.

@@ -20,13 +20,7 @@ W projektowanej aplikacji do testów jednostkowych wykorzystano bibliotekê JUnit 
 Na listingu ~\ref{lst:OpinionMapperTest} przedstawiono przyk³adowy test klasy OpinionMapper z wykorzystaniem wczeœniej wymienionych technik. Ka¿da metoda która jest testem powinna byæ oznaczona adnotacj¹ \texttt{@Test}. W sekcji \emph{Given} zdefiniowano dane wejœciowe oraz oczekiwany rezultat. Nastêpnie w sekcji \emph{When} wywo³ano sprawdzan¹ metodê, a w sekcji \emph{then} sprawdzono poprawonœæ dzia³ania metody poprzez asercje. Zweryfikowano czy rezultat nie jest pust¹ list¹, czy ma taki sam rozmiar jak oczekiwany rezultat, a tak¿e czy zawartoœæ otrzymanej listy jest zgodna z oczekiwan¹ wartoœci¹.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy testowej \emph{OpinionMapperTest}, label=lst:OpinionMapperTest]
-package pl.edu.pwr.akademiatreningu.mapper;
-
-import (...)
-
-public class OpinionMapperTest {
-
-    @Test
+@Test
     public void shoukdMapOpinionsToDto(){
 
         // Given
@@ -59,19 +53,13 @@ public class OpinionMapperTest {
 						.hasSameSizeAs(expectedResult)
 						.usingRecursiveComparison().isEqualTo(expectedResult);
     }
-}
 \end{lstlisting}
-
 
 W niektórych przypadkach jednak te dwie biblioteki nie wystarcz¹. Zdarza siê, ¿e testowana jednostka jest zale¿na od innych jednostek, a test jednostkowy nie powinien wykraczaæ poza jej granice. W takiej sytuacji nale¿y skorzystaæ z tzw. mocków. Mock jest obiektem który ma imitowaæ rzeczywisty obiekt. Dziêki niemu nie ma koniecznoœci implementacji danego obiektu. Mock pozwala zdefiniowaæ jak obiekt ma siê zachowywaæ w okreœlonych przypadkach.
 
 W Javie najpopularniejsz¹ bibliotek¹ wspieraj¹c¹ mocki jest Mockito. Ponadto, dobrze integruje siê wraz z JUnit 5 poprzez dodanie jednej zale¿noœci w pliku konfiguracyjnym. Na listingu ~\ref{lst:ExerciseServiceTest} przedstawiono dzia³anie tej biblioteki. Aby JUnit 5 oraz Mockito dzia³a³o razem poprawnie, nale¿y oznaczyæ klasê adnotacj¹ \texttt{@ExtendWith(MockitoExtension.class)}. W klasie zadeklarowano dwa obiekty klas \texttt{ExerciseRepository} oraz \texttt{ExerciseMapper} które zosta³y oznaczone adnotacjami \texttt{@Mock} dziêki czemu zosta³y utworzone mocki. Ponadto zadeklarowano obiekt klasy \texttt{ExerciseService} której metoda jest testowana w poni¿szym przyk³adzie. Poniewa¿ obiekt ten zawiera zale¿noœci do wczeœniej wspomnianych klas, oznaczony zosta³ adnotacj¹ \texttt{@InjectMocks} przez co wczeœniej utworzone mocki zostan¹ automatycznie wstrzykniête do mocka serwisu. W samym teœcie, w sekcji \emph{Given} oprócz danych testowych oraz oczekiwanych rezultatów wykorzystano metodê \texttt{when} z biblioteki Mockito która pozwala zdefiniowaæ wyniki wywo³añ poszczególnych metod. Na koñcu testu za pomoc¹ metody \texttt{verify}, zweryfikowano czy dane metody rzeczywiœcie zosta³y wywo³ane. 
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy testowej \emph{ExerciseServiceTest}, label=lst:ExerciseServiceTest]
-package pl.edu.pwr.akademiatreningu.service;
-
-import (...)
-
 @ExtendWith(MockitoExtension.class)
 public class ExerciseServiceTest {
     
