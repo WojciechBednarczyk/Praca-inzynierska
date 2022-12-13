@@ -1,6 +1,6 @@
 \chapter{Testy}
 
-Poni¿szy rozdzia³ zosta³ poœwiêcony testom projektowanej aplikacji. Testy s¹ nieod³¹czn¹ czêœci¹ ka¿dej aplikacji. Przed jej wdro¿eniem lub dostarczeniem nowej funkcjonalnoœci nale¿y sprawdziæ czy zaimplementowana funkcjonalnoœæ dzia³a wed³ug specyfikacji. Ponadto nale¿y przetestowaæ przypadki krytyczne jak np. wysy³anie zapytania w momencie kiedy pole które by³o wymagane jest puste. Pozwala to unikn¹æ naprawiania b³êdów które wykrywane s¹ dopiero na produkcji.
+Poni¿szy rozdzia³ zosta³ poœwiêcony testom projektowanej aplikacji. Testy s¹ nieod³¹czn¹ czêœci¹ ka¿dej aplikacji. Przed jej wdro¿eniem lub dostarczeniem nowej funkcjonalnoœci nale¿y sprawdziæ czy zaimplementowana funkcjonalnoœæ dzia³a wed³ug specyfikacji. Ponadto nale¿y przetestowaæ przypadki krytyczne jak np. wysy³anie zapytania w momencie kiedy wymagane pole jest puste. Pozwala to wykryæ b³êdy jeszcze przed wdro¿eniem funkcjonalnoœci.
 
 Istnieje wiele rodzajów testów. Niektóre z nich mo¿na przeprowadziæ automatycznie, a niektóre manualnie. W projektowanej aplikacji, aby sprawdziæ poprawnoœæ implementacji skupiono siê przede wszystkim na testach jednostkowych oraz testach integracyjnych.
  
@@ -17,10 +17,10 @@ W projektowanej aplikacji do testów jednostkowych wykorzystano bibliotekê JUnit 
 
 \newpage
 
-Na listingu ~\ref{lst:OpinionMapperTest} przedstawiono przyk³adowy test klasy OpinionMapper z wykorzystaniem wczeœniej wymienionych technik. Ka¿da metoda która jest testem powinna byæ oznaczona adnotacj¹ \texttt{@Test}. W sekcji \emph{Given} zdefiniowano dane wejœciowe oraz oczekiwany rezultat. Nastêpnie w sekcji \emph{When} wywo³ano sprawdzan¹ metodê, a w sekcji \emph{then} sprawdzono poprawonœæ dzia³ania metody poprzez asercje. Zweryfikowano czy rezultat nie jest pust¹ list¹, czy ma taki sam rozmiar jak oczekiwany rezultat, a tak¿e czy zawartoœæ otrzymanej listy jest zgodna z oczekiwan¹ wartoœci¹.
+Na listingu ~\ref{lst:OpinionMapperTest} przedstawiono przyk³adowy test klasy OpinionMapper z wykorzystaniem wczeœniej wymienionych technik. Metody testowe powinny byæ oznaczone anotacjami \texttt{@Test}. W sekcji \emph{Given} zdefiniowano dane wejœciowe oraz oczekiwany rezultat. Nastêpnie w sekcji \emph{When} wywo³ano sprawdzan¹ metodê, a w sekcji \emph{Then} sprawdzono poprawonœæ dzia³ania metody poprzez asercje. Zweryfikowano czy rezultat nie jest pust¹ list¹, czy ma taki sam rozmiar jak oczekiwany rezultat, a tak¿e czy zawartoœæ otrzymanej listy jest zgodna z oczekiwan¹ wartoœci¹.
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy testowej \emph{OpinionMapperTest}, label=lst:OpinionMapperTest]
-@Test
+		@Test
     public void shoukdMapOpinionsToDto(){
 
         // Given
@@ -57,7 +57,7 @@ Na listingu ~\ref{lst:OpinionMapperTest} przedstawiono przyk³adowy test klasy Op
 
 W niektórych przypadkach jednak te dwie biblioteki nie wystarcz¹. Zdarza siê, ¿e testowana jednostka jest zale¿na od innych jednostek, a test jednostkowy nie powinien wykraczaæ poza jej granice. W takiej sytuacji nale¿y skorzystaæ z tzw. mocków. Mock jest obiektem który ma imitowaæ rzeczywisty obiekt. Dziêki niemu nie ma koniecznoœci implementacji danego obiektu. Mock pozwala zdefiniowaæ jak obiekt ma siê zachowywaæ w okreœlonych przypadkach.
 
-W Javie najpopularniejsz¹ bibliotek¹ wspieraj¹c¹ mocki jest Mockito. Ponadto, dobrze integruje siê wraz z JUnit 5 poprzez dodanie jednej zale¿noœci w pliku konfiguracyjnym. Na listingu ~\ref{lst:ExerciseServiceTest} przedstawiono dzia³anie tej biblioteki. Aby JUnit 5 oraz Mockito dzia³a³o razem poprawnie, nale¿y oznaczyæ klasê adnotacj¹ \texttt{@ExtendWith(MockitoExtension.class)}. W klasie zadeklarowano dwa obiekty klas \texttt{ExerciseRepository} oraz \texttt{ExerciseMapper} które zosta³y oznaczone adnotacjami \texttt{@Mock} dziêki czemu zosta³y utworzone mocki. Ponadto zadeklarowano obiekt klasy \texttt{ExerciseService} której metoda jest testowana w poni¿szym przyk³adzie. Poniewa¿ obiekt ten zawiera zale¿noœci do wczeœniej wspomnianych klas, oznaczony zosta³ adnotacj¹ \texttt{@InjectMocks} przez co wczeœniej utworzone mocki zostan¹ automatycznie wstrzykniête do mocka serwisu. W samym teœcie, w sekcji \emph{Given} oprócz danych testowych oraz oczekiwanych rezultatów wykorzystano metodê \texttt{when} z biblioteki Mockito która pozwala zdefiniowaæ wyniki wywo³añ poszczególnych metod. Na koñcu testu za pomoc¹ metody \texttt{verify}, zweryfikowano czy dane metody rzeczywiœcie zosta³y wywo³ane. 
+W Javie najpopularniejsz¹ bibliotek¹ wspieraj¹c¹ mocki jest Mockito. Ponadto, dobrze integruje siê wraz z JUnit 5 poprzez dodanie jednej zale¿noœci w pliku konfiguracyjnym. Na listingu ~\ref{lst:ExerciseServiceTest} przedstawiono dzia³anie tej biblioteki. Aby JUnit 5 oraz Mockito dzia³a³o razem poprawnie, nale¿y oznaczyæ klasê anotacj¹ \texttt{@ExtendWith(MockitoExtension.class)}. W klasie zadeklarowano dwa obiekty klas \texttt{ExerciseRepository} oraz \texttt{ExerciseMapper} które zosta³y oznaczone anotacjami \texttt{@Mock} dziêki czemu zosta³y utworzone mocki. Ponadto zadeklarowano obiekt klasy \texttt{ExerciseService} której metoda jest testowana w poni¿szym przyk³adzie. Poniewa¿ obiekt ten zawiera zale¿noœci do wczeœniej wspomnianych klas, oznaczony zosta³ anotacj¹ \texttt{@InjectMocks} przez co wczeœniej utworzone mocki zostan¹ automatycznie wstrzykniête do mocka serwisu. W samym teœcie, w sekcji \emph{Given} oprócz danych testowych oraz oczekiwanych rezultatów wykorzystano metodê \texttt{when} z biblioteki Mockito która pozwala zdefiniowaæ wyniki wywo³añ poszczególnych metod. Na koñcu testu za pomoc¹ metody \texttt{verify}, zweryfikowano czy dane metody rzeczywiœcie zosta³y wywo³ane. 
 
 \begin{lstlisting}[language=Java,style=JavaStyle,caption=Kod Ÿród³owy klasy testowej \emph{ExerciseServiceTest}, label=lst:ExerciseServiceTest]
 @ExtendWith(MockitoExtension.class)
@@ -102,9 +102,9 @@ public class ExerciseServiceTest {
 
 \section{Testy integracyjne}
 
-Testy integracyjne s³u¿¹ do przetestowania interakcji pomiêdzy poszczególnymi komponentami systemu. W projektowanej aplikacji mo¿e to byæ po³¹czenie pomiêdzy frontendem, a backendem. Po ka¿dym zaimplementowaniu nowej funkcjonalnoœci po stronie backendu, testowano kontrolery zosta³y zaimplementowane w prawid³owy sposób, czy odbieraj¹ odpowiednie ¿¹danie oraz czy zwracaj¹ odpowiednie wiadomoœci. Testy te by³y przeprowadzane rêcznie za pomoc¹ aplikacji Postman.
+Testy integracyjne s³u¿¹ do przetestowania interakcji pomiêdzy poszczególnymi komponentami systemu. W projektowanej aplikacji mo¿e to byæ po³¹czenie pomiêdzy frontendem, a backendem. Po ka¿dym zaimplementowaniu nowej funkcjonalnoœci po stronie backendu, testowano czy kontrolery zosta³y zaimplementowane w prawid³owy sposób. Sprawdzano czy odbieraj¹ odpowiednie ¿¹dania oraz zwracaj¹ odpowiednie wiadomoœci. Testy te by³y przeprowadzane rêcznie za pomoc¹ aplikacji Postman.
 
-Postman jest darmow¹ aplikacj¹ s³u¿¹c¹ do testowania API. Jest to idealne narzêdzie dla programistów do testów integracyjnych. Pozwala na wysy³anie ¿¹dañ na konkrenty adres URL z oczekiwaniem na odpowiedŸ która jest nastêpnie wyœwietlana. Ponadto do wysy³anych ¿¹dañ mo¿na w ³atwy sposób dodaæ parametry ¿¹dania, nag³ówki oraz cia³o ¿¹dania w wybranym formacie np. JSON.
+Postman jest darmow¹ aplikacj¹ s³u¿¹c¹ do testowania API. Jest narzêdziem chêtnie wybieranym przez programistów do przeprowadzania testów integracyjnych. Pozwala na wysy³anie ¿¹dañ na konkrenty adres URL z oczekiwaniem na odpowiedŸ która jest nastêpnie wyœwietlana. Ponadto do wysy³anych ¿¹dañ mo¿na w ³atwy sposób dodaæ parametry ¿¹dania, nag³ówki oraz cia³o ¿¹dania w wybranym formacie np. JSON.
 
 Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania. W odpowiedzi otrzymano kod odpowiedzi oraz cia³o odpowiedzi. Kod odpowiedzi 200 oraz treœæ odpowiedzi potwierdzaj¹ poprawnoœæ zaimplementowanej funkcji.
 
@@ -117,7 +117,7 @@ Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹da
 
 \newpage
 
-Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania takimi samymi jak ostatnio co oznacza, ¿e konto nie powinno zostaæ utworzone. W odpowiedzi otrzymano kod odpowiedzi 400 oraz cia³o odpowiedzi informuj¹ce o tym, ¿e konto u¿ytkownika z takim loginem istnieje ju¿ w systemie i nie zosta³o stworzone nowe. Potwierdza to poprawnoœæ zaimplementowanej funkcji.
+Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania takimi samymi jak ostatnio co oznacza, ¿e konto nie powinno zostaæ utworzone. W odpowiedzi otrzymano kod odpowiedzi 400 oraz cia³o odpowiedzi informuj¹ce o tym, ¿e konto u¿ytkownika z takim loginem istnieje ju¿ w systemie i nie zosta³o stworzone nowe. Przeprowadzony test potwierdza poprawnoœæ zaimplementowanej funkcji.
 
 \begin{figure}[htb]
   \centering
