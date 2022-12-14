@@ -1,23 +1,23 @@
 \chapter{Analiza wymagañ}
-Przed przyst¹pieniem do implementacji jakiegokolwiek systemu nale¿y dok³adnie przemyœleæ zasady jego funkcjonowania, sprecyzowaæ wzglêdem niego oczekiwania, przewidzieæ interakcja z u¿ytkownikiem. Z tej te¿ przyczyny w niniejszym rozdziale przedstawiono analizê wymagañ projektowanej aplikacji. Dostarczono w nim opis wymagañ funkcjonalnych  dostêpnych do zidentyfikowanych ról u¿ytkowników oraz sprecyzowano wymaganie niefunkcjonalne. Wymagania zilustrowano ma diagramie przypadków u¿ycia.
+Przed przyst¹pieniem do implementacji jakiegokolwiek systemu nale¿y dok³adnie przemyœleæ zasady jego funkcjonowania, sprecyzowaæ wzglêdem niego oczekiwania, przewidzieæ interakcja z u¿ytkownikiem. Z tej te¿ przyczyny w niniejszym rozdziale przedstawiono analizê wymagañ projektowanej aplikacji. Dostarczono w nim opis wymagañ funkcjonalnych  wzglêdem zidentyfikowanych ról u¿ytkowników oraz sprecyzowano wymaganie niefunkcjonalne. Wymagania zilustrowano ma diagramie przypadków u¿ycia.
 
 
 \section{Wymagania funkcjonalne}
-Dostêp do poszczególnych funkcji aplikacji bêdzie uzale¿niony od roli u¿ytkownika. Zdefiniowano nastêpuj¹ce role: niezalogowany u¿ytkownik, podopieczny oraz trener (któr¹œ z tych ról bêdzie mia³ zalogowany u¿ytkownik). Dziêki podzia³owi na role ³atwiej i bezpieczniej bêdzie przebiegaæ jej póŸniejsza implementacja i u¿ytkowanie.\\
+Dostêp do poszczególnych funkcji aplikacji bêdzie uzale¿niony od roli u¿ytkownika. Zdefiniowano nastêpuj¹ce role: niezalogowany u¿ytkownik, podopieczny oraz trener (któr¹œ z tych dwóch ostatnich ról bêdzie mia³ zalogowany u¿ytkownik). Dziêki podzia³owi na role ³atwiej i~bezpieczniej bêdzie przebiegaæ jej póŸniejsza implementacja i u¿ytkowanie.\\
 % TO DO: DONE
 
 \noindent
 \textbf{FR-1}
-Niezalogowany u¿ytkownik mo¿e za³o¿yæ konto w systemie podaj¹c wymagane dane takie jak login, has³o oraz podstawowe dane osobowe\\[5pt]
+Niezalogowany u¿ytkownik mo¿e za³o¿yæ konto w systemie podaj¹c wymagane dane: login, has³o oraz podstawowe dane osobowe\\[5pt]
 \noindent
 \textbf{FR-2}
 Niezalogowany u¿ytkownik mo¿e zalogowaæ siê do systemu podaj¹c login oraz has³o\\[5pt]
 \noindent
 \textbf{FR-3}
-Ka¿dy u¿ytkownik mo¿e przegl¹daæ tabele w której znajduj¹ siê æwiczenia fitness\\[5pt]
+Ka¿dy u¿ytkownik mo¿e przegl¹daæ tabele, w której znajduj¹ siê æwiczenia fitness\\[5pt]
 \noindent
 \textbf{FR-4}
-Ka¿dy u¿ytkownik mo¿e przegl¹daæ szczegó³y æwiczenia na których znajduje siê opis jak wykonaæ æwiczenie oraz film instrukta¿owy\\[5pt]
+Ka¿dy u¿ytkownik mo¿e przegl¹daæ szczegó³y æwiczenia, na których znajduje siê opis jak wykonaæ æwiczenie oraz film instrukta¿owy\\[5pt]
 \noindent
 \textbf{FR-5}
 Podopieczny mo¿e wystawiæ opinie trenerowi, z którym wspó³pracuje\\[5pt]
@@ -66,7 +66,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg}: 
 \begin{enumerate}
   \item Niezalogowany u¿ytkownik klika w przycisk ''Rejestracja''
-  \item Otwiera siê widok rejestracji na którym znajduje siê formularz
+  \item Otwiera siê widok rejestracji, na którym znajduje siê formularz
 	\item Niezalogowany u¿ytkownik wype³nia wymagane pola w formularzu
 	\item Niezalogowany u¿ytkownik klika w przycisk ''Zarejestruj''
 	\begin{itemize}[topsep=0pt]%[noitemsep,topsep=4pt,parsep=0pt,partopsep=4pt,leftmargin=*]
@@ -89,7 +89,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg: }
 \begin{enumerate}
   \item Niezalogowany u¿ytkownik klika w przycisk "`Logowanie"'
-  \item Otwiera siê widok logowanie na którym znajduje siê formularz
+  \item Otwiera siê widok logowanie, na którym znajduje siê formularz
 	\item Niezalogowany u¿ytkownik w formularzu login oraz has³o
 	\item Niezalogowany u¿ytkownik klika w przycisk "`Zaloguj"'
 	\begin{itemize}[topsep=0pt]
@@ -107,12 +107,12 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \noindent
 \textbf{PU03: Przegl¹danie atlasu æwiczeñ}\\
 \emph{Aktor: } Niezalogowany u¿ytkownik, Podopieczny, Trener\\
-\emph{Opis: } Przegl¹danie tabeli z æwiczeniami na której znajduje siê numer, nazwa, grupa miêœniowa oraz ocena æwiczenia  \\
+\emph{Opis: } Przegl¹danie tabeli z æwiczeniami, na której znajduje siê: numer, nazwa, grupa miêœniowa oraz ocena æwiczenia  \\
 \emph{Warunki wstêpne: } U¿ytkownik znajduje siê na ekranie startowym. \\
 \emph{Przebieg: }
 \begin{enumerate}
   \item U¿ytkownik klika w przycisk "`Atlas æwiczeñ"'
-  \item Otwiera siê widok atlasu æwiczeñ na którym znajduje siê tabela z æwiczeniami
+  \item Otwiera siê widok atlasu æwiczeñ, na którym znajduje siê tabela z æwiczeniami
 	\item U¿ytkownik mo¿e przechodziæ po stronach tabeli klikaj¹c w przyciski strza³ek pod tabel¹
 \end{enumerate}
 
@@ -124,7 +124,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg: }
 \begin{enumerate}
   \item U¿ytkownik klika w wybrane æwiczenie w tabeli
-  \item Otwiera siê widok szczegó³ów æwiczenia na którym znajduje siê nazwa, opis, ocena oraz film instrukta¿owy æwiczenia
+  \item Otwiera siê widok szczegó³ów æwiczenia, zawieraj¹cy: nazwê, opis, ocenê oraz film instrukta¿owy æwiczenia
 \end{enumerate}
 
 \noindent
@@ -135,7 +135,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg: }
 \begin{enumerate}
   \item Podopieczny klika przycisk wystawiania opinii
-  \item Pokazuje siê pole tekstowe w którym podopieczny mo¿e wpisaæ swoj¹ opinie i wystawiæ ocenê.
+  \item Pokazuje siê pole tekstowe, w którym podopieczny mo¿e wpisaæ opiniê i wystawiæ ocenê
 	\item Po wpisaniu opinii, podopieczny klika w przycisk zapisz
 	\item Opinia zostaje zapisana na koncie trenera
 \end{enumerate}
@@ -154,7 +154,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \noindent
 \textbf{PU07: Stworzenie planu treningowego}\\
 \emph{Aktor: } Trener\\
-\emph{Opis: } Trener tworzy plan treningowy dla swojego podopiecznego z æwiczeñ istniej¹cych w~systemie\\
+\emph{Opis: } Trener tworzy plan treningowy dla podopiecznego z æwiczeñ istniej¹cych w~systemie\\
 \emph{Warunki wstêpne: } Trener jest zalogowany. Trener znajduje siê na ekranie listy podopiecznych. Trener posiada kogoœ w gronie podopiecznych \\
 \emph{Przebieg: }
 \begin{enumerate}
@@ -239,7 +239,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na ekranie profilu innego u¿ytkownika klika w przycisk "`Wyœlij wiadomoœæ"'
-	\item Pokazuje siê pola tekstowe w które mo¿na wpisaæ wiadomoœæ
+	\item Pokazuje siê pola tekstowe, w które mo¿na wpisaæ wiadomoœæ
 	\item Zalogowany u¿ytkownik wpisuje wiadomoœæ w polu tekstowym
 	\item Zalogowany u¿ytkownik klika w przycisk "`Wyœlij"'
 	\item Wiadomoœæ zostaje wys³ana do innego u¿ytkownika
@@ -266,7 +266,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 \emph{Przebieg: }
 \begin{enumerate}
   \item Zalogowany u¿ytkownik na dowolnym ekranie klika w ikonê szukania na pasku nawigacji
-	\item Pokazuj¹ siê pole tekstowe w którym mo¿na wpisaæ imiê lub nazwisko szukanego u¿ytkownika
+	\item Pokazuj¹ siê pole tekstowe, w którym mo¿na wpisaæ imiê lub nazwisko szukanego u¿ytkownika
 	\item Zalogowany u¿ytkownik wpisuje imiê lub nazwisko szukanego u¿ytkownika
 	\item Zalogowany u¿ytkownik klika w ikonê szukania
 	\item Pokazuje siê ekran z list¹ znalezionych u¿ytkowników
@@ -275,7 +275,7 @@ Zalogowany u¿ytkownik ma mo¿liwoœæ wyszukania profilu innego u¿ytkownika istniej
 
 \newpage
 
-\section{Wymaganie niefunkcjonalne systemu}
+\section{Wymaganie niefunkcjonalne}
 Wymaganie niefunkcjonalne opisane dalej okreœlaj¹ techniczne aspekty aplikacji oraz po¿¹dane zachowanie systemu. Wymagania te mog¹ odnosiæ siê do dostêpnoœci, wydajnoœci czy bezpieczeñstwa projektowanej aplikacji.\\
 
 \noindent
@@ -304,7 +304,7 @@ Aplikacja musi dzia³aæ poprawnie na najpopularniejszych przegl¹darkach typu Fire
 Kopia bazy danych bêdzie tworzona automatycznie raz w tygodniu
 
 \section{Koncept aplikacji}
-Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Widok aplikacji mo¿na podzieliæ na dwie g³ówne sekcje. Sekcja oznaczona na rysunku cyfr¹ 1 jest paskiem nawigacyjnym. Pozwoli on na proste i intuicyjne przemieszczanie siê po poszczególnych komponentach aplikacji. Sekcja oznaczona na rysunku cyfr¹ 2 jest sekcj¹ g³ówn¹. Na niej bêdzie przebiega³o wiêkszoœæ interakcji z u¿ytkownikiem. Wyœwietlane na niej bêd¹ poszczególne komponenty które bêd¹ oferowa³y wczeœniej wspomniane funkcjonalnoœci.
+Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Widok aplikacji mo¿na podzieliæ na dwie g³ówne sekcje. Sekcja oznaczona na rysunku cyfr¹ 1 jest paskiem nawigacyjnym. Pozwoli on na proste i intuicyjne przemieszczanie siê po poszczególnych komponentach aplikacji. Sekcja oznaczona na rysunku cyfr¹ 2 jest sekcj¹ g³ówn¹. Na niej bêdzie przebiega³o wiêkszoœæ interakcji z u¿ytkownikiem. Wyœwietlane na niej bêd¹ poszczególne komponenty, które bêd¹ oferowa³y wczeœniej wspomniane funkcje.
 \begin{figure}[htb]
   \centering
 \includegraphics[width=.9\textwidth]{rys02/koncept}
@@ -314,12 +314,13 @@ Na rysunku ~\ref{fig:koncept} przedstawiono koncept interfejsu u¿ytkownika. Wido
 
 \section{Architektura aplikacji}
 
-Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekturê projektowanego systemu. Wyszczególniono na nim bazê danych, backend oraz frontend. Baza danych bêdzie przechowywa³a wszystkie informacje potrzebne do funkcjonowania aplikacji. W projektowanej aplikacji zastosowano relacyjny model bazy danych.  
+Na rysunku ~\ref{fig:architektura} przedstawiono uproszczon¹ architekturê projektowanego systemu. Wyszczególniono w niej: bazê danych, backend oraz frontend. 
 
-Backend jest czêœci¹ aplikacji która jest niewidoczna dla u¿ytkownika oraz nie ma do niej bezpoœredniego dostêpu. Odpowiedzialny jest za ca³¹ logikê biznesow¹ aplikacji. Komunikuje siê bezpoœrednio z baz¹ danych pobieraj¹c lub zapisuj¹c dane do niej. Po przetworzeniu danych wysy³a odpowiedŸ do frontendu.
+Baza danych bêdzie przechowywa³a wszystkie informacje potrzebne do funkcjonowania aplikacji. W projektowanej aplikacji zastosowano relacyjny model bazy danych.  
 
-Frontend jest czêœci¹ aplikacji która dzia³a po stronie u¿ytkownika najczêœciej w przegl¹darce. Odpowiedzialny jest za interakcje z u¿ytkownikiem, pobieranie od niego danych, a nastêpnie przesy³anie ich do backendu w celu przetworzenia. Po otrzymaniu wiadomoœci zwrotnej od backendu, wyœwietla j¹ w odpowiedni sposób w aplikacji. Komunikacja pomiêdzy frontendem, a backendem odbywa siê poprzes REST API
+Backend jest czêœci¹ aplikacji niewidoczn¹ dla u¿ytkownika, do której nie ma on bezpoœredniego dostêpu. Czêœæ ta odpowiedzialna jest za ca³¹ logikê biznesow¹ aplikacji. Komunikuje siê bezpoœrednio z baz¹ danych pobieraj¹c lub zapisuj¹c dane. Po przetworzeniu danych wysy³a odpowiedŸ do frontendu.
 
+Frontend jest czêœci¹ aplikacji dzia³aj¹c¹ po stronie u¿ytkownika, najczêœciej w przegl¹darce internetowej. Odpowiada za interakcje z u¿ytkownikiem, pobieranie od niego danych, a nastêpnie przesy³anie ich do backendu w celu przetworzenia. Po otrzymaniu wiadomoœci zwrotnej od backendu, frontend wyœwietla j¹ w odpowiedni sposób w aplikacji. Komunikacja pomiêdzy frontendem, a backendem odbywa siê poprzez REST API.
 \begin{figure}[htb]
   \centering
 	\includegraphics[width=0.8\textwidth]{rys02/architektura}

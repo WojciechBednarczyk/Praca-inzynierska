@@ -1,6 +1,5 @@
 \chapter{Testy}
-
-Poni¿szy rozdzia³ zosta³ poœwiêcony testom projektowanej aplikacji. Testy s¹ nieod³¹czn¹ czêœci¹ ka¿dej aplikacji. Przed jej wdro¿eniem lub dostarczeniem nowej funkcjonalnoœci nale¿y sprawdziæ czy zaimplementowana funkcjonalnoœæ dzia³a wed³ug specyfikacji. Ponadto nale¿y przetestowaæ przypadki krytyczne jak np. wysy³anie zapytania w momencie kiedy wymagane pole jest puste. Pozwala to wykryæ b³êdy jeszcze przed wdro¿eniem funkcjonalnoœci.
+Testy s¹ nieod³¹czn¹ czêœci¹ ka¿dej aplikacji. Przed jej wdro¿eniem lub dostarczeniem nowej funkcjonalnoœci nale¿y sprawdziæ czy zaimplementowana funkcjonalnoœæ dzia³a wed³ug specyfikacji. Ponadto nale¿y przetestowaæ przypadki krytyczne jak np.\ wysy³anie zapytania w momencie kiedy wymagane pole jest puste. Pozwala to wykryæ b³êdy jeszcze przed wdro¿eniem funkcjonalnoœci.
 
 Istnieje wiele rodzajów testów. Niektóre z nich mo¿na przeprowadziæ automatycznie, a niektóre manualnie. W projektowanej aplikacji, aby sprawdziæ poprawnoœæ implementacji skupiono siê przede wszystkim na testach jednostkowych oraz testach integracyjnych.
  
@@ -14,8 +13,6 @@ W projektowanej aplikacji do testów jednostkowych wykorzystano bibliotekê JUnit 
 \item When - Sekcja w której wykonuj¹ siê wszystkie metody s¹ testowane
 \item Then - Sprawdzanie czy otrzymany rezultat zgodny z oczekiwanym rezultatem. Najczêœciej wykorzystuje siê do tego asercje
 \end{itemize}
-
-\newpage
 
 Na listingu ~\ref{lst:OpinionMapperTest} przedstawiono przyk³adowy test klasy OpinionMapper z wykorzystaniem wczeœniej wymienionych technik. Metody testowe powinny byæ oznaczone anotacjami \texttt{@Test}. W sekcji \emph{Given} zdefiniowano dane wejœciowe oraz oczekiwany rezultat. Nastêpnie w sekcji \emph{When} wywo³ano sprawdzan¹ metodê, a w sekcji \emph{Then} sprawdzono poprawonœæ dzia³ania metody poprzez asercje. Zweryfikowano czy rezultat nie jest pust¹ list¹, czy ma taki sam rozmiar jak oczekiwany rezultat, a tak¿e czy zawartoœæ otrzymanej listy jest zgodna z oczekiwan¹ wartoœci¹.
 
@@ -115,8 +112,6 @@ Na rysunku ~\ref{fig:rejestracja-sukces} przedstawiono przyk³adowe wys³anie ¿¹da
   \label{fig:rejestracja-sukces}
 \end{figure}
 
-\newpage
-
 Na rysunku ~\ref{fig:rejestracja-niepowodzenie} przedstawiono ponowne wys³anie ¿¹dania dotycz¹cego rejestracji nowego u¿ytkownika. ¯¹danie wys³ano metod¹ \texttt{POST} ze wszystkimi potrzebnymi danymi w ciele ¿¹dania takimi samymi jak ostatnio co oznacza, ¿e konto nie powinno zostaæ utworzone. W odpowiedzi otrzymano kod odpowiedzi 400 oraz cia³o odpowiedzi informuj¹ce o tym, ¿e konto u¿ytkownika z takim loginem istnieje ju¿ w systemie i nie zosta³o stworzone nowe. Przeprowadzony test potwierdza poprawnoœæ zaimplementowanej funkcji.
 
 \begin{figure}[htb]
@@ -135,9 +130,7 @@ Wed³ug wczeœniej zdefiniowanych wymagañ, niektóre z funkcji powinny byæ dostêpne
   \label{fig:opinie_bez_logowania}
 \end{figure}
 
-\newpage
-
-Rysunek ~\ref{fig:opinie_sukces} przedstawia wys³anie ¿¹dania dotycz¹cego opinii o trenerze w momencie gdy u¿ytkownik jest zalogowany. W odpowiedzi otrzymano kod odpowiedzi 200, natomiast w ciele odpowiedzi zosta³y wyœwietlone opinie zapisane w formacie JSON. Ponadto, wraz z ¿¹daniem zosta³ wys³any token JWT zapisany w pliku cookies. Zosta³o to przedstawione na rysunku ~\ref{fig:opinie_cookies}. Potwierdza to poprawnoœæ zaimplementowanej funkcjonalnoœci. 
+Na rysunku~\ref{fig:opinie_sukces} przedstawiono wys³anie ¿¹dania dotycz¹cego opinii o trenerze w momencie, gdy u¿ytkownik jest zalogowany. W odpowiedzi otrzymano kod odpowiedzi 200, natomiast w ciele odpowiedzi zosta³y wyœwietlone opinie zapisane w formacie JSON. Ponadto, wraz z ¿¹daniem zosta³ wys³any token JWT zapisany w pliku cookies. Zosta³o to przedstawione na rysunku ~\ref{fig:opinie_cookies}. Potwierdza to poprawnoœæ zaimplementowanej funkcjonalnoœci. 
 
 \begin{figure}[htb]
   \centering

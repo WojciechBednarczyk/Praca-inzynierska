@@ -37,6 +37,16 @@
 \usepackage{setspace}
 \usepackage{color,calc}
 %\usepackage{soul} % pakiet z komendami do podkreœlania, przekreœlania, podœwietlania tekstu (raczej niepotrzebny)
+\usepackage{ebgaramond} % pakiet z czcionkami garamond, potrzebny tylko do strony tytu³owej, musi wyst¹piæ przed pakietem tgtermes
+
+
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{-1\p@}}}{}{}
+\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{-1\p@}}}{}{}
+\pretocmd{\subsection}{\addtocontents{toc}{\protect\addvspace{-1\p@}}}{}{}
+\makeatother
+
 
 \usepackage{ebgaramond} % pakiet z czcionkami garamond, potrzebny tylko do strony tytu³owej, musi wyst¹piæ przed pakietem tgtermes
 
@@ -313,6 +323,13 @@ captionpos=t
 %%commentstyle=\color{green},
 %%}
 
+\makeatletter % odstêpy w spisie pomiêdzy rozdzia³ami
+\renewcommand*{\insertchapterspace}{%
+  \addtocontents{lof}{\protect\addvspace{3pt}}%
+  \addtocontents{lot}{\protect\addvspace{3pt}}%
+	\addtocontents{toc}{\protect\addvspace{3pt}} %
+  \addtocontents{lol}{\protect\addvspace{3pt}}}
+\makeatother 
 
 \newcommand{\listingcaption}[1]% dodane, by mo¿na by³o robiæ podpis nad dwukolumnowym listingiem
 {%
@@ -346,9 +363,9 @@ Listing \thelstlisting: #1\hfill%\hfill%
 %\hfuzz=1.5pt
 %\hbadness=1450
 
-\renewcommand{\topfraction}{0.95}
-\renewcommand{\bottomfraction}{0.95}
-\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\textfraction}{0.0}
 \renewcommand{\floatpagefraction}{0.35}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -376,7 +393,7 @@ Listing \thelstlisting: #1\hfill%\hfill%
 \setlength{\parindent}{14.5pt}
 
 \setlength{\cftbeforechapterskip}{0pt} % odstêpy w spisie treœci przed rozdzia³em, dzia³a w korelacji z:
-\renewcommand{\aftertoctitle}{\afterchaptertitle\vspace{0pt}} % 
+\renewcommand{\aftertoctitle}{\afterchaptertitle\vspace{-4pt}} % 
 
 %\cftsetindents{section}{1.5em}{2.3em}
 
@@ -392,13 +409,13 @@ Listing \thelstlisting: #1\hfill%\hfill%
 %%  Pakiety i komendy zastosowane tylko do zamieszczenia informacji o u¿ytych komendach i fontach w tym szablonie.
 %%  Normalnie nie s¹ one potrzebne. Proszê poni¿sze deklaracje zamarkowaæ podczas redakcji pracy !!!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{memlays}     % extra layout diagrams, zastosowane w szblonie do 'debuggowania', u¿ywa pakietu layouts
+%\usepackage{memlays}     % extra layout diagrams, zastosowane w szblonie do 'debuggowania', u¿ywa pakietu layouts
 %\usepackage{layouts}
-\usepackage{printlen} % pakiet do wyœwietlania wartoœci zdefiniowanych d³ugoœci, stosowany do 'debuggowania'
-\uselengthunit{pt}
-\makeatletter
-\newcommand{\showFontSize}{\f@size pt} % makro wypisuj¹ce wielkoœæ bie¿¹cej czcionki
-\makeatother
+%\usepackage{printlen} % pakiet do wyœwietlania wartoœci zdefiniowanych d³ugoœci, stosowany do 'debuggowania'
+%\uselengthunit{pt}
+%\makeatletter
+%\newcommand{\showFontSize}{\f@size pt} % makro wypisuj¹ce wielkoœæ bie¿¹cej czcionki
+%\makeatother
 % do pokazania ramek mo¿na by³oby u¿yæ:
 %\usepackage{showframe} 
 
@@ -876,7 +893,7 @@ in fitness training}
 %       Nazwê przygotowanej biblioteki wpisuje siê poni¿ej bez rozszerzenia 
 %       (w tym przypadku jest to "dokumentacja.bib")
 \setlength{\bibitemsep}{2pt} % - by zacieœniæ wykaz literatury
-%\addtocontents{toc}{\addvspace{5pt}} % ustawiamy odstêp przed literatur¹ w spisie treœci
+\addtocontents{toc}{\addvspace{2pt}} % ustawiamy odstêp przed literatur¹ w spisie treœci
 \bibliography{dokumentacja}
 \appendix
 \include{dodatekA}
